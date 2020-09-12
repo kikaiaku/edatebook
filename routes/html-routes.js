@@ -30,6 +30,38 @@ module.exports = function (app) {
     res.render("signup");
   });
 
+  app.get("/calendar", (req, res) => {
 
+    // If the user already has an account send them to the overview page
+
+    if (!req.user) {
+      res.redirect(307, "/login");
+    }
+
+    db.Event.findAll({ where: { userID: req.user.id }, }).then(function (dbEvent) {
+      // We have access to the Bills as an argument inside of the callback function
+      let hbsEvent = { events: dbEvent.map(event => { return { id: event.id, date: event.date, description: event.description, category: event.category, classification: event.classification } }) }
+      res.render("events", hbsEvent);
+
+
+    });
+  });
+
+  app.get("/addressbook", (req, res) => {
+
+    // If the user already has an account send them to the overview page
+
+    if (!req.user) {
+      res.redirect(307, "/login");
+    }
+
+    db.Address.findAll({ where: { userID: req.user.id }, }).then(function (dbAddress) {
+      // We have access to the Bills as an argument inside of the callback function
+      let hbsAddress = { address: dbAddress.map(address => { return { id: address.id, firstName: address.firstName, lastName: address.lastName, middleIntial: address.middleIntial, address: address.address, phone: address.phone, email: address.email, birthday: address.birthday, comments: address.comments  } }) }
+      res.render("address", hbsaddress);
+
+
+    });
+  });
 
 }

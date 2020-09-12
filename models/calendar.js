@@ -1,11 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
-    // var Bills = sequelize.define("Bill", {
     var Events = sequelize.define("Event", {
       id: {type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-      billName: DataTypes.STRING,
-      website: DataTypes.STRING,
-      dueDate: DataTypes.DATE,
+      date: DataTypes.DATE,
+      description: DataTypes.STRING,
+      category: DataTypes.STRING,
+      // need to add logic that if null = Private
+      classification: DataTypes.STRING,
       userId: DataTypes.INTEGER
     });
-    return Bills;
+    return Events;
   };
