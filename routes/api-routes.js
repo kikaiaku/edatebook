@@ -3,7 +3,7 @@ const db = require("../models");
 const passport = require("../config/passport");
 const Sequelize = require("sequelize")
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the overview page.
   // Otherwise the user will be sent an error
@@ -53,5 +53,90 @@ module.exports = function(app) {
     }
   });
 
+  // POST ROUTES
+
+  // POST route for saving a new event
+  app.post("/api/index/postevent", function (req, res) {
+    // create takes an argument of an object describing the Bill we want to
+    // insert into our table. 
+    console.log("Add event 2")
+    db.Event.create({
+      date: req.body.date,
+      description: req.body.description,
+      category: req.body.category,
+      classification: req.body.classification,
+      userId: req.user.id
+    })
+      .then(() => {
+        // need to update!
+        res.redirect("./views/index");
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+
+  // POST route for saving a new address
+  app.post("/api/index/postaddress", function (req, res) {
+    // create takes an argument of an object describing the Bill we want to
+    // insert into our table. 
+    console.log("Add address 2")
+    db.Event.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      middleIntial: req.body.middleIntial,
+      address: req.body.address,
+      phone: req.body.phone,
+      email: req.body.email,
+      birthday: req.body.birthday,
+      comments: req.body.comments,
+      userId: req.user.id
+    })
+      .then(() => {
+        // need to update!
+        res.redirect("./views/index");
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+
+  // DELETE ROUTES
+
+  // Route for deleting Event
+  app.delete("/api/overview/deleteevent/:id", function (req, res) {
+
+    // We just have to specify which todo we want to destroy with "where"
+    db.Event.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(() => {
+        // need to update
+        res.redirect("/api/overview");
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+
+  // Route for deleting Address
+  app.delete("/api/overview/deleteaddress/:id", function (req, res) {
+
+    // We just have to specify which todo we want to destroy with "where"
+    db.Address.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(() => {
+        // need to update
+        res.redirect("/api/overview");
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
 
 }
