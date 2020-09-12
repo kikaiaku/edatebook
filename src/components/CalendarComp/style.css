@@ -1,0 +1,26 @@
+.react-calendar{
+    height: 1000px;
+    width: 1000px;
+    align-content: center;
+}
+.react-calendar__tile {
+    max-width: 100%;
+    text-align: center;
+    padding: 4em 4em;
+    background: none;
+    border-width: 1;
+}
+.button {
+    border-radius: 2;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    align-items: flex-start;
+    box-sizing: border-box;
+    margin: 1em;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-image: initial;
+}
