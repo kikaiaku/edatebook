@@ -1,5 +1,6 @@
 import React from 'react';
-import { Form, Row, Container } from 'react-bootstrap';
+import { Form, Row, Container, Button } from 'react-bootstrap';
+import Datepicker from '../Datepicker'
 
     function Signup() {
     return (
@@ -28,7 +29,11 @@ import { Form, Row, Container } from 'react-bootstrap';
             </Row><Row>
                 <Form.Control placeholder="First name" />
                 <Form.Control placeholder="Last name" />
+            </Row><Row>
+                <Datepicker />
             </Row>
+            <Button>Submit</Button>
+            
         </Form>
         </Container>
     )
