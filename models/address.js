@@ -2,7 +2,6 @@ module.exports = function(sequelize, DataTypes) {
   // Add code to not make it plural
     var Address = sequelize.define("Address", {
       id: {type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-      
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
       middleIntial: DataTypes.STRING,
