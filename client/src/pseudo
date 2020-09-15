@@ -1,0 +1,27 @@
+Address Book
+//Address book includes all entries on one scrollable page
+//Search bar allows user to find an entry based on first or last name (reference employee directory)
+//"Add New" button allows the user to add a new entry in the address book
+//onClick of "Add New" button, the entry is added to the database and will populate in the address book below the add new address form 
+//"Delete" button allows the user to remove an entry
+//Each entry contains a check box
+//When checkbox is selected the user may click delete to remove the entry
+
+
+Form:
+//name
+//street address
+//city
+//state
+//zip code
+//home phone / cell phone / work phone
+//email
+//birthday
+//comments
+
+//choose a form from react-bootstrap
+//add "add new" and "delete" buttons
+//add a checkbox
+
+Calendar
+//Add a button to each tile or on double click event for each tile

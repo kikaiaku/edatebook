@@ -7,14 +7,17 @@ const passport = require("./config/passport");
 const exphbs = require("express-handlebars");
 
 // Setting up port and requiring models for syncing
-const PORT = process.env.PORT || 3006;
+const PORT = process.env.PORT || 3000;
 const db = require("../models");
 
 // Creating express app and configuring middleware needed for authentication
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 // We need to use sessions to keep track of our user's login status
 app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
@@ -22,11 +25,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
-
-app.use(express.static("images"));
 
 // Requiring our routes
 require("./routes/html-routes.js")(app);
