@@ -15,3 +15,9 @@ Form:
 //zip code
 //home phone / cell phone / work phone
 //email
+//birthday
+//comments
+
+//choose a form from react-bootstrap
+//add "add new" and "delete" buttons
+//add a checkbox

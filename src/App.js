@@ -22,6 +22,7 @@ function App() {
         <Route path='/' exact component={Home} />
         <Route path='/Profile' exact component={Profile} />
         <Route path='/Calendar' exact component={Calendar} />
+        <Route path='/AddressBook' exact component={AddressBook} />
     </div>
     </Router>
 
