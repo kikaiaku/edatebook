@@ -22,3 +22,6 @@ Form:
 //choose a form from react-bootstrap
 //add "add new" and "delete" buttons
 //add a checkbox
+
+Calendar
+//Add a button to each tile or on double click event for each tile

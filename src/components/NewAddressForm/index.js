@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Form, Col, Row, Label, Button } from 'react-bootstrap';
 
 function NewAddressForm() {
+    
     return (
 <Container>
 <Form>
@@ -113,12 +114,3 @@ function NewAddressForm() {
     )
 };
 export default NewAddressForm;
-
-//</Form.Group>
-{/* <Form.Group as={Col} md="3" controlId="validationCustom04">
-<Form.Label>State</Form.Label>
-<Form.Control type="text" placeholder="State" required />
-<Form.Control.Feedback type="invalid">
-  Please provide a valid state.
-</Form.Control.Feedback>
-</Form.Group> */}
