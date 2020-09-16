@@ -5,6 +5,10 @@ const API = {
   signUp: function(userInfo) {
     console.log(userInfo)
     return axios.post("/api/signup", userInfo);
+  },
+  addAddress: function(userInfo) {
+    console.log(userInfo)
+    return axios.post("/api/AddressBook", userInfo);
   }
 
 }

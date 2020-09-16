@@ -84,20 +84,23 @@ module.exports = function (app) {
   });
 
   // POST route for saving a new address
-  app.post("/api/index/postaddress", function (req, res) {
+  app.post("/api/addressbook", function (req, res) {
     // create takes an argument of an object describing the Bill we want to
     // insert into our table. 
     console.log("Add address 2")
     db.Address.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      middleIntial: req.body.middleIntial,
+      middleIntial: req.body.middleInitial,
       address: req.body.address,
       phone: req.body.phone,
       email: req.body.email,
       birthday: req.body.birthday,
       comments: req.body.comments,
-      userId: req.user.id
+      city: req.body.city,
+      state: req.body.state,
+      zipCode: req.body.zipCode,  
+      userId: 1
     })
       .then(() => {
         // need to update!
