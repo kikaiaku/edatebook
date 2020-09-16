@@ -11,6 +11,6 @@ module.exports = function(sequelize, DataTypes) {
       birthday: DataTypes.DATE,
       comments: DataTypes.STRING,
       userId: DataTypes.INTEGER
-    });
+    }, {freezeTableName: true});
     return Address;
   };
