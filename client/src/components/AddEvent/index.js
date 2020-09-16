@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 // import Calendar from 'react-calendar';
 
-function CalendarComp(){
+function AddEvent(){
     const [value, onChange] = useState(new Date());
     const [event, setNewEvent] = useState(new Event());
 
     useEffect(() => {
-        if(!event) {
-            return;
-        }
-    })
+        loadEvents()
+        }, [])
 
     // function addNewEvent(){
     //     return(

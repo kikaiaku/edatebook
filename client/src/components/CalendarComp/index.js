@@ -13,7 +13,7 @@ function CalendarComp(){
             onChange={onChange}
             value={value}
             />
-          <button className='addEvent'>Add</button>
+          {/* <button className='addEvent'>Add</button> */}
         </div>
       );
     };
