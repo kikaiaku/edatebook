@@ -3,7 +3,6 @@ import Signup from '../components/Signup';
 import Header from '../components/Header';
 import NavTabs from '../components/NavTabs';
 import API from '../utils/API';
-import AddressBook from '../AddressBook';
 import { use } from 'passport';
 
 function SignUp() {

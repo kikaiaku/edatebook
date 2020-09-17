@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
       id: {type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
-      middleIntial: DataTypes.STRING,
+      middleInitial: DataTypes.STRING,
       address: DataTypes.STRING,
       city: DataTypes.STRING,
       state: DataTypes.STRING,
