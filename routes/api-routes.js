@@ -20,9 +20,16 @@ module.exports = function (app) {
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
     console.log(req.body)
+    console.log("Post Request")
     db.User.create({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      middleInitial: req.body.middleInitial,
+      address: req.body.address,
+      birthday: req.body.birthday,
+      phone: req.body.phone
     })
       .then(() => {
         res.redirect(307, "/api/login");
@@ -77,20 +84,23 @@ module.exports = function (app) {
   });
 
   // POST route for saving a new address
-  app.post("/api/index/postaddress", function (req, res) {
+  app.post("/api/addressbook", function (req, res) {
     // create takes an argument of an object describing the Bill we want to
     // insert into our table. 
     console.log("Add address 2")
-    db.Event.create({
+    db.Address.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      middleIntial: req.body.middleIntial,
+      middleIntial: req.body.middleInitial,
       address: req.body.address,
       phone: req.body.phone,
       email: req.body.email,
       birthday: req.body.birthday,
       comments: req.body.comments,
-      userId: req.user.id
+      city: req.body.city,
+      state: req.body.state,
+      zipCode: req.body.zipCode,  
+      userId: 1
     })
       .then(() => {
         // need to update!

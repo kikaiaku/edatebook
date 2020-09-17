@@ -20,6 +20,7 @@ function App() {
       <Header />
       <NavTabs />
         <Route path='/' exact component={Home} />
+        <Route path='/signup' exact component={SignUp} />
         <Route path='/Profile' exact component={Profile} />
         <Route path='/Calendar' exact component={Calendar} />
         <Route path='/AddressBook' exact component={AddressBook} />

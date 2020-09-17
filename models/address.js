@@ -6,11 +6,14 @@ module.exports = function(sequelize, DataTypes) {
       lastName: DataTypes.STRING,
       middleIntial: DataTypes.STRING,
       address: DataTypes.STRING,
+      city: DataTypes.STRING,
+      state: DataTypes.STRING,
+      zipCode: DataTypes.STRING,
       phone: DataTypes.STRING,
       email: DataTypes.STRING,
       birthday: DataTypes.DATE,
       comments: DataTypes.STRING,
       userId: DataTypes.INTEGER
-    });
+    }, {freezeTableName: true});
     return Address;
   };
