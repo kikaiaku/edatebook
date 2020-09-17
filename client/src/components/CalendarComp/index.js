@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import './style.css';
 import Calendar from 'react-calendar';
+import moment from 'moment';
 // import 'react-calendar/dist/Calendar.css';
 
 
-function CalendarComp(){
+function CalendarComp(props){
     const [value, onChange] = useState(new Date());
 
     return (
         <div>
           <Calendar
-            onChange={onChange}
-            value={value}
+            onChange={props.onChange}
+            value={props.value}
+            // tileContent={props.tileContent}
             />
           <button className='addEvent'>Add</button>
         </div>
