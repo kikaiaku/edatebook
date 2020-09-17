@@ -24,9 +24,14 @@ function Login() {
                         <Form.Group controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group>
+                        
                             <Button variant="primary" type="submit">
-                                Submit
+                                Login
                             </Button>
+                            <Button variant="primary" type="submit">
+                                Sign Up
+                                </Button>
+                          
                     </Form>
                     </Col>
                     <Col className= '4 of 9'></Col>
