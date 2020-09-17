@@ -15,7 +15,6 @@ function CalendarComp(props){
             value={props.value}
             // tileContent={props.tileContent}
             />
-          <button className='addEvent'>Add</button>
         </div>
       );
     };

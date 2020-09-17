@@ -16,7 +16,7 @@ function AddEvent(props) {
         return (
             <Modal show={props.showEventModal} backdrop="static" onHide={props.handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal title</Modal.Title>
+                    <Modal.Title>New Event</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
@@ -41,8 +41,7 @@ function AddEvent(props) {
     <Button variant="secondary">Close</Button>
     <Button variant="primary">Save changes</Button>
   </Modal.Footer>
-</Modal>
-          
+</Modal>      
         )
     }
 // }
