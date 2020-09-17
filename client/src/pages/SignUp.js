@@ -3,6 +3,8 @@ import Signup from '../components/Signup';
 import Header from '../components/Header';
 import NavTabs from '../components/NavTabs';
 import API from '../utils/API';
+import AddressBook from '../AddressBook';
+import { use } from 'passport';
 
 function SignUp() {
 
@@ -12,6 +14,9 @@ function SignUp() {
     const [lastName,setLastName] = useState()
     const [middleInitial,setMiddleInitial] = useState()
     const [address,setAddress] = useState()
+    const [city,setCity] = useState()
+    const [state,setState] = useState()
+    const [zipCode,setZipCode] = useState()
     const [birthday,setBirthday] = useState()
     const [phone,setPhone] = useState()
 
@@ -26,6 +31,9 @@ function SignUp() {
             lastName: lastName,
             middleInitial: middleInitial,
             address: address,
+            city: city,
+            state: state,
+            zipcode: zipCode,
             birthday: birthday,
             phone: phone
           })
@@ -58,6 +66,15 @@ function SignUp() {
             break;
             case "address": 
             setAddress(value)
+            break;
+            case "city": 
+            setCity(value)
+            break;
+            case "state": 
+            setState(value)
+            break;
+            case "zipCode": 
+            setZipCode(value)
             break;
             case "birthday": 
             console.log("bday")
