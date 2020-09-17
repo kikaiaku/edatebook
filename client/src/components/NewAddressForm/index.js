@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Form, Col, Row, Label, Button } from 'react-bootstrap';
 
-function NewAddressForm() {
+function NewAddressForm(props) {
     
     return (
 <Container>
@@ -9,42 +9,49 @@ function NewAddressForm() {
     <Form>
         <Form.Row>
             <Col>
-                <Form.Control placeholder="First name" />
+                <Form.Control onChange= {props.handleInputChange} name = "firstName" placeholder="First name" />
             </Col>
             <Col>
-                <Form.Control placeholder="M.I." />
+                <Form.Control onChange= {props.handleInputChange} name = "middleInitial" placeholder="M.I." />
             </Col>
             <Col>
-                <Form.Control placeholder="Last name" />
+                <Form.Control onChange= {props.handleInputChange} name = "lastName" placeholder="Last name" />
             </Col>
         </Form.Row>
     </Form>
     <Form.Row>
         <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control onChange= {props.handleInputChange} name = "email" type="email" placeholder="Enter email" />
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+        <Form.Group as={Col} controlId="formGridPhone">
+            <Form.Label>Phone Number</Form.Label>
+            <Form.Control onChange= {props.handleInputChange} name = "phone" type="phone" placeholder="555-555-5555" />
+        </Form.Group>
+    </Form.Row>
+
+    <Form.Row>
+        <Form.Group as={Col} controlId="formGridBirthday">
+            <Form.Label>Birthday</Form.Label>
+            <Form.Control onChange= {props.handleInputChange} name = "birthday" type="birthday" placeholder="1/1/1900" />
         </Form.Group>
     </Form.Row>
 
     <Form.Group controlId="formGridAddress">
         <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" />
+        <Form.Control onChange= {props.handleInputChange} name = "address" placeholder="1234 Main St" />
     </Form.Group>
 
     <Form.Row>
         <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>City</Form.Label>
-            <Form.Control />
+            <Form.Control onChange= {props.handleInputChange} name = "city" />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridState">
             <Form.Label>State</Form.Label>
-            <Form.Control as="select" defaultValue="Choose...">
+            <Form.Control onChange= {props.handleInputChange} name = "State" as="select" defaultValue="Choose...">
                 <option>Choose...</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -97,16 +104,16 @@ function NewAddressForm() {
                 <option value="WV">West Virginia</option>
                 <option value="WI">Wisconsin</option>
                 <option value="WY">Wyoming</option>
-            </Form.Control>
+            </Form.Control >
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridZip">
             <Form.Label>Zip</Form.Label>
-            <Form.Control />
+            <Form.Control onChange= {props.handleInputChange} name = "zipCode" />
         </Form.Group>
     </Form.Row>
 
-    <Button variant="primary" type="submit">
+    <Button onClick = {props.handleSubmit()} variant="primary" type="submit">
         Add New
     </Button>
 </Form>

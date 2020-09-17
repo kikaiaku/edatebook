@@ -6,6 +6,12 @@ const API = {
     console.log(userInfo)
     return axios.post("/api/signup", userInfo);
   },
+
+  addAddress: function(userInfo) {
+    console.log(userInfo)
+    return axios.post("/api/AddressBook", userInfo);
+  }
+
     //Gets all events
     getEvents: function(){
       return axios.get('/api/events')
@@ -22,14 +28,12 @@ const API = {
     getAddresses: function(){
         return axios.get('/api/addresses')
     },
-    //Adds a new address entry
-    addAddress: function(){
-        return axios.post('/api/addaddress')
-    },
+  
     //Updates address with new info entered by user
     updateAddress: function(){
         return axios.put('/api/addaddress')
     }
+
 
 }
 
