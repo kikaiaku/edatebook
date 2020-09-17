@@ -1,56 +1,53 @@
 import React, {useEffect, useState, useCallback} from 'react';
+import moment, {
+    getDayOfMonth,
+    getMonthDayYear,
+    getMonth,
+    getYear,
+  } from 'moment';
 import CalendarComp from '../components/CalendarComp'; 
 import AddEvent from '../components/AddEvent';
 import API from '../utils/API';
 
-
 function Calendar(){
-        const [events, setEvents] = useState([]);
-        // const [newEvent, setNewEvent] = useState({});
+    //handles the closing of event form popover
+    const handleClose = () => setShowEventModal(false);
+    const [tile, setTile] = useState();
+    const tileContent = [];
 
-        let tempEvents = [{title: "first event", content: "event content"},{}]
-    
-        const loadEvents = useCallback(()=>{
-            setEvents(tempEvents)
-            // API.getEvents()
-            // .then(res => {
-            //     setEvents(res.data)
-            // })
-            // .catch(err => console.log(err));
-        }, [tempEvents])
+    const [showEventModal, setShowEventModal] = useState(false);
 
-        useEffect(() => {
-            //make the api call, and then
-            loadEvents()
-            }, [loadEvents])
+    const CURRENT_DATE = moment().toDate();
+    const getDayOfMonth = (month) => {
+        return moment(month, 'MM').daysInMonth();
+        console.log("it worked")
+    };
 
-        // function handleInputChange(event) {
-        //     const { name, value } = event.target;
-        //     setNewEvent({...newEvent, [name]: value})
-        //   };
-        
-        // function addNewEvent(event){
-        //     event.preventDefault();
-        //     if (newEvent.eventName && newEvent.eventContent){
-        //         API.addEvent({
-        //             title: newEvent.eventName,
-        //             newEvent: newEvent.eventContent,
-        //             time: newEvent.time
-        //         }).catch(err => console.log(err));
-        //     }
-        // }
-        // function changeEvent(event){
-        //     event.preventDefault();
-        //     API.updateEvent(event.target.value)
-        //     .then(addNewEvent())
-        //     .catch(err => console.log(err));
-        // }
+    useEffect(() => {
+        if (CURRENT_DATE){
+            return(
+                console.log(CURRENT_DATE)
+            )
+        }
+    });
+
+    function handleClick(event){
+        let el = event.target;
+        if (event.target.type) {
+            el = event.target.children[0]
+        }
+        console.log(el.getAttribute("aria-label"))
+        setShowEventModal(true);
+    };
 
     return(
         <div>
+        <div onClick= {handleClick}>
             <CalendarComp />
         </div>
-    )
-}
+        <AddEvent showEventModal={showEventModal} handleClose={handleClose}/>
+        </div>
 
-export default Calendar;
+    )
+    };
+    export default Calendar;
