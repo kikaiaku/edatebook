@@ -52,6 +52,7 @@ function Calendar() {
         let value = e.target.value
         console.log(name)
         console.log(value)
+        // eslint-disable-next-line default-case
         switch (name) {
             case "eventName":
                 setEventName(value)
@@ -65,23 +66,23 @@ function Calendar() {
 
         }
     }
-        function handleClick(event) {
-            let el = event.target;
-            if (event.target.type) {
-                el = event.target.children[0]
-            }
-            console.log(el.getAttribute("aria-label"))
-            setShowEventModal(true);
-        };
-
-        return (
-            <div>
-                <div onClick={handleClick}>
-                    <CalendarComp />
-                </div>
-                <AddEvent showEventModal={showEventModal} handleClose={handleClose} handleInputChange = {handleInputChange} handleSubmit = {()=>handleSubmit} />
-            </div>
-
-        )
+    function handleClick(event) {
+        let el = event.target;
+        if (event.target.type) {
+            el = event.target.children[0]
+        }
+        console.log(el.getAttribute("aria-label"))
+        setShowEventModal(true);
     };
-    export default Calendar;
+
+    return (
+        <div>
+            <div onClick={handleClick}>
+                <CalendarComp />
+            </div>
+            <AddEvent showEventModal={showEventModal} handleClose={handleClose} handleInputChange={handleInputChange} handleSubmit={() => handleSubmit} />
+        </div>
+
+    )
+};
+export default Calendar;

@@ -66,9 +66,9 @@ module.exports = function (app) {
   app.post("/api/Calendar", function (req, res) {
     // create takes an argument of an object describing the Bill we want to
     // insert into our table. 
-    console.log("Add event 2")
+    console.log("Add event!!!!!!!")
     db.Event.create({
-      date: "9-3-2020",
+      date: "",
       time: req.body.time,
       eventName: req.body.eventName,
       notes: req.body.notes,

@@ -25,10 +25,10 @@ function Login() {
                         <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group>
                         
-                            <Button variant="primary" type="submit">
+                            <Button href="/Calendar">
                                 Login
                             </Button>
-                            <Button variant="primary" type="submit">
+                            <Button href="/Signup">
                                 Sign Up
                                 </Button>
                           

@@ -21,7 +21,7 @@ const API = {
       console.log(userInfo)
 
         return axios.post('/api/Calendar', userInfo)
-    }
+    },
     // //Updates an event with new info entered by user
     // updateEvent: function(){
     //     return axios.put('/api/updateevent')
