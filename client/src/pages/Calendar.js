@@ -19,7 +19,6 @@ function Calendar() {
     const handleClose = () => setShowEventModal(false);
     const [tile, setTile] = useState();
     const tileContent = [];
-
     const [showEventModal, setShowEventModal] = useState(false);
 
     const CURRENT_DATE = moment().toDate();

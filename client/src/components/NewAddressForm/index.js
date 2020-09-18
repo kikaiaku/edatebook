@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container, Form, Col, Row, Label, Button } from 'react-bootstrap';
 
+
 function NewAddressForm(props) {
 
     return (
         <Container>
             <Form>
-                <Form>
                     <Form.Row>
                         <Col>
                             <Form.Control onChange={props.handleInputChange} name="firstName" placeholder="First name" />
@@ -18,7 +18,7 @@ function NewAddressForm(props) {
                             <Form.Control onChange={props.handleInputChange} name="lastName" placeholder="Last name" />
                         </Col>
                     </Form.Row>
-                </Form>
+                
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>Email</Form.Label>
@@ -113,7 +113,7 @@ function NewAddressForm(props) {
                     </Form.Group>
                 </Form.Row>
 
-                <Button onClick={props.handleSubmit()} variant="primary" type="submit">
+                <Button onClick={props.handleSubmit} variant="primary" type="submit">
                     Add New
     </Button>
             </Form>

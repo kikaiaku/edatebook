@@ -89,7 +89,7 @@ module.exports = function (app) {
   app.post("/api/addressbook", function (req, res) {
     // create takes an argument of an object describing the Bill we want to
     // insert into our table. 
-    console.log("Add address 2")
+    console.log(req.body)
     db.Address.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -107,6 +107,19 @@ module.exports = function (app) {
       .then(() => {
         // need to update!
         res.redirect("./views/index");
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+  app.get("/api/addressbook", function (req, res) {
+    // create takes an argument of an object describing the Bill we want to
+    // insert into our table. 
+    console.log("Add address 2")
+    db.Address.findAll()
+      .then((result) => {
+        console.log(result);
+        res.json(result);
       })
       .catch(err => {
         res.status(401).json(err);

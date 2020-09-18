@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import NewAddressForm from '../components/NewAddressForm';
+import AddressList from '../components/AddressList';
 import API from '../utils/API';
 
 
 function AddressBook(){
 
+    const [showAddress, setShowAddress] = useState(false);
+    const [getAddress, setGetAddress] = useState([{}])
     const [firstName, setFirstName] = useState()
     const [middleInitial, setMiddleInitial] = useState()
     const [lastName, setLastName] = useState()
@@ -16,10 +19,17 @@ function AddressBook(){
     const [state,setState] = useState()
     const [zipCode,setZipCode] = useState()
 
+    useEffect(() => {
+      API.getAddress()
+        .then(({ data }) => {
+          setGetAddress(data)
+          console.log(data)
+    })}, []);
+
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("handle submit clicked")
+        console.log("handle submit clicked!!!!!")
         
           API.addAddress({
             firstName: firstName,
@@ -33,15 +43,23 @@ function AddressBook(){
             state: state,
             zipCode: zipCode            
           })
-            // .then(res => loadBooks())
             .catch(err => console.log(err));
-        
       };
+
+      function renderAddressList(){
+        API.getAddress()
+        .then(data => {
+          setGetAddress(data)
+          console.log(data)
+        })
+        .catch(err => console.log(err));
+      }
+
       function handleInputChange(e) {
         let name = e.target.name
         let value = e.target.value
-        console.log(name)
-        console.log(value)
+        // console.log(name)
+        // console.log(value)
         switch (name) {
             case "email": 
                 setEmail(value)
@@ -56,16 +74,16 @@ function AddressBook(){
             setLastName(value)
             break;
             case "middleInitial": 
-            console.log("MI")
-            console.log(value)
+            // console.log("MI")
+            // console.log(value)
             setMiddleInitial(value)
             break;
             case "address": 
             setAddress(value)
             break;
             case "birthday": 
-            console.log("bday")
-            console.log(value)
+            // console.log("bday")
+            // console.log(value)
             setBirthday(value)
             break;
             case "phone": 
@@ -78,21 +96,14 @@ function AddressBook(){
             setZipCode(value)
             break;
         }
- 
-      }
-
-    // const[entryState, setEntryState] = useState();
-
-    // useEffect(() => {
-        //if(!entryState){
-        //     return;
-        // }
-    // })
-
+        console.log(name.value)
+  }
 
     return(
         <div>
-        <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {()=>handleSubmit}/>
+        <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/>
+        <AddressList
+            addressData = {getAddress} />
         </div>
     )
 }

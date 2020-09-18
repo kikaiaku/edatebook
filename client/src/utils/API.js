@@ -9,7 +9,7 @@ const API = {
 
   addAddress: function(userInfo) {
     console.log(userInfo)
-    return axios.post("/api/AddressBook", userInfo);
+    return axios.post("/api/addressbook", userInfo);
   },
 
     //Gets all events
@@ -27,9 +27,9 @@ const API = {
     //     return axios.put('/api/updateevent')
     // },
     // //Gets all address entries
-    // getAddresses: function(){
-    //     return axios.get('/api/addresses')
-    // },
+    getAddress: function(){
+        return axios.get('/api/addressbook')
+    }
   
     // //Updates address with new info entered by user
     // updateAddress: function(){
