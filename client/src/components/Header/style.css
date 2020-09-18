@@ -1,7 +1,11 @@
 .header{
     margin-top: 2%;
+    color: cadetblue;
 }
 
-.title{
-    text-align: center;
-}
+
+ .title{
+     text-align: center;
+     color: blue;
+     text-align: center;
+ }

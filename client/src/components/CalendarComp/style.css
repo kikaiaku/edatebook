@@ -2,6 +2,7 @@
     height: 1000px;
     width: 1000px;
     align-content: center;
+    background-color: bisque;
 }
 .react-calendar__tile {
     max-width: 100%;
