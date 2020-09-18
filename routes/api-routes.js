@@ -63,16 +63,18 @@ module.exports = function (app) {
   // POST ROUTES
 
   // POST route for saving a new event
-  app.post("/api/index/postevent", function (req, res) {
+  app.post("/api/Calendar", function (req, res) {
     // create takes an argument of an object describing the Bill we want to
     // insert into our table. 
     console.log("Add event 2")
     db.Event.create({
-      date: req.body.date,
-      description: req.body.description,
-      category: req.body.category,
-      classification: req.body.classification,
-      userId: req.user.id
+      date: "9-3-2020",
+      time: req.body.time,
+      eventName: req.body.eventName,
+      notes: req.body.notes,
+      category: "test",
+      classification: "private",
+      userId: 1
     })
       .then(() => {
         // need to update!
