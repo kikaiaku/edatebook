@@ -20,7 +20,7 @@ const API = {
     addEvent: function(userInfo){
       console.log(userInfo)
 
-        return axios.post('/api/Calendar', userInfo)
+        return axios.post('/api/calendar', userInfo)
     },
     // //Updates an event with new info entered by user
     // updateEvent: function(){

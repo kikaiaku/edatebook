@@ -68,7 +68,7 @@ module.exports = function (app) {
     // insert into our table. 
     console.log("Add event!!!!!!!")
     db.Event.create({
-      date: "",
+      date: "9-3-2020",
       time: req.body.time,
       eventName: req.body.eventName,
       notes: req.body.notes,
@@ -93,7 +93,7 @@ module.exports = function (app) {
     db.Address.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      middleIntial: req.body.middleInitial,
+      middleInitial: req.body.middleInitial,
       address: req.body.address,
       phone: req.body.phone,
       email: req.body.email,
