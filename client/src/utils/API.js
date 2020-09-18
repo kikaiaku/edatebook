@@ -17,9 +17,11 @@ const API = {
     //   return axios.get('/api/events')
     // },
     // //Adds a new event
-    // addEvent: function(){
-    //     return axios.post('/api/addevent')
-    // },
+    addEvent: function(userInfo){
+      console.log(userInfo)
+
+        return axios.post('/api/Calendar', userInfo)
+    }
     // //Updates an event with new info entered by user
     // updateEvent: function(){
     //     return axios.put('/api/updateevent')

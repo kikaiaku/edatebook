@@ -23,23 +23,23 @@ function AddEvent(props) {
                 <Form className="eventForm">
                     <Form.Group controlId="formEventName">
                         <Form.Label>Event Name</Form.Label>
-                        <Form.Control type="text" placeholder="Name Event" />
+                        <Form.Control onChange={props.handleInputChange} name="eventName" type="text" placeholder="Name Event" />
                     </Form.Group>
 
                     <Form.Group controlId="formNotes">
                         <Form.Label>Notes</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Notes" />
+                        <Form.Control onChange={props.handleInputChange} name="notes" type="text" placeholder="Enter Notes" />
                     </Form.Group>
                     <Form.Group controlId="formTime">
                         <Form.Label>Time</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Time" />
+                        <Form.Control onChange={props.handleInputChange} name="time" type="text" placeholder="Enter Time" />
                     </Form.Group>
             </Form>
         </Modal.Body>
 
   <Modal.Footer>
     <Button variant="secondary">Close</Button>
-    <Button variant="primary">Save changes</Button>
+    <Button onClick={props.handleSubmit()} variant="primary">Save changes</Button>
   </Modal.Footer>
 </Modal>      
         )
