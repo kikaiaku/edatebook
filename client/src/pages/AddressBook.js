@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import NewAddressForm from '../components/NewAddressForm';
+import AddressList from '../components/AddressList';
 import API from '../utils/API';
 
 
 function AddressBook(){
 
+    const [showAddress, setShowAddress] = useState(false);
+    const [getAddress, setGetAddress] = useState([])
     const [firstName, setFirstName] = useState()
     const [middleInitial, setMiddleInitial] = useState()
     const [lastName, setLastName] = useState()
@@ -19,7 +22,7 @@ function AddressBook(){
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("handle submit clicked")
+        console.log("handle submit clicked!!!!!")
         
           API.addAddress({
             firstName: firstName,
@@ -33,10 +36,18 @@ function AddressBook(){
             state: state,
             zipCode: zipCode            
           })
-            // .then(res => loadBooks())
             .catch(err => console.log(err));
-        
       };
+
+      function renderAddressList(){
+        API.getAddress()
+        .then(data => {
+          setGetAddress(data)
+        })
+        .catch(err => console.log(err));
+        // .then(res => )
+      }
+
       function handleInputChange(e) {
         let name = e.target.name
         let value = e.target.value
@@ -78,21 +89,13 @@ function AddressBook(){
             setZipCode(value)
             break;
         }
- 
-      }
-
-    // const[entryState, setEntryState] = useState();
-
-    // useEffect(() => {
-        //if(!entryState){
-        //     return;
-        // }
-    // })
-
+  }
 
     return(
         <div>
-        <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {()=>handleSubmit}/>
+        <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/>
+        <AddressList
+        addressData = {getAddress} />
         </div>
     )
 }

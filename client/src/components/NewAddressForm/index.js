@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Form, Col, Row, Label, Button } from 'react-bootstrap';
 
+
 function NewAddressForm(props) {
 
     return (
@@ -113,7 +114,7 @@ function NewAddressForm(props) {
                     </Form.Group>
                 </Form.Row>
 
-                <Button onClick={props.handleSubmit()} variant="primary" type="submit">
+                <Button onClick={props.handleSubmit} variant="primary" type="submit">
                     Add New
     </Button>
             </Form>
