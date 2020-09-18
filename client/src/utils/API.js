@@ -9,7 +9,7 @@ const API = {
 
   addAddress: function(userInfo) {
     console.log(userInfo)
-    return axios.post("/api/AddressBook", userInfo);
+    return axios.post("/api/addressbook", userInfo);
   },
 
     //Gets all events

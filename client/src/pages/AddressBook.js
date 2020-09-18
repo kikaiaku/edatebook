@@ -7,7 +7,7 @@ import API from '../utils/API';
 function AddressBook(){
 
     const [showAddress, setShowAddress] = useState(false);
-    const [getAddress, setGetAddress] = useState([])
+    const [getAddress, setGetAddress] = useState([{}])
     const [firstName, setFirstName] = useState()
     const [middleInitial, setMiddleInitial] = useState()
     const [lastName, setLastName] = useState()
@@ -18,6 +18,13 @@ function AddressBook(){
     const [city,setCity] = useState()
     const [state,setState] = useState()
     const [zipCode,setZipCode] = useState()
+
+    useEffect(() => {
+      API.getAddress()
+        .then(({ data }) => {
+          setGetAddress(data)
+          console.log(data)
+    })}, []);
 
 
     function handleSubmit(e) {
@@ -43,16 +50,16 @@ function AddressBook(){
         API.getAddress()
         .then(data => {
           setGetAddress(data)
+          console.log(data)
         })
         .catch(err => console.log(err));
-        // .then(res => )
       }
 
       function handleInputChange(e) {
         let name = e.target.name
         let value = e.target.value
-        console.log(name)
-        console.log(value)
+        // console.log(name)
+        // console.log(value)
         switch (name) {
             case "email": 
                 setEmail(value)
@@ -67,16 +74,16 @@ function AddressBook(){
             setLastName(value)
             break;
             case "middleInitial": 
-            console.log("MI")
-            console.log(value)
+            // console.log("MI")
+            // console.log(value)
             setMiddleInitial(value)
             break;
             case "address": 
             setAddress(value)
             break;
             case "birthday": 
-            console.log("bday")
-            console.log(value)
+            // console.log("bday")
+            // console.log(value)
             setBirthday(value)
             break;
             case "phone": 
@@ -89,13 +96,14 @@ function AddressBook(){
             setZipCode(value)
             break;
         }
+        console.log(name.value)
   }
 
     return(
         <div>
         <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/>
         <AddressList
-        addressData = {getAddress} />
+            addressData = {getAddress} />
         </div>
     )
 }
