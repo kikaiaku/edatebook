@@ -3,9 +3,11 @@ import './style.css'
 
 function Header(){
     return(
+        
         <header className='header'>
-            <h1 className='title'>eDateBook</h1>
+            <img src="./assets/head_grad.jpg" alt='logo'/>
         </header>
+        
     )
 }
 

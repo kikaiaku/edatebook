@@ -1,3 +1,12 @@
+UI Design
+//Style logo
+//Style background (basic)
+//Style Calendar (light/dark mode)
+    //add slider with functionality to change from light to dark
+//Create different style calendars to choose Form
+    //add dropdown that will allow the user to select a style of Calendar
+
+
 Address Book
 //Address book includes all entries on one scrollable page
 //Search bar allows user to find an entry based on first or last name (reference employee directory)
@@ -26,5 +35,3 @@ Form:
 Calendar
 //Add a button to each tile or on double click event for each tile
 
-Add event
-//
