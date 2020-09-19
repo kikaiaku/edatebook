@@ -10,9 +10,9 @@ function NavTabs() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Link class="pro" to="Profile">Profile</Link>
-          <Link class="add" to="AddressBook">Address Book</Link>
-          <Link class="cal" to="Calendar">Calendar</Link>
+          <Link className="pro" to="Profile">Profile</Link>
+          <Link className="add" to="AddressBook">Address Book</Link>
+          <Link className="cal" to="Calendar">Calendar</Link>
           {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown"> */}
           {/* <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item> */}
           {/* <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

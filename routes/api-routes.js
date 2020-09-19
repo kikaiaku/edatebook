@@ -126,6 +126,21 @@ module.exports = function (app) {
       });
   });
 
+  //EVENTS GET ROUTE
+  app.get("/api/Calendar", function (req, res) {
+    // create takes an argument of an object describing the Bill we want to
+    // insert into our table. 
+    console.log("Get events!!!!!!")
+    db.Events.findAll()
+      .then((result) => {
+        console.log(result);
+        res.json(result);
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+
   // DELETE ROUTES
 
   // Route for deleting Event

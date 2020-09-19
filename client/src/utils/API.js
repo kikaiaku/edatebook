@@ -29,6 +29,10 @@ const API = {
     // //Gets all address entries
     getAddress: function(){
         return axios.get('/api/addressbook')
+    },
+
+    getEvent: function(){
+      return axios.get('/api/Calendar')
     }
   
     // //Updates address with new info entered by user
