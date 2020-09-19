@@ -7,6 +7,8 @@ import moment, {
 } from 'moment';
 import CalendarComp from '../components/CalendarComp';
 import AddEvent from '../components/AddEvent';
+import EventListComp from '../components/EventListComp';
+import EventList from './EventList';
 import API from '../utils/API';
 
 function Calendar() {
@@ -34,6 +36,7 @@ function Calendar() {
             )
         }
     });
+
     function handleSubmit(e) {
         e.preventDefault();
         console.log("handle submit clicked")
@@ -43,10 +46,9 @@ function Calendar() {
             time: time,
             notes: notes
         })
-            // .then(res => loadBooks())
-            .catch(err => console.log(err));
-
+        .catch(err => console.log(err));
     };
+
     function handleInputChange(e) {
         let name = e.target.name
         let value = e.target.value
@@ -63,9 +65,9 @@ function Calendar() {
             case "time":
                 setTime(value)
                 break;
-
         }
-    }
+    };
+
     function handleClick(event) {
         let el = event.target;
         if (event.target.type) {
@@ -74,15 +76,16 @@ function Calendar() {
         console.log(el.getAttribute("aria-label"))
         setShowEventModal(true);
     };
-
     return (
         <div>
             <div onClick={handleClick}>
                 <CalendarComp />
+            </div><div>
+                <EventListComp />
             </div>
             <AddEvent showEventModal={showEventModal} handleClose={handleClose} handleInputChange={handleInputChange} handleSubmit={() => handleSubmit} />
         </div>
-
     )
 };
+
 export default Calendar;

@@ -11,9 +11,6 @@ function AddressList({ addressData }) {
             {
                 addressData.map((address) => (
                     <Card>
-                        {/* <Card.Header>
-Address
-                        </Card.Header> */}
                         <Card.Body>
                             <Card.Title>{address.firstName}
                             {address.middleInitial}

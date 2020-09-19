@@ -88,8 +88,6 @@ function SignUp() {
       }
     return (
         <div>
-            <Header />
-            <NavTabs />
             <Signup handleInputChange = {handleInputChange} handleSubmit = {()=>handleSubmit}/>
             
         </div>

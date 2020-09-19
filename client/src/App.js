@@ -12,6 +12,8 @@ import AddressBook from './pages/AddressBook';
 import Datepicker from './components/Datepicker';
 import SignUp from './pages/SignUp';
 import BigCalendarComp from './components/BigCalendarComp';
+import EventList from './pages/EventList';
+import EventListComp from './components/EventListComp';
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
         <Route path='/signup' exact component={SignUp} />
         <Route path='/Profile' exact component={Profile} />
         <Route path='/Calendar' exact component={Calendar} />
+        <Route path='/Calendar' exact component={EventList} />
         <Route path='/AddressBook' exact component={AddressBook} />
     </div>
     </Router>
