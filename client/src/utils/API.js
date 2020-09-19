@@ -6,7 +6,12 @@ const API = {
     console.log(userInfo)
     return axios.post("/api/signup", userInfo);
   },
-
+loginApp:function(userInfo){
+  console.log(userInfo)
+  console.log("this is the user info on the login app")
+  return axios.post("/api/login",userInfo)
+  
+},
   addAddress: function(userInfo) {
     console.log(userInfo)
     return axios.post("/api/addressbook", userInfo);

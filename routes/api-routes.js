@@ -8,11 +8,17 @@ module.exports = function (app) {
   // If the user has valid login credentials, send them to the overview page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
+  
+    console.log("hello ricky bobby")
     // Sending back a password, even a hashed password, isn't a good idea
+    if(req.user){
     res.json({
       email: req.user.email,
       id: req.user.id
     });
+  }else{
+    req.json("invalid")
+  }
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
