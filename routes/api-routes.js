@@ -74,7 +74,7 @@ module.exports = function (app) {
     // insert into our table. 
     console.log("Add event!!!!!!!")
     db.Event.create({
-      date: "9-3-2020",
+      date: "9-22",
       time: req.body.time,
       eventName: req.body.eventName,
       notes: req.body.notes,
