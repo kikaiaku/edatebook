@@ -20,11 +20,15 @@ function AddressBook(){
     const [zipCode,setZipCode] = useState()
 
     useEffect(() => {
-      API.getAddress()
-        .then(({ data }) => {
-          setGetAddress(data)
-          console.log(data)
-    })}, []);
+   getAllAddress();
+    }, []);
+
+    function getAllAddress(c){
+    API.getAddress()
+    .then(({ data }) => {
+      setGetAddress(data)
+      console.log(data)
+    })}
 
 
     function handleSubmit(e) {
@@ -44,6 +48,7 @@ function AddressBook(){
             zipCode: zipCode            
           })
             .catch(err => console.log(err));
+            getAllAddress();
       };
 
       function renderAddressList(){
@@ -102,6 +107,7 @@ function AddressBook(){
     return(
         <div>
         <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/>
+        
         <AddressList
             addressData = {getAddress} />
         </div>
