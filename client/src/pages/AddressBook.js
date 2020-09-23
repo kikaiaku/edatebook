@@ -55,6 +55,29 @@ function AddressBook(){
             getAllAddress();
       };
 
+      // function handleSubmit2(d) {
+      //   d.preventDefault();
+      //   console.log("handle submit clicked!!!!!")
+      //   console.log(d)
+        
+      //     // API.addAddress({
+      //     //   firstName: firstName,
+      //     //   middleInitial: middleInitial,
+      //     //   lastName: lastName,
+      //     //   email: email,
+      //     //   phone: phone,
+      //     //   birthday: birthday,
+      //     //   address: address,
+      //     //   city: city,
+      //     //   state: state,
+      //     //   zipCode: zipCode,
+      //     //   comments: comments,
+      //     //   userId: userId        
+      //     // })
+      //       .catch(err => console.log(err));
+      //       // getAllAddress();
+      // };
+
       function renderAddressList(){
         API.getAddress()
         .then(data => {
@@ -116,7 +139,7 @@ function AddressBook(){
         <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/>
         
         <AddressList
-            addressData = {getAddress} />
+            addressData = {getAddress}  />
         </div>
     )
 }
