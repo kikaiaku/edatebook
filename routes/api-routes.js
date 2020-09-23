@@ -34,12 +34,12 @@ module.exports = function (app) {
       lastName: req.body.lastName,
       middleInitial: req.body.middleInitial,
       address: req.body.address,
+      city: req.body.city,
+      state: req.body.state,
+      zipCode: req.body.zipCode, 
       birthday: req.body.birthday,
       phone: req.body.phone
     })
-      .then(() => {
-        res.redirect(307, "/api/login");
-      })
       .catch(err => {
         res.status(401).json(err);
       });

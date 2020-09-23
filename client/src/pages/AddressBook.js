@@ -16,8 +16,9 @@ function AddressBook(){
     const [birthday,setBirthday] = useState()
     const [address,setAddress] = useState()
     const [city,setCity] = useState()
-    const [state,setState] = useState()
+    const [state,setStateVal] = useState()
     const [zipCode,setZipCode] = useState()
+    const [comments,setComments] = useState()
     const userId = sessionStorage.getItem("id")  
 
     useEffect(() => {
@@ -47,6 +48,7 @@ function AddressBook(){
             city: city,
             state: state,
             zipCode: zipCode,
+            comments: comments,
             userId: userId        
           })
             .catch(err => console.log(err));
@@ -97,10 +99,13 @@ function AddressBook(){
             setPhone(value)
             break;
             case "state": 
-            setState(value)
+            setStateVal(value)
             break;
             case "zipCode": 
             setZipCode(value)
+            break;
+            case "comments": 
+            setComments(value)
             break;
         }
         console.log(name.value)
