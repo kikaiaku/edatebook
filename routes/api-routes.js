@@ -82,10 +82,6 @@ module.exports = function (app) {
       classification: "private",
       userId: req.body.userId
     })
-      .then(() => {
-        // need to update!
-        res.redirect("./views/index");
-      })
       .catch(err => {
         res.status(401).json(err);
       });
@@ -110,19 +106,14 @@ module.exports = function (app) {
       zipCode: req.body.zipCode,  
       userId: req.body.userId
     })
-      .then(() => {
-        // need to update!
-        res.redirect("./views/index");
-      })
       .catch(err => {
         res.status(401).json(err);
       });
   });
   app.get("/api/addressbook", function (req, res) {
-    // create takes an argument of an object describing the Bill we want to
-    // insert into our table. 
+    if(req.user) {
     console.log("Add address 2")
-    db.Address.findAll()
+    db.Address.findAll({where: {userId: req.user.id}})
       .then((result) => {
         console.log(result);
         res.json(result);
@@ -130,6 +121,7 @@ module.exports = function (app) {
       .catch(err => {
         res.status(401).json(err);
       });
+    } 
   });
 
   //EVENTS GET ROUTE
@@ -137,7 +129,7 @@ module.exports = function (app) {
     // create takes an argument of an object describing the Bill we want to
     // insert into our table. 
     console.log("Get events!!!!!!")
-    db.Events.findAll()
+    db.Events.findAll({where: {userId: req.user.id}})
       .then((result) => {
         console.log(result);
         res.json(result);
@@ -158,10 +150,6 @@ module.exports = function (app) {
         id: req.params.id
       }
     })
-      .then(() => {
-        // need to update
-        res.redirect("/api/overview");
-      })
       .catch(err => {
         res.status(401).json(err);
       });
@@ -176,10 +164,6 @@ module.exports = function (app) {
         id: req.params.id
       }
     })
-      .then(() => {
-        // need to update
-        res.redirect("/api/overview");
-      })
       .catch(err => {
         res.status(401).json(err);
       });

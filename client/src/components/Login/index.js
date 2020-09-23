@@ -1,9 +1,11 @@
 import React from 'react';
 import { Container, Form, Row, Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Login(props) {
     return (
         <div>
+            
             <Container>
                 <Row>
                     <Col className= '4 of 9'></Col>
@@ -24,13 +26,16 @@ function Login(props) {
                         <Form.Group controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group>
-                        
-                            <Button  onClick={()=>props.handleSubmit()}>
+                        <Link to="/AddressBook">
+                            <Button onClick={()=>props.handleSubmit()}>
                                 Login
                             </Button>
-                            <Button href="/Signup">
-                                Sign Up
+                            </Link>
+                            <Link to="/signup">
+                            <Button>
+                            sign up
                                 </Button>
+                                </Link>
                           
                     </Form>
                     </Col>
