@@ -111,7 +111,12 @@ function NewAddressForm(props) {
                         <Form.Label>Zip</Form.Label>
                         <Form.Control onChange={props.handleInputChange} name="zipCode" />
                     </Form.Group>
+                    
                 </Form.Row>
+                    <Form.Group as={Col} controlId="formGridZip">
+                        <Form.Label>Comments</Form.Label>
+                        <Form.Control onChange={props.handleInputChange} name="comments" />
+                    </Form.Group>
 
                 <Button onClick={props.handleSubmit} variant="primary" type="submit">
                     Add New
