@@ -32,7 +32,7 @@ function SignUp() {
             address: address,
             city: city,
             state: state,
-            zipcode: zipCode,
+            zipCode: zipCode,
             birthday: birthday,
             phone: phone
           })
