@@ -51,7 +51,7 @@ function NewAddressForm(props) {
 
                     <Form.Group as={Col} controlId="formGridState">
                         <Form.Label>State</Form.Label>
-                        <Form.Control onChange={props.handleInputChange} name="State" as="select" defaultValue="Choose...">
+                        <Form.Control onChange={props.handleInputChange} name="state" as="select" defaultValue="Choose...">
                             <option>Choose...</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>

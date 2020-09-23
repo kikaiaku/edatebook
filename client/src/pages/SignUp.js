@@ -14,7 +14,7 @@ function SignUp() {
     const [middleInitial,setMiddleInitial] = useState()
     const [address,setAddress] = useState()
     const [city,setCity] = useState()
-    const [state,setState] = useState()
+    const [state,setStateVal] = useState()
     const [zipCode,setZipCode] = useState()
     const [birthday,setBirthday] = useState()
     const [phone,setPhone] = useState()
@@ -32,7 +32,7 @@ function SignUp() {
             address: address,
             city: city,
             state: state,
-            zipcode: zipCode,
+            zipCode: zipCode,
             birthday: birthday,
             phone: phone
           })
@@ -70,7 +70,7 @@ function SignUp() {
             setCity(value)
             break;
             case "state": 
-            setState(value)
+            setStateVal(value)
             break;
             case "zipCode": 
             setZipCode(value)
@@ -88,7 +88,7 @@ function SignUp() {
       }
     return (
         <div>
-            <Signup handleInputChange = {handleInputChange} handleSubmit = {()=>handleSubmit}/>
+            <Signup handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/>
             
         </div>
     )
