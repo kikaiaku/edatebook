@@ -16,10 +16,10 @@ function AddressList({ addressData }) {
                             {address.middleInitial}
                             {address.lastName}</Card.Title>
                             <ListGroup className="list-group-flush">
-                                <ListGroupItem>{address.email}</ListGroupItem>
-                                <ListGroupItem>{address.phone}</ListGroupItem>
+                                <ListGroupItem>email: {address.email}</ListGroupItem>
+                                <ListGroupItem>Phone: {address.phone}</ListGroupItem>
                                 <ListGroupItem>{address.birthday}</ListGroupItem>
-                                <ListGroupItem>{address.address}</ListGroupItem>
+                                <ListGroupItem>{address.address} {address.city}, {address.state} {address.zipCode}</ListGroupItem>
                                 <ListGroupItem>{address.city}{address.state}{address.zipCode}</ListGroupItem>
                                 <ListGroupItem>{address.phone}</ListGroupItem>
                             </ListGroup>

@@ -15,6 +15,8 @@ function Calendar() {
     const [eventName, setEventName] = useState()
     const [notes, setNotes] = useState()
     const [time, setTime] = useState()
+    const userId = sessionStorage.getItem("id")  
+    const [eventDate, setEventDate] = useState()
 
 
     //handles the closing of event form popover
@@ -25,15 +27,16 @@ function Calendar() {
 
     const CURRENT_DATE = moment().toDate();
     const getDayOfMonth = (month) => {
-        return moment(month, 'MM').daysInMonth();
         console.log("it worked")
+        return moment(month, 'MM').daysInMonth();
+        
     };
 
     useEffect(() => {
         if (CURRENT_DATE) {
-            return (
-                console.log(CURRENT_DATE)
-            )
+            // return (
+            //     console.log(CURRENT_DATE)
+            // )
         }
     });
 
@@ -43,8 +46,10 @@ function Calendar() {
 
         API.addEvent({
             eventName: eventName,
+            eventDate: eventDate,
             time: time,
-            notes: notes
+            notes: notes,
+            userId: userId
         })
         .catch(err => console.log(err));
     };
@@ -73,6 +78,8 @@ function Calendar() {
         if (event.target.type) {
             el = event.target.children[0]
         }
+        setEventDate(el.getAttribute("aria-label"))
+        // let eventDate = el.getAttribute("aria-label")
         console.log(el.getAttribute("aria-label"))
         setShowEventModal(true);
     };
