@@ -74,13 +74,13 @@ module.exports = function (app) {
     // insert into our table. 
     console.log("Add event!!!!!!!")
     db.Event.create({
-      date: "9-22",
+      date: req.body.eventDate,
       time: req.body.time,
       eventName: req.body.eventName,
       notes: req.body.notes,
       category: "test",
       classification: "private",
-      userId: 1
+      userId: req.body.userId
     })
       .then(() => {
         // need to update!
@@ -108,7 +108,7 @@ module.exports = function (app) {
       city: req.body.city,
       state: req.body.state,
       zipCode: req.body.zipCode,  
-      userId: 1
+      userId: req.body.userId
     })
       .then(() => {
         // need to update!

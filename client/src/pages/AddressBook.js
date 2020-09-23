@@ -18,6 +18,7 @@ function AddressBook(){
     const [city,setCity] = useState()
     const [state,setState] = useState()
     const [zipCode,setZipCode] = useState()
+    const userId = sessionStorage.getItem("id")  
 
     useEffect(() => {
    getAllAddress();
@@ -45,7 +46,8 @@ function AddressBook(){
             address: address,
             city: city,
             state: state,
-            zipCode: zipCode            
+            zipCode: zipCode,
+            userId: userId        
           })
             .catch(err => console.log(err));
             getAllAddress();

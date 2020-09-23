@@ -25,7 +25,7 @@ function Login(props) {
                         <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group>
                         
-                            <Button onClick={()=>props.handleSubmit()}>
+                            <Button  onClick={()=>props.handleSubmit()}>
                                 Login
                             </Button>
                             <Button href="/Signup">
