@@ -38,7 +38,13 @@ loginApp:function(userInfo){
 
     getEvent: function(){
       return axios.get('/api/Calendar')
-    }
+    },
+
+    deleteAddress: function(userInfo){
+      console.log(userInfo)
+      console.log("Address Delete")
+      return axios.delete('/api/addressbook/'+userInfo.id, userInfo)
+  }
   
     // //Updates address with new info entered by user
     // updateAddress: function(){

@@ -156,7 +156,10 @@ module.exports = function (app) {
   });
 
   // Route for deleting Address
-  app.delete("/api/overview/deleteaddress/:id", function (req, res) {
+  app.delete("/api/addressbook/:id", function (req, res) {
+    console.log("Address Deleted in DB")
+    console.log(req.body)
+    console.log(req.params)
 
     // We just have to specify which todo we want to destroy with "where"
     db.Address.destroy({
