@@ -20,6 +20,7 @@ function AddressBook(){
     const [zipCode,setZipCode] = useState()
     const [comments,setComments] = useState()
     const userId = sessionStorage.getItem("id")  
+    // const [idDelete,setIdDelete] = useState()
 
     useEffect(() => {
    getAllAddress();
@@ -31,6 +32,7 @@ function AddressBook(){
       setGetAddress(data)
       console.log(data)
     })}
+
 
 
     function handleSubmit(e) {
@@ -138,8 +140,7 @@ function AddressBook(){
         <div>
         <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/>
         
-        <AddressList
-            addressData = {getAddress}  />
+        <AddressList addressData = {getAddress}  />
         </div>
     )
 }
