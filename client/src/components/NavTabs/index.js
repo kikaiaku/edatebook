@@ -13,7 +13,7 @@ function NavTabs() {
           <Link className="pro" to="Profile">Profile</Link>
           <Link className="add" to="AddressBook">Address Book</Link>
           <Link className="addn" to="">Add New Event</Link>
-          <Link className="addnc" to="">Add New Contact</Link>
+          <Link className="addnc" to="AddContact">Add New Contact</Link>
           <Link className="cal" to="Calendar">Calendar</Link>
           {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown"> */}
           {/* <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item> */}

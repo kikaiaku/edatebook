@@ -15,6 +15,9 @@ import BigCalendar from './pages/BigCalendar';
 import EventList from './pages/EventList';
 import EventListComp from './components/EventListComp';
 // import header_bkgd2 from './components/Header/assets';
+import AddContact from './pages/AddContact';
+
+
 
 function App() {
   return (
@@ -27,7 +30,11 @@ function App() {
         <Route path='/Profile' exact component={Profile} />
         <Route path='/Calendar' exact component={BigCalendar} />
         <Route path='/AddressBook' exact component={AddressBook} />
-      </div>
+       <Route path='/AddContact' exact component={AddContact} />
+
+
+    </div>
+
     </Router>
 
   )

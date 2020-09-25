@@ -11,7 +11,7 @@ module.exports = function (app) {
     if (req.user) {
       // res.redirect("/overview");
     }
-    res.render("login");
+    res.render("login", { loggedIn: req.user ? true : false });
   });
 
   app.get("/login", (req, res) => {
@@ -35,7 +35,7 @@ module.exports = function (app) {
     // If the user already has an account send them to the overview page
 
     if (!req.user) {
-      res.redirect(307, "/login");
+      res.render("login", { loggedIn: req.user ? true : false });
     }
 
     db.Event.findAll({ where: { userID: req.user.id }, }).then(function (dbEvent) {
@@ -52,7 +52,7 @@ module.exports = function (app) {
     // If the user already has an account send them to the overview page
 
     if (!req.user) {
-      res.redirect(307, "/login");
+      res.render("login", { loggedIn: req.user ? true : false });
     }
 
     db.Address.findAll({ where: { userID: req.user.id }, }).then(function (dbAddress) {

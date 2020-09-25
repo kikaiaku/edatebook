@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import API from '../../utils/API';
 
 // import NewAddressForm from '../NewAddressForm';
 // import AddressBook from '../../pages/AddressBook';
 
-function AddressList({ addressData}) {
+function AddressList({ addressData},deleteAddress) {
     console.log("Check")
     console.log(addressData)
     console.log("Check")
@@ -28,7 +29,10 @@ function AddressList({ addressData}) {
                                 <ListGroupItem>{address.comments}</ListGroupItem>
 
                             </ListGroup>
-                            <Button value = {address.id} onClick={() => console.log(address.id)} variant="primary" type="submit">Edit</Button>
+
+                            <Button value = {address.id} onClick={() => console.log(address.id)}  variant="primary" type="submit">Edit</Button>
+                            <Button value = {address.id} onClick={() => API.deleteAddress({id: address.id})} variant="primary" type="submit">Delete</Button>
+
                         </Card.Body>
                     </Card>
                 ))
