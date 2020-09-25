@@ -4,7 +4,7 @@ import AddressList from '../components/AddressList';
 import API from '../utils/API';
 
 
-function AddressBook(){
+function AddContact(){
 
     const [showAddress, setShowAddress] = useState(false);
     const [getAddress, setGetAddress] = useState([{}])
@@ -78,14 +78,14 @@ function AddressBook(){
       //       // getAllAddress();
       // };
 
-      function renderAddressList(){
-        API.getAddress()
-        .then(data => {
-          setGetAddress(data)
-          console.log(data)
-        })
-        .catch(err => console.log(err));
-      }
+    //   function renderAddressList(){
+    //     API.getAddress()
+    //     .then(data => {
+    //       setGetAddress(data)
+    //       console.log(data)
+    //     })
+    //     .catch(err => console.log(err));
+    //   }
 
       function handleInputChange(e) {
         let name = e.target.name
@@ -136,12 +136,12 @@ function AddressBook(){
 
     return(
         <div>
-        {/* <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/> */}
-        
-        <AddressList
-            addressData = {getAddress}  />
+        <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/>
+        {/* editaddressform */}
+        {/* <AddressList
+            addressData = {getAddress}  /> */}
         </div>
     )
 }
 
-export default AddressBook;
+export default AddContact;

@@ -14,7 +14,7 @@ loginApp:function(userInfo){
 },
   addAddress: function(userInfo) {
     console.log(userInfo)
-    return axios.post("/api/addressbook", userInfo);
+    return axios.post("/api/AddContact", userInfo);
   },
 
     //Gets all events

@@ -28,7 +28,7 @@ function AddressList({ addressData}) {
                                 <ListGroupItem>{address.comments}</ListGroupItem>
 
                             </ListGroup>
-                            <Button value = {address.id} onClick={() => console.log(address.id)} variant="primary" type="submit">Edit</Button>
+                            <Button value = {address.id} onClick={() => console.log(address.id)} variant="primary" type="submit"href="/EditContact">Edit</Button>
                         </Card.Body>
                     </Card>
                 ))
