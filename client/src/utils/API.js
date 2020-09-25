@@ -50,7 +50,9 @@ loginApp:function(userInfo){
     // updateAddress: function(){
     //     return axios.put('/api/addaddress')
     // }
-
+// newContact: function (){
+//   return axios.get()
+// }
 
 }
 

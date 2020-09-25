@@ -30,7 +30,7 @@ function AddressList({ addressData},deleteAddress) {
 
                             </ListGroup>
 
-                            <Button value = {address.id} onClick={() => console.log(address.id)} variant="primary" type="submit">Edit</Button>
+                            <Button value = {address.id} onClick={() => console.log(address.id)}  variant="primary" type="submit">Edit</Button>
                             <Button value = {address.id} onClick={() => API.deleteAddress({id: address.id})} variant="primary" type="submit">Delete</Button>
 
                         </Card.Body>
