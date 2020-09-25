@@ -1,10 +1,12 @@
 import React from 'react';
-import './style.css'
+import './style.css';
+import Image from 'react-bootstrap/Image';
+import backgroundImage from './assets/header_bkgd2.jpg';
 
 function Header(){
     return(
         <header className='header'>
-            <h1 className='title'>eDateBook</h1>
+            <Image src={backgroundImage} fluid/> 
         </header>
     )
 }
