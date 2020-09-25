@@ -88,7 +88,7 @@ module.exports = function (app) {
   });
 
   // POST route for saving a new address
-  app.post("/api/addressbook", function (req, res) {
+  app.post("/api/AddContact", function (req, res) {
     // create takes an argument of an object describing the Bill we want to
     // insert into our table. 
     console.log(req.body)
