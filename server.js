@@ -3,7 +3,7 @@ const express = require("express");
 const session = require("express-session");
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
-
+const json2xls = require("json2xls")
 
 
 // Setting up port and requiring models for syncing
@@ -24,8 +24,8 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
-
+app.use(express.static("public"))
+app.use(json2xls.middleware);
 // Requiring our routes
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
