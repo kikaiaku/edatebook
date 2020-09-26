@@ -3,7 +3,7 @@ module.exports =
 {
   "development": {
     "username": "root",
-    "password":  'Chicago1!' || process.env.db_password,
+    "password":  process.env.db_password,
     "database": "edate_db",
     "host": "localhost",
     "dialect": "mysql"

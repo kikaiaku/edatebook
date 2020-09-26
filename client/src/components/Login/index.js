@@ -24,7 +24,7 @@ function Login(props) {
                             <Form.Control type="password"name="password" onChange={props.handleInputChange}placeholder="Password" />
                         </Form.Group>
                         <Form.Group controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
+                        {/* <Form.Check type="checkbox" label="Check me out" /> */}
                         </Form.Group>
                         <Link to="/AddressBook">
                             <Button onClick={()=>props.handleSubmit()}>
