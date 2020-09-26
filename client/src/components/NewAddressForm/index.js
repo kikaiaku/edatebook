@@ -119,11 +119,13 @@ function NewAddressForm(props) {
                         <Form.Label>Comments</Form.Label>
                         <Form.Control onChange={props.handleInputChange} name="comments" />
                     </Form.Group>
-
+                    
                 <Button onClick={props.handleSubmit} variant="primary" type="submit">
+
                     <Link className="add"to="AddressBook"> Add New </Link>
                     
     </Button>
+
             </Form>
         </Container>
     )
