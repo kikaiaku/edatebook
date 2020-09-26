@@ -6,13 +6,13 @@ import './style.css'
 function NavTabs() {
   return (
     <Navbar bg="light" expand="lg" className="universal-nav">
-      <Navbar.Brand className="pacify" href="/">Calendar</Navbar.Brand>
+      <Navbar.Brand className="pacify" href="/">Login</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Link className="pro" to="Profile">Profile</Link>
+          {/* <Link className="pro" to="Profile">Profile</Link> */}
           <Link className="add" to="AddressBook">Address Book</Link>
-          <Link className="addn" to="">Add New Event</Link>
+          {/* <Link className="addn" to="">Add New Event</Link> */}
           <Link className="addnc" to="AddContact">Add New Contact</Link>
           <Link className="cal" to="Calendar">Calendar</Link>
           {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown"> */}

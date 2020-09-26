@@ -17,11 +17,7 @@ loginApp:function(userInfo){
     console.log(userInfo)
     return axios.post("/api/AddContact", userInfo);
   },
-
-    //Gets all events
-    // getEvents: function(){
-    //   return axios.get('/api/events')
-    // },
+  
     // //Adds a new event
     addEvent: function(userInfo){
       console.log(userInfo)
@@ -84,7 +80,9 @@ loginApp:function(userInfo){
     // updateAddress: function(){
     //     return axios.put('/api/addaddress')
     // }
-
+// newContact: function (){
+//   return axios.get()
+// }
 
 
 

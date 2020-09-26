@@ -133,7 +133,7 @@ module.exports = function (app) {
     // create takes an argument of an object describing the Bill we want to
     // insert into our table. 
     console.log("Get events!!!!!!")
-    db.Events.findAll({where: {userId: req.user.id}})
+    db.Event.findAll({where: {userId: req.user.id}})
       .then((result) => {
         console.log(result);
         res.json(result);

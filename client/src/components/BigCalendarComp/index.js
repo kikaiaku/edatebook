@@ -1,20 +1,40 @@
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-// import 'react-calendar/dist/Calendar.css';
-// import './style.css';
+// import React from 'react';
+// import BigCalendar from 'react-big-calendar';
+// import moment from 'moment'
+// // import 'react-calendar/dist/Calendar.css';
+// // import './style.css';
 
-function BigCalendarComp(){
-    const [value, onChange] = useState(new Date());
+// function BigCalendarComp(){
 
-    return (
-        <div>
-          <Calendar
-            onChange={onChange}
-            value={value}
-            style={{ height: 500 }}
-          />
-        </div>
-      );
-    };
+//   const [eventState, setEventState] = useState(
+//     [{
+//       start: moment().toDate(),
+//       end: moment()
+//           .add(1, 'hours'),
+//       title: 'Some Event'
+//   },{
+//       start: moment().toDate(),
+//       end: moment()
+//           .add(1, 'hours'),
+//       title: 'Another Event'
+//   },{
+//       start: moment().toDate(),
+//       end: moment()
+//           .add(1, 'hours'),
+//       title: 'What?? Event'
+//   },{
+//       start: moment().toDate(),
+//       end: moment()
+//           .add(1, 'hours'),
+//       title: 'Da Event'
+//   }]
+//   )
+// }
+    
 
-export default BigCalendarComp;
+  
+
+  
+
+
+// export default BigCalendarComp;

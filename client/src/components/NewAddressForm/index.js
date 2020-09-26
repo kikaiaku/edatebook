@@ -3,6 +3,7 @@ import { Container, Form, Col, Row, Label, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 
 
+
 function NewAddressForm(props) {
 
     return (
@@ -120,9 +121,11 @@ function NewAddressForm(props) {
                     </Form.Group>
                     
                 <Button onClick={props.handleSubmit} variant="primary" type="submit">
-                <Link className="add" to="AddressBook"> Add New </Link>
-                     </Button>
+
+                    <Link className="add"to="AddressBook"> Add New </Link>
                     
+    </Button>
+
             </Form>
         </Container>
     )
