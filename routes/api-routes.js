@@ -2,6 +2,10 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const Sequelize = require("sequelize")
+const excel = require('exceljs')
+const fs = require("fs")
+const path = require("path")
+const json2xls = require("json2xls")
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -137,7 +141,7 @@ module.exports = function (app) {
     console.log("Add address 2")
     db.Address.findAll({where: {userId: req.user.id}})
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         res.json(result);
       })
       .catch(err => {
@@ -193,5 +197,115 @@ module.exports = function (app) {
         res.status(401).json(err);
       });
   });
+
+
+  // app.get("/api/addressbook2", function (req, res) {
+  //   if(req.user) {
+     
+  //     // fs.unlink("public/Test5.xlsx", function(err) {
+  //     //   if (err) {
+  //     //     throw err
+  //     //   } else {
+  //     //     console.log("Successfully deleted the file.")
+  //     //   }
+  //     // })
+    
+    
+  //   db.Address.findAll({where: {userId: req.user.id}})
+  //     .then(async (result) => {
+  //       console.log(result);
+  //       const dataMap = result.map(address => {return {id: address.id}})
+  //     //   var xls = json2xls(json,{
+  //     //     fields: {id:'string'}
+  //     // });
+        
+
+  //   res.xls('data.xlsx', dataMap,{fields: {id:'string'}});
+        
+  //       // let workbook = new excel.Workbook();
+  //       // let worksheet = workbook.addWorksheet('Test')
+  //       // worksheet.columns = [
+  //       //   { header: 'firstName', key: 'firstName', width: 10 },
+  //       //   { header: 'lastName', key: 'lastName', width: 30 },
+  //       // ];
+  //       // worksheet.addRows(result);
+  //       // await workbook.xlsx.writeFile("public/Test5.xlsx")
+  //       // // .then(function () {
+  //       // //   fs.createWriteStream('Test4.xlsx')
+  //       // // });
+  //       // console.log("File created")
+  //       // let book = new excel.Workbook();
+  //       // await book.xlsx.readFile("public/Test5.xlsx");
+  //       //  console.log(book) 
+  //       //  const filePath = path.join(__dirname, '../public', 'Test5.xlsx')
+  //       //  console.log(filePath)
+
+  //       //  res.setHeader('Content-disposition', 'attachment; Test5.xlsx');
+  //       //  res.setHeader('Content-type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  //       //  await res.download(filePath,"Test.xlsx");
+  //       // // res.end()
+       
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  //   } 
+  // });
+  app.get("/api/addressbook3", function (req, res) {
+    if(req.user) {
+    console.log("Add address 2")
+    db.Address.findAll({where: {userId: req.user.id}})
+      .then((result) => {
+        // console.log(result);
+        res.json(result);
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+    } 
+  });
+
+  app.get("/api/createGroup", function (req, res) {
+    if(req.user) {
+   
+    db.Address.findAll({where: {userId: req.user.id}})
+      .then((result) => {
+        // console.log(result);
+        res.json(result);
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+    } 
+  });
+
+  // app.get("/api/CreateGroup", function (req, res) {
+  //   if(req.user) {
+   
+  //   db.Address.findAll({where: {userId: req.user.id}})
+  //     .then((result) => {
+  //       // console.log(result);
+  //       res.json(result);
+  //     })
+  //     .catch(err => {
+  //       res.status(401).json(err);
+  //     });
+  //   } 
+  // });
+
+  // app.get("/api/Group", function (req, res) {
+  //   if(req.user) {
+   
+  //   db.Groups.findAll({where: {userId: req.user.id}})
+  //     .then((result) => {
+  //       // console.log(result);
+  //       res.json(result);
+  //     })
+  //     .catch(err => {
+  //       res.status(401).json(err);
+  //     });
+  //   } 
+  // });
+
 
 }
