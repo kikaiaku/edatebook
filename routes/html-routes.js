@@ -17,15 +17,14 @@ module.exports = function (app) {
   app.get("/login", (req, res) => {
     // If the user already has an account send them to the overview page
     if (req.user) {
-      // res.redirect("/overview");
+      res.redirect("/AdressBook");
     }
-    res.render("login", { loggedIn: req.user ? true : false });
   });
 
   app.get("/signup", (req, res) => {
     // If the user already has an account send them to the overview page
     if (req.user) {
-      // res.redirect("/overview");
+      res.redirect("/AddressBook");
     }
     res.render("signup");
   });

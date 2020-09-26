@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import AddressList from '../components/AddressList';
 import API from '../utils/API';
-import { Button} from 'react-bootstrap';
 
-function AddressBook() {
+
+function AddAddressGroup() {
 
   const [getAddress, setGetAddress] = useState([{}])
 
@@ -22,14 +22,13 @@ function AddressBook() {
       })
   }
 
+  return (
+    <div>
+      {/* <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/> */}
 
-    return(
-        <div>
-        {/* <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/> */}
-        <Button onClick={() => API.getAddress2()}>test</Button>
-        <AddressList addressData = {getAddress}  />
-        </div>
-    )
+      <AddressList addressData={getAddress} />
+    </div>
+  )
 }
 
-export default AddressBook;
+export default AddAddressGroup;

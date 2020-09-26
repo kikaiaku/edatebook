@@ -1,7 +1,13 @@
 import React from 'react';
 import { Col, Form, Row, Container, Button } from 'react-bootstrap';
 
-
+// class SignUp extends React.Component{
+//     render(){
+//       return(
+//           <div className="mh-fullscreen bg-img center-vh p-20"
+//       )
+//     }
+//   }
 function Signup(props) {
     return (
         <Container>

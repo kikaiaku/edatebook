@@ -16,8 +16,12 @@ import EventList from './pages/EventList';
 import EventListComp from './components/EventListComp';
 // import header_bkgd2 from './components/Header/assets';
 import AddContact from './pages/AddContact';
+import AddAddressGroup from './pages/AddAddressGroup';
+import  PrivateRoute  from "./components/PrivateRoute"
+// export default class App extends component {
+//   constructor(props)
 
-
+// }
 
 function App() {
   return (
@@ -28,9 +32,12 @@ function App() {
         <Route path='/' exact component={Home} />
         <Route path='/signup' exact component={SignUp} />
         <Route path='/Profile' exact component={Profile} />
+        {/* <PrivatePrivateRoute path="/onlyAuthorizedAllowedHere/" component={Home} /> */}
         <Route path='/Calendar' exact component={BigCalendar} />
+        {/* <PrivatePrivateRoute path="/onlyAuthorizedAllowedHere/" component={Home} /> */}
         <Route path='/AddressBook' exact component={AddressBook} />
        <Route path='/AddContact' exact component={AddContact} />
+       <Route path='/AddAddressGroup' exact component={AddAddressGroup} />
 
 
     </div>
