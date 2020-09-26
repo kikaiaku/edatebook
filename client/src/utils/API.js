@@ -16,6 +16,10 @@ loginApp:function(userInfo){
     console.log(userInfo)
     return axios.post("/api/AddContact", userInfo);
   },
+  addAddressGroup: function(userInfo) {
+    console.log(userInfo)
+    return axios.post("/api/AddAddressGroup", userInfo);
+  },
   
     // //Adds a new event
     addEvent: function(userInfo){

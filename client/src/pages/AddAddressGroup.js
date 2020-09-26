@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import AddressList from '../components/AddressList';
 import API from '../utils/API';
 
-function AddressBook() {
+
+function AddAddressGroup() {
 
   const [getAddress, setGetAddress] = useState([{}])
 
@@ -30,4 +31,4 @@ function AddressBook() {
   )
 }
 
-export default AddressBook;
+export default AddAddressGroup;

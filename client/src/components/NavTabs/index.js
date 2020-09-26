@@ -14,7 +14,8 @@ function NavTabs() {
           <Link className="add" to="AddressBook">Address Book</Link>
           {/* <Link className="addn" to="">Add New Event</Link> */}
           <Link className="addnc" to="AddContact">Add New Contact</Link>
-          <Link className="cal" to="Calendar">Calendar</Link>
+          <Link className="addnc" to="AddAddressGroup">Add New Group</Link>
+         <Link className="cal" to="Calendar">Calendar</Link>
           {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown"> */}
           {/* <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item> */}
           {/* <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

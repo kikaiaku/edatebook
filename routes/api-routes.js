@@ -110,6 +110,28 @@ module.exports = function (app) {
         res.status(401).json(err);
       });
   });
+  app.post("/api/AddGroup", function (req, res) {
+    // create takes an argument of an object describing the Bill we want to
+    // insert into our table. 
+    console.log(req.body)
+    db.Address.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      middleInitial: req.body.middleInitial,
+      address: req.body.address,
+      phone: req.body.phone,
+      email: req.body.email,
+      birthday: req.body.birthday,
+      comments: req.body.comments,
+      city: req.body.city,
+      state: req.body.state,
+      zipCode: req.body.zipCode,  
+      userId: req.body.userId
+    })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
   app.get("/api/addressbook", function (req, res) {
     if(req.user) {
     console.log("Add address 2")
