@@ -1,13 +1,14 @@
 import React from 'react';
 import { Container, Form, Col, Row, Label, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
+import "./style.css"
 
 
 
 function NewAddressForm(props) {
 
     return (
-        <Container>
+        <Container className="newBody">
             <Form>
                     <Form.Row>
                         <Col>
@@ -22,36 +23,36 @@ function NewAddressForm(props) {
                     </Form.Row>
                 
                 <Form.Row>
-                    <Form.Group as={Col} controlId="formGridEmail">
+                    <Form.Group as={Col} controlId="formGridEmail" className="sizeFixNew">
                         <Form.Label>Email</Form.Label>
                         <Form.Control onChange={props.handleInputChange} name="email" type="email" placeholder="Enter email" />
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridPhone">
+                    <Form.Group as={Col} controlId="formGridPhone" className="sizeFixNew">
                         <Form.Label>Phone Number</Form.Label>
                         <Form.Control onChange={props.handleInputChange} name="phone" type="phone" placeholder="555-555-5555" />
                     </Form.Group>
                 </Form.Row>
 
                 <Form.Row>
-                    <Form.Group as={Col} controlId="formGridBirthday">
+                    <Form.Group as={Col} controlId="formGridBirthday" className="sizeFixNew">
                         <Form.Label>Birthday</Form.Label>
                         <Form.Control onChange={props.handleInputChange} name="birthday" type="birthday" placeholder="1/1/1900" />
                     </Form.Group>
                 </Form.Row>
 
-                <Form.Group controlId="formGridAddress">
+                <Form.Group controlId="formGridAddress" className="sizeFixNew">
                     <Form.Label>Address</Form.Label>
                     <Form.Control onChange={props.handleInputChange} name="address" placeholder="1234 Main St" />
                 </Form.Group>
 
                 <Form.Row>
-                    <Form.Group as={Col} controlId="formGridCity">
+                    <Form.Group as={Col} controlId="formGridCity" className="sizeFixNew">
                         <Form.Label>City</Form.Label>
                         <Form.Control onChange={props.handleInputChange} name="city" />
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridState">
+                    <Form.Group as={Col} controlId="formGridState" className="sizeFixNew">
                         <Form.Label>State</Form.Label>
                         <Form.Control onChange={props.handleInputChange} name="state" as="select" defaultValue="Choose...">
                             <option>Choose...</option>
@@ -109,13 +110,13 @@ function NewAddressForm(props) {
                         </Form.Control >
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridZip">
+                    <Form.Group as={Col} controlId="formGridZip" className="sizeFixNew">
                         <Form.Label>Zip</Form.Label>
                         <Form.Control onChange={props.handleInputChange} name="zipCode" />
                     </Form.Group>
                     
                 </Form.Row>
-                    <Form.Group as={Col} controlId="formGridZip">
+                    <Form.Group as={Col} controlId="formGridZip" className="sizeFixNew">
                         <Form.Label>Comments</Form.Label>
                         <Form.Control onChange={props.handleInputChange} name="comments" />
                     </Form.Group>

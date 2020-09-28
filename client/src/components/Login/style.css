@@ -1,7 +1,9 @@
-.divLogin{
+body{
     background-image: url(https://i.imgur.com/PJThkOt.jpg);
-    background-position-y: -550px;
-    background-position-x: -230px; 
+    /* background-position-y: -550px;
+    background-position-x: -230px;  */
+    background-size: auto;
+    background-repeat: no-repeat;
 }
 .space{
     padding-top: 50px;
