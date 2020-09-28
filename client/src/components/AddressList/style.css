@@ -1,0 +1,13 @@
+.AddressB{
+   background-color: black; 
+    background-image: url(https://wallpapersite.com/images/pages/pic_w/8479.jpg?fbclid=IwAR06sp-mnPnEalR8qajeLaLhTvFaBbepvudkA61Pgz4MsNAzXgmeBzz5gUc);
+}
+
+.EditB{
+padding-right: 20px;
+margin: 10px;
+}
+
+.DeleteB{
+padding-left: 20px;
+}
