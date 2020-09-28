@@ -10,7 +10,7 @@ import "./style.css";
 //   }
 function Signup(props) {
     return (
-        <div className="Signup">
+        <div >
 
         
         

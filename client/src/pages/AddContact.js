@@ -135,7 +135,7 @@ function AddContact(){
   }
 
     return(
-        <div>
+        <div className="newBody" >
         <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/>
         {/* editaddressform */}
         {/* <AddressList

@@ -6,11 +6,11 @@ import './style.css'
 function NavTabs() {
   return (
     <Navbar expand="lg" className="universal-nav">
-      <Navbar.Brand className="pacify" href="/">Login</Navbar.Brand>
+      <Navbar.Brand className="pacify" href="/">Home</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Link className="pro" to="Home">Home</Link>
+          {/* <Link className="pro" to="Home">Home</Link> */}
           <Link className="add" to="AddressBook">Address Book</Link>
           {/* <Link className="addn" to="">Add New Event</Link> */}
           <Link className="addnc" to="AddContact">Add New Contact</Link>

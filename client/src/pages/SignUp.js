@@ -87,7 +87,7 @@ function SignUp() {
  
       }
     return (
-        <div>
+        <div className="Signup">
             <Signup handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/>
             
         </div>
