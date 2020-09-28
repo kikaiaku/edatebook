@@ -50,9 +50,16 @@ loginApp:function(userInfo){
     console.log("check")
     axios.get('/api/addressbook3')
     .then(function (response) {console.log(response)
-      console.log(response.data.map(item => Object.values(item).join(', ')))
+      function combineData(item){
+        var addressLine = Object.values(item).join(',')
+        addressLine =  '\n \t' + addressLine 
+        return addressLine
+      }
+      const addressArray = response.data.map(combineData)
+    
+
       // let blob = new Blob([response.data], {type: 'csv'})
-      FileDownload(response.data.map(item => Object.values(item).join(', ')),'test.csv');
+      FileDownload(addressArray,'AddressList.csv');
 
 
     });
