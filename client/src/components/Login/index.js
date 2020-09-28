@@ -36,14 +36,17 @@ const [password,setPassword]=useState()
  
     return (
         <div className="divLogin">
-            
+            <h1>Welcome to eDatebook</h1>
+            <p className="para1">
+                Where we make keeping up with birthdays and addresses easy.
+            </p>
             <Container>
                 <Row>
                     <Col className= '4 of 9'></Col>
                     <Col className= '5 of 9 space'> 
                     <Form>
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
+                            <Form.Label className="para2">Email address</Form.Label>
                             <Form.Control type="email" name="email" onChange={handleInputChange}placeholder="Enter email" />
                             <Form.Text className="text-muted textColor">
                             We'll never share your email with anyone else.
@@ -51,7 +54,7 @@ const [password,setPassword]=useState()
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label className="para2">Password</Form.Label>
                             <Form.Control type="password"name="password" onChange={handleInputChange}placeholder="Password" />
                         </Form.Group>
                         <Form.Group controlId="formBasicCheckbox">
@@ -64,7 +67,7 @@ const [password,setPassword]=useState()
                             </Link>
                             <Link to="/signup">
                             <Button className="button">
-                            sign up
+                            Sign Up
                                 </Button>
                                 </Link>
                           
