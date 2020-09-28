@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import API from '../../utils/API';
-
+import "./style.css"
 // import NewAddressForm from '../NewAddressForm';
 // import AddressBook from '../../pages/AddressBook';
 
@@ -13,7 +13,7 @@ function AddressList({ addressData},deleteAddress) {
         <div>
             {
                 addressData.map((address) => (
-                    <Card>
+                    <Card className="AddressB">
                         <Card.Body>
                             <Card.Title>{address.firstName}
                             {address.middleInitial}
@@ -30,8 +30,8 @@ function AddressList({ addressData},deleteAddress) {
 
                             </ListGroup>
 
-                            <Button value = {address.id} onClick={() => console.log(address.id)}  variant="primary" type="submit">Edit</Button>
-                            <Button value = {address.id} onClick={() => API.deleteAddress({id: address.id})} variant="primary" type="submit">Delete</Button>
+                            <Button className="EditB" value = {address.id} onClick={() => console.log(address.id)}  variant="primary" type="submit">Edit</Button>
+                            <Button className="DeleteB" value = {address.id} onClick={() => API.deleteAddress({id: address.id})} variant="primary" type="submit">Delete</Button>
 
                         </Card.Body>
                     </Card>

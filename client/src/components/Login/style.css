@@ -1,0 +1,15 @@
+.divLogin{
+    background-image: url(https://i.imgur.com/PJThkOt.jpg);
+    background-position-y: -550px;
+    background-position-x: -230px; 
+}
+.space{
+    padding-top: 50px;
+}
+.button{
+    Margin-right: 20px;
+    Margin-top: 30px;
+}
+.textColor{
+    color: linear-gradent 
+}
