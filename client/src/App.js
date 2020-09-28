@@ -18,10 +18,6 @@ import EventListComp from './components/EventListComp';
 import AddContact from './pages/AddContact';
 import AddAddressGroup from './pages/AddAddressGroup';
 import  PrivateRoute  from "./components/PrivateRoute"
-import  HomePage  from "./components/HomePage"
-import  Login  from "./components/Login"
-
-
 // export default class App extends component {
 //   constructor(props)
 
@@ -33,9 +29,7 @@ function App() {
       <div>
         <Header />
         <NavTabs />
-        <Route path='/' exact component={HomePage} />
-        <Route path='/login' exact component={Login} />
-
+        <Route path='/' exact component={Home} />
         <Route path='/signup' exact component={SignUp} />
         <Route path='/Profile' exact component={Profile} />
         {/* <PrivatePrivateRoute path="/onlyAuthorizedAllowedHere/" component={Home} /> */}
