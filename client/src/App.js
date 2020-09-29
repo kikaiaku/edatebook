@@ -1,20 +1,13 @@
 import React from 'react';
-import Signup from './components/Signup';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import { Navbar, Nav, NavDropdown, Container, Row, Col } from 'react-bootstrap';
 import Header from './components/Header';
 import NavTabs from './components/NavTabs';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
-import Calendar from './pages/Calendar';
 import AddressBook from './pages/AddressBook';
-import Datepicker from './components/Datepicker';
 import SignUp from './pages/SignUp';
 import BigCalendar from './pages/BigCalendar';
-import EventList from './pages/EventList';
-import EventListComp from './components/EventListComp';
-// import header_bkgd2 from './components/Header/assets';
 import AddContact from './pages/AddContact';
 
 

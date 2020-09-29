@@ -68,24 +68,48 @@ module.exports = function (app) {
 
   // POST ROUTES
 
+    // POST route for saving a new event
+    app.post("/api/calendar", function (req, res) {
+      // create takes an argument of an object describing the Bill we want to
+      // insert into our table. 
+      console.log("Add event!!!!!!!")
+
+      db.Event.create({
+        start: req.body.start,
+        end: req.body.end,
+        title: req.body.title,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate,
+        startTime: req.body.startTime,
+        endTime: req.body.endTime,
+        notes: req.body.notes,
+        // category: "test",
+        // classification: "private",
+        userId: req.body.userId
+      })
+        .catch(err => {
+          res.status(401).json(err);
+        });
+    });
+
   // POST route for saving a new event
-  app.post("/api/Calendar", function (req, res) {
-    // create takes an argument of an object describing the Bill we want to
-    // insert into our table. 
-    console.log("Add event!!!!!!!")
-    db.Event.create({
-      date: req.body.eventDate,
-      time: req.body.time,
-      eventName: req.body.eventName,
-      notes: req.body.notes,
-      category: "test",
-      classification: "private",
-      userId: req.body.userId
-    })
-      .catch(err => {
-        res.status(401).json(err);
-      });
-  });
+  // app.post("/api/Calendar", function (req, res) {
+  //   // create takes an argument of an object describing the Bill we want to
+  //   // insert into our table. 
+  //   console.log("Add event!!!!!!!")
+  //   db.Event.create({
+  //     date: req.body.eventDate,
+  //     time: req.body.time,
+  //     eventName: req.body.eventName,
+  //     notes: req.body.notes,
+  //     category: "test",
+  //     classification: "private",
+  //     userId: req.body.userId
+  //   })
+  //     .catch(err => {
+  //       res.status(401).json(err);
+  //     });
+  // });
 
   // POST route for saving a new address
   app.post("/api/AddContact", function (req, res) {
@@ -129,7 +153,8 @@ module.exports = function (app) {
     // create takes an argument of an object describing the Bill we want to
     // insert into our table. 
     console.log("Get events!!!!!!")
-    db.Event.findAll({where: {userId: req.user.id}})
+    db.Event.findAll()
+    // ({where: {userId: req.user.id}})
       .then((result) => {
         console.log(result);
         res.json(result);
