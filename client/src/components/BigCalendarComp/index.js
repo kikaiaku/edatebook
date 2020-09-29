@@ -11,7 +11,7 @@ import TimePicker from 'react-time-picker';
 function BigCalendarComp(props) {
 
     return (
-        <Modal show={props.showEventModal} backdrop="static" onHide={props.handleClose}>
+        <Modal show={props.showEventModal} backdrop="static" onHide={() => props.setShowEventModal(false)}>
             <Modal.Header closeButton>
                 <Modal.Title>Add Event</Modal.Title>
             </Modal.Header>
@@ -56,7 +56,7 @@ function BigCalendarComp(props) {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={props.handleClose}>Close</Button>
+                <Button variant="secondary" onClick={()=> props.setShowEventModal(false)}>Close</Button>
                 <Button
                     onClick={props.handleSubmit}
                     variant="primary">Save changes</Button>

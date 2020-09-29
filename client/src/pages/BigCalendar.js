@@ -23,7 +23,6 @@ function BigCalendar() {
     const [noteState, setNoteState] = useState();
 
     const [showEventModal, setShowEventModal] = useState(false);
-    const handleClose = () => setShowEventModal(false);
     const [eventState, setEventState] = useState([]);
 
     //Gets all events
@@ -33,6 +32,13 @@ function BigCalendar() {
                 renderEvents(data);
             }).catch(err => console.log(err));
     }, []);
+
+    function getEvents(){
+        API.getEvent()
+            .then(({ data }) => {
+                renderEvents(data);
+            }).catch(err => console.log(err));
+    };
 
     //Render events to calendar
     function renderEvents(appointments) {
@@ -65,10 +71,10 @@ function BigCalendar() {
         setEndDate(dt);
     };
     //Submit Add Event function
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         console.log("handle submit clicked")
-        API.addEvent({
+        const res = await API.addEvent({
             title: titleState,
             startDate: startDate,
             endDate: endDate,
@@ -77,7 +83,13 @@ function BigCalendar() {
             notes: noteState
             // userId: userId
         })
-            .catch(err => console.log(err));
+        console.log('now close modal and get events', res)
+        setShowEventModal(false)
+        getEvents()
+        
+        // .then(getEvents())
+           // .catch(err => console.log(err));
+            // console.log("hit route")
     };
     //Title input change function
     function handleInputChange(e) {
@@ -113,8 +125,8 @@ function BigCalendar() {
                 startDate={startDate}
                 handleEndChange={handleEndChange}
                 endDate={endDate}
-                showEventModal={showEventModal} handleClose={handleClose}
-
+                showEventModal={showEventModal}
+                setShowEventModal={setShowEventModal}
                 //TimePicker
                 start={handleStartTime}
                 startValue={startTime}

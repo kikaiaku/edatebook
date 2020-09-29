@@ -156,7 +156,7 @@ module.exports = function (app) {
     db.Event.findAll()
     // ({where: {userId: req.user.id}})
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         res.json(result);
       })
       .catch(err => {
