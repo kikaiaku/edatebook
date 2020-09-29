@@ -1,4 +1,5 @@
 import axios from "axios";
+import FileDownload from "js-file-download";
 
 const API = {
   // Saves a book to the database
@@ -15,6 +16,10 @@ loginApp:function(userInfo){
   addAddress: function(userInfo) {
     console.log(userInfo)
     return axios.post("/api/AddContact", userInfo);
+  },
+  addAddressGroup: function(userInfo) {
+    console.log(userInfo)
+    return axios.post("/api/AddAddressGroup", userInfo);
   },
   
     // //Adds a new event
@@ -41,8 +46,48 @@ loginApp:function(userInfo){
       console.log(userInfo)
       console.log("Address Delete")
       return axios.delete('/api/addressbook/'+userInfo.id, userInfo)
-  }
-  
+  },
+  getAddress2: function(){
+    console.log("check")
+    axios.get('/api/addressbook3')
+    .then(function (response) {console.log(response)
+      function combineData(item){
+        var addressLine = Object.values(item).join(',')
+        addressLine =  '\n \t' + addressLine 
+        return addressLine
+      }
+      const addressArray = response.data.map(combineData)
+    
+
+      // let blob = new Blob([response.data], {type: 'csv'})
+      FileDownload(addressArray,'AddressList.csv');
+
+
+    });
+    }
+    
+    // getGroup: function(){
+    //   return axios.get('/api/Group')
+    // },
+    // getContacts: function(){
+    //   return axios.get('/api/CreateGroup')
+    // }
+    
+
+    //       response.data.pipe(fs.createWriteStream('Test5.xlsx"'))
+        // });
+    // axios({
+    //   method: 'get',
+    //   url: 'http://bit.ly/2mTM3nY',
+    //   responseType: 'stream'
+    // })
+    //   .then(function (response) {
+    //     response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
+    //   });
+    
+    
+}
+
     // //Updates address with new info entered by user
     // updateAddress: function(){
     //     return axios.put('/api/addaddress')
@@ -51,6 +96,8 @@ loginApp:function(userInfo){
 //   return axios.get()
 // }
 
-}
+
+
+
 
 export default API

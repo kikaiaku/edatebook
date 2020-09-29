@@ -15,6 +15,9 @@
     "express-handlebars": "^5.1.0",
     "express-session": "^1.16.1",
     "handlebars": "^4.7.6",
+
+    "js-file-download": "^0.4.12",
+
     "moment": "^2.27.0",
     "moment-datepicker": "^2.0.4",
     "moment-timezone": "^0.5.31",
@@ -34,7 +37,9 @@
     "react-popover": "^0.5.10",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+
     "react-time-picker": "^4.0.1",
+
     "sequelize": "^5.22.3"
   },
   "scripts": {

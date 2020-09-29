@@ -11,8 +11,12 @@ import AddressBook from './pages/AddressBook';
 import SignUp from './pages/SignUp';
 import BigCalendar from './pages/BigCalendar';
 import AddContact from './pages/AddContact';
+import AddAddressGroup from './pages/AddAddressGroup';
+import  PrivateRoute  from "./components/PrivateRoute"
+// export default class App extends component {
+//   constructor(props)
 
-
+// }
 
 function App() {
   return (
@@ -23,9 +27,12 @@ function App() {
         <Route path='/' exact component={Home} />
         <Route path='/signup' exact component={SignUp} />
         <Route path='/Profile' exact component={Profile} />
+        {/* <PrivatePrivateRoute path="/onlyAuthorizedAllowedHere/" component={Home} /> */}
         <Route path='/Calendar' exact component={BigCalendar} />
+        {/* <PrivatePrivateRoute path="/onlyAuthorizedAllowedHere/" component={Home} /> */}
         <Route path='/AddressBook' exact component={AddressBook} />
        <Route path='/AddContact' exact component={AddContact} />
+       <Route path='/AddAddressGroup' exact component={AddAddressGroup} />
 
 
     </div>
