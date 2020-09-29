@@ -1,6 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './App.css';
+import Signup from './components/Signup';	
+import { BrowserRouter as Router, Route } from 'react-router-dom';	
+import './App.css';	
+import { Navbar, Nav, NavDropdown, Container, Row, Col } from 'react-bootstrap';
 import Header from './components/Header';
 import NavTabs from './components/NavTabs';
 import Home from './pages/Home';
