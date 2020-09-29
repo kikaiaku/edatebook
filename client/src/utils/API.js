@@ -25,8 +25,9 @@ loginApp:function(userInfo){
     // //Adds a new event
     addEvent: function(userInfo){
       console.log(userInfo)
+      console.log("at the add event function")
 
-        return axios.post('/api/calendar', userInfo)
+        axios.post('/api/calendar', userInfo)
     },
     // //Updates an event with new info entered by user
     // updateEvent: function(){
