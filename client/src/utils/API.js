@@ -96,8 +96,4 @@ loginApp:function(userInfo){
 //   return axios.get()
 // }
 
-
-
-
-
 export default API

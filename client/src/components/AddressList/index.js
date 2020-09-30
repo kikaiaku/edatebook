@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import API from '../../utils/API';
 import "./style.css"
 // import NewAddressForm from '../NewAddressForm';
@@ -30,7 +31,10 @@ function AddressList({ addressData},deleteAddress) {
 
                             </ListGroup>
 
+                            <Link to="/EditContact">
                             <Button className="EditB" value = {address.id} onClick={() => console.log(address.id)}  variant="primary" type="submit">Edit</Button>
+                            </Link>
+
                             <Button className="DeleteB" value = {address.id} onClick={() => API.deleteAddress({id: address.id})} variant="primary" type="submit">Delete</Button>
 
                         </Card.Body>
@@ -43,7 +47,5 @@ function AddressList({ addressData},deleteAddress) {
         
     )
 }
-
-
 
 export default AddressList;

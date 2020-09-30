@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
-import './style.css'
+import { Link } from 'react-router-dom';
+import './style.css';
 
 function NavTabs() {
   return (
