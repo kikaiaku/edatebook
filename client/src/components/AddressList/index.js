@@ -1,7 +1,10 @@
 import React from 'react';
-import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Button, Card, ListGroup, ListGroupItem,Form,FormControl
+ } from 'react-bootstrap';
 import API from '../../utils/API';
 import "./style.css"
+
+
 // import NewAddressForm from '../NewAddressForm';
 // import AddressBook from '../../pages/AddressBook';
 
@@ -11,8 +14,13 @@ function AddressList({ addressData},deleteAddress) {
     console.log("Check")
     return (
         <div>
+            <Form inline>
+                <FormControl type="text" placeholder="Search" className="mr-sm-2,searchbar" />
+                <Button variant="outline-success">Search</Button>
+            </Form>
             {
                 addressData.map((address) => (
+                    
                     <Card className="AddressB">
                         <Card.Body>
                             <Card.Title>{address.firstName}
