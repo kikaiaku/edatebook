@@ -179,8 +179,8 @@ module.exports = function (app) {
     // create takes an argument of an object describing the Bill we want to
     // insert into our table. 
     console.log("Get events!!!!!!")
-    db.Event.findAll()
-    // ({where: {userId: req.user.id}})
+    db.Event.findAll({where: {userId: req.user.id}})
+
       .then((result) => {
         // console.log(result);
         res.json(result);
@@ -224,58 +224,6 @@ module.exports = function (app) {
   });
 
 
-  // app.get("/api/addressbook2", function (req, res) {
-  //   if(req.user) {
-     
-  //     // fs.unlink("public/Test5.xlsx", function(err) {
-  //     //   if (err) {
-  //     //     throw err
-  //     //   } else {
-  //     //     console.log("Successfully deleted the file.")
-  //     //   }
-  //     // })
-    
-    
-  //   db.Address.findAll({where: {userId: req.user.id}})
-  //     .then(async (result) => {
-  //       console.log(result);
-  //       const dataMap = result.map(address => {return {id: address.id}})
-  //     //   var xls = json2xls(json,{
-  //     //     fields: {id:'string'}
-  //     // });
-        
-
-  //   res.xls('data.xlsx', dataMap,{fields: {id:'string'}});
-        
-  //       // let workbook = new excel.Workbook();
-  //       // let worksheet = workbook.addWorksheet('Test')
-  //       // worksheet.columns = [
-  //       //   { header: 'firstName', key: 'firstName', width: 10 },
-  //       //   { header: 'lastName', key: 'lastName', width: 30 },
-  //       // ];
-  //       // worksheet.addRows(result);
-  //       // await workbook.xlsx.writeFile("public/Test5.xlsx")
-  //       // // .then(function () {
-  //       // //   fs.createWriteStream('Test4.xlsx')
-  //       // // });
-  //       // console.log("File created")
-  //       // let book = new excel.Workbook();
-  //       // await book.xlsx.readFile("public/Test5.xlsx");
-  //       //  console.log(book) 
-  //       //  const filePath = path.join(__dirname, '../public', 'Test5.xlsx')
-  //       //  console.log(filePath)
-
-  //       //  res.setHeader('Content-disposition', 'attachment; Test5.xlsx');
-  //       //  res.setHeader('Content-type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-  //       //  await res.download(filePath,"Test.xlsx");
-  //       // // res.end()
-       
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  //   } 
-  // });
   app.get("/api/addressbook3", function (req, res) {
     if(req.user) {
     console.log("Add address 2")

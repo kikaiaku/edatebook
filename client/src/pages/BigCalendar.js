@@ -10,6 +10,8 @@ const localizer = momentLocalizer(moment);
 
 function BigCalendar() {
 
+    const userId = sessionStorage.getItem("id")  
+
     //DatePicker
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
@@ -80,8 +82,8 @@ function BigCalendar() {
             endDate: endDate,
             startTime: startTime,
             endTime: endTime,
-            notes: noteState
-            // userId: userId
+            notes: noteState,
+            userId: userId
         })
         console.log('now close modal and get events', res)
         setShowEventModal(false)

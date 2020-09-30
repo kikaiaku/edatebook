@@ -24,6 +24,7 @@
     "passport-local": "^1.0.0",
     "react-moment-datepicker": "0.0.10",
     "react-scripts": "^3.4.3",
+    "react-time-picker": "^4.0.1",
     "sequelize": "^5.22.3"
   },
   "scripts": {
