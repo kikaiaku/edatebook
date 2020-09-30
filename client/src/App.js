@@ -13,6 +13,7 @@ import BigCalendar from './pages/BigCalendar';
 import AddContact from './pages/AddContact';
 import AddAddressGroup from './pages/AddAddressGroup';
 import  PrivateRoute  from "./components/PrivateRoute"
+import EditContact from './pages/EditContact';
 // export default class App extends component {
 //   constructor(props)
 
@@ -33,6 +34,8 @@ function App() {
         <Route path='/AddressBook' exact component={AddressBook} />
        <Route path='/AddContact' exact component={AddContact} />
        <Route path='/AddAddressGroup' exact component={AddAddressGroup} />
+       <Route path='/EditContact' exact component={EditContact} />
+
 
 
     </div>
