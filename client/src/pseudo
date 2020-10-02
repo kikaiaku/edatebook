@@ -1,6 +1,13 @@
-//Search bar for address by name
-//Delete for events on calendar
-//Edit contact info
-//
+//get saved notes to populate
 
-db_password=Chicago1!
+//add edit and delete buttons
+
+//onclick delete, send id of event to backend
+    props.event.id
+
+//onclick edit
+    show datepicker
+    show timepicker
+
+
+
