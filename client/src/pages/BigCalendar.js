@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import BigCalendarComp from "../components/BigCalendarComp";
+import AddEvent from "../components/AddEvent";
 import EventModal from "../components/EventModal";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import API from "../utils/API";
+import DayModal from "../components/DayModal";
 
 const localizer = momentLocalizer(moment);
 
 function BigCalendar() {
 
-    const userId = sessionStorage.getItem("id")  
+    const userId = sessionStorage.getItem("id")
 
     //DatePicker
     const [startDate, setStartDate] = useState(new Date());
@@ -24,14 +25,21 @@ function BigCalendar() {
     //Modal add event form
     const [titleState, setTitleState] = useState();
     const [noteState, setNoteState] = useState();
-
     const [showEventModal, setShowEventModal] = useState(false);
+
+    //Day Modal add event form
+    const [showDayModal, setShowDayModal] = useState(false);
+    const [dayStartDate, setDayStartDate] = useState();
+    const [dayEndDate, setDayEndDate] = useState();
+
+
+    //Event State for add event
     const [eventState, setEventState] = useState([]);
 
     //EventModal
     const [eventModalState, setEventModalState] = useState(false)
     const [event, setEvent] = useState({
-        id:"",
+        id: "",
         title: "",
         startDate: "",
         endDate: "",
@@ -102,11 +110,7 @@ function BigCalendar() {
         })
         console.log('now close modal and get events', res)
         setShowEventModal(false)
-        getEvents()
-
-        // .then(getEvents())
-        // .catch(err => console.log(err));
-        // console.log("hit route")
+        getEvents(data => renderEvents(data))
     };
     //Title input change function
     function handleInputChange(e) {
@@ -135,15 +139,46 @@ function BigCalendar() {
         console.log(e)
         setEvent(e)
         setEventModalState(true)
-    }
+    };
 
-    /////////////
+    //Day slot add event handler
+    function onSelectSlot(day) {
+        setDayStartDate(day.start)
+        setDayEndDate(day.end)
+        setShowDayModal(true);
+        console.log("day clicked: ", day.start)
+    };
+    ///////////
 
     return (
         <div>
             <button className='addEvent' onClick={handleClick} >Add Event</button>
-            <BigCalendarComp
+            
+            <DayModal
+            dayStartDate={moment(dayStartDate).format('MM/DD/YYYY')}
+            dayEndDate={moment(dayEndDate).format('MM/DD/YYYY')}
+                    //DatePicker
+                    handleStartChange={handleStartChange}
+                    handleEndChange={handleEndChange}
+                    startDate={startDate}
+                    endDate={endDate}
 
+                    showDayModal={showDayModal}
+                    setShowDayModal={setShowDayModal}
+                    //TimePicker
+                    start={handleStartTime}
+                    startValue={startTime}
+                    end={handleEndTime}
+                    endValue={endTime}
+
+                    //Title-Notes input handling
+                    handleInputChange={handleInputChange}
+
+                    //Form submit to add event
+                    handleSubmit={handleSubmit}
+                />
+            
+            <AddEvent
                 //DatePicker
                 handleStartChange={handleStartChange}
                 startDate={startDate}
@@ -167,7 +202,8 @@ function BigCalendar() {
             <Calendar
                 selectable={true}
                 onSelectEvent={onSelectEvent}
-                onSelectSlot={(slotInfo) => console.log(slotInfo)}
+                onSelectSlot={onSelectSlot}
+                // (slotInfo) => console.log(slotInfo)}
                 localizer={localizer}
                 defaultDate={new Date()}
                 defaultView="month"
@@ -208,28 +244,10 @@ function BigCalendar() {
                 startValue={startTime}
                 end={handleEndTime}
                 endValue={endTime}
+            />
 
-
-                />
         </div>
     )
 }
 
 export default BigCalendar;
-
-    // function handleSubmit(e) {
-    //     e.preventDefault();
-    //     console.log("handle submit clicked")
-    //     setTileState(true);
-    //     API.addEvent({
-    //         eventName: eventName,
-    //         eventDate: eventDate,
-    //         time: time,
-    //         notes: notes,
-    //         userId: userId
-    //     })
-    //     .catch(err => console.log(err));
-    // };
-    //{id: 1, start: "today", end: "tomorrow", title: "Event07", userId: null, …}
-
-
