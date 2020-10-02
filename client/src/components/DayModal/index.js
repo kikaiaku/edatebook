@@ -8,10 +8,10 @@ import TimePicker from 'react-time-picker';
 // import './style.css';
 // import moment from 'moment';
 
-function BigCalendarComp(props) {
+function DayModal(props) {
 
     return (
-        <Modal show={props.showEventModal} backdrop="static" onHide={() => props.setShowEventModal(false)}>
+        <Modal show={props.showDayModal} backdrop="static" onHide={() => props.setShowDayModal(false)}>
             <Modal.Header closeButton>
                 <Modal.Title>Add Event</Modal.Title>
             </Modal.Header>
@@ -24,24 +24,25 @@ function BigCalendarComp(props) {
                     </Form.Group>
 
                     <Form.Group controlId="formDateTime">
-                        <Form.Label>Start</Form.Label>
+                        <Form.Label>Start: {props.dayStartDate}</Form.Label>
                         <br></br>
                         <DatePicker selected={props.startDate}
                             onChange={props.handleStartChange} 
                             // dateFormat={props.dateFormat}
                             />
-                            
+                        {/* <p>{props.startDate}</p> */}
                         <TimePicker
                             onChange={props.start}
                             value={props.startValue}
                         />
                         <br></br>
-                        <Form.Label>End</Form.Label>
+                        <br></br>
+                        <Form.Label>End: {props.dayEndDate}</Form.Label>
                         <br></br>
                         <DatePicker selected={props.endDate}
                             onChange={props.handleEndChange}
                              />
-
+                        {/* <h4>{props.dayEndDate}</h4> */}
 
                         <TimePicker
                             onChange={props.end}
@@ -56,7 +57,7 @@ function BigCalendarComp(props) {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={()=> props.setShowEventModal(false)}>Close</Button>
+                <Button variant="secondary" onClick={() => props.setShowDayModal(false)}>Close</Button>
                 <Button
                     onClick={props.handleSubmit}
                     variant="primary">Save changes</Button>
@@ -66,4 +67,4 @@ function BigCalendarComp(props) {
 
 }
 
-export default BigCalendarComp;
+export default DayModal;

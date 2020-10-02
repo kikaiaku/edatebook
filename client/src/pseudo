@@ -1,13 +1,15 @@
-//get saved notes to populate
-
-//add edit and delete buttons
-
 //onclick delete, send id of event to backend
     props.event.id
 
-//onclick edit
-    show datepicker
-    show timepicker
+//onclick edit [save changes]
+    put request to update event by id
+
+[*]state render upon add event
+
+[*]onclick slot populate add event modal
+
+//style [all pages, calendar, light/dark mode, animations]
+
 
 
 
