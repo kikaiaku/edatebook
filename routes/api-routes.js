@@ -96,24 +96,6 @@ module.exports = function (app) {
         });
     });
 
-  // POST route for saving a new event
-  // app.post("/api/Calendar", function (req, res) {
-  //   // create takes an argument of an object describing the Bill we want to
-  //   // insert into our table. 
-  //   console.log("Add event!!!!!!!")
-  //   db.Event.create({
-  //     date: req.body.eventDate,
-  //     time: req.body.time,
-  //     eventName: req.body.eventName,
-  //     notes: req.body.notes,
-  //     category: "test",
-  //     classification: "private",
-  //     userId: req.body.userId
-  //   })
-  //     .catch(err => {
-  //       res.status(401).json(err);
-  //     });
-  // });
 
   // POST route for saving a new address
   app.post("/api/AddContact", function (req, res) {
@@ -164,6 +146,20 @@ module.exports = function (app) {
     if(req.user) {
     console.log("Add address 2")
     db.Address.findAll({where: {userId: req.user.id}})
+      .then((result) => {
+        // console.log(result);
+        res.json(result);
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+    } 
+  });
+
+  app.get("/api/EditContact:id", function (req, res) {
+    if(req.user) {
+    console.log(req.params.id)
+    db.Address.findAll({where: {id: req.params.id}})
       .then((result) => {
         // console.log(result);
         res.json(result);
@@ -227,7 +223,7 @@ module.exports = function (app) {
   app.get("/api/addressbook3", function (req, res) {
     if(req.user) {
     console.log("Add address 2")
-    db.Address.findAll({where: {userId: req.user.id}})
+    db.Address.findAll({where: {userId: req.user.id}, attributes: ['firstName','middleInitial','lastName','address','city','state','zipCode']})
       .then((result) => {
         // console.log(result);
         res.json(result);
@@ -252,33 +248,32 @@ module.exports = function (app) {
     } 
   });
 
-  // app.get("/api/CreateGroup", function (req, res) {
-  //   if(req.user) {
-   
-  //   db.Address.findAll({where: {userId: req.user.id}})
-  //     .then((result) => {
-  //       // console.log(result);
-  //       res.json(result);
-  //     })
-  //     .catch(err => {
-  //       res.status(401).json(err);
-  //     });
-  //   } 
-  // });
-
-  // app.get("/api/Group", function (req, res) {
-  //   if(req.user) {
-   
-  //   db.Groups.findAll({where: {userId: req.user.id}})
-  //     .then((result) => {
-  //       // console.log(result);
-  //       res.json(result);
-  //     })
-  //     .catch(err => {
-  //       res.status(401).json(err);
-  //     });
-  //   } 
-  // });
+  app.put("/api/EditContact:id", function (req, res) {
+    if(req.user) {
+    console.log(req.params.id)
+    db.Address.update({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      middleInitial: req.body.middleInitial,
+      address: req.body.address,
+      phone: req.body.phone,
+      email: req.body.email,
+      birthday: req.body.birthday,
+      comments: req.body.comments,
+      city: req.body.city,
+      state: req.body.state,
+      zipCode: req.body.zipCode,  
+      userId: req.body.userId
+    },{where: {id: req.params.id}})
+      .then((result) => {
+        console.log("Contact Updated");
+     
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+    } 
+  });
 
 
 }

@@ -1,63 +1,63 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Form, Col, Row, Label, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import AddressList from '../components/AddressList';
-import NewAddressForm from '../components/NewAddressForm';
-import "./style.css";
-import API from '../utils/API';
 
-function EditContactComp(){
 
-    return(
-        <div>
+function EditContactComp({ handleInputChange, handleSubmit, address, firstName,middleInitial,lastName,email,phone,birthday,city,state,zipCode,comments}){
 
-            <Container className="newBody">
+    return (
+     
+        <Container className="newBody">
             <Form>
                     <Form.Row>
                         <Col>
-                            <Form.Control onChange={props.handleInputChange} name="firstName" placeholder="First name" />
+                            <Form.Control onChange={handleInputChange} name="firstName" placeholder={firstName} value= {firstName} >
+                    
+                            </Form.Control>
                         </Col>
                         <Col>
-                            <Form.Control onChange={props.handleInputChange} name="middleInitial" placeholder="M.I." />
+                            <Form.Control onChange={handleInputChange} name="middleInitial" value={middleInitial} />
                         </Col>
                         <Col>
-                            <Form.Control onChange={props.handleInputChange} name="lastName" placeholder="Last name" />
+                            <Form.Control onChange={handleInputChange} name="lastName" value={lastName} />
                         </Col>
                     </Form.Row>
                 
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridEmail" className="sizeFixNew">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control onChange={props.handleInputChange} name="email" type="email" placeholder="Enter email" />
+                        <Form.Control onChange={handleInputChange} name="email" type="email" value={email}>
+                        
+                        </Form.Control>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridPhone" className="sizeFixNew">
                         <Form.Label>Phone Number</Form.Label>
-                        <Form.Control onChange={props.handleInputChange} name="phone" type="phone" placeholder="555-555-5555" />
+                        <Form.Control onChange={handleInputChange} name="phone" type="phone" value={phone} />
                     </Form.Group>
                 </Form.Row>
 
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridBirthday" className="sizeFixNew">
                         <Form.Label>Birthday</Form.Label>
-                        <Form.Control onChange={props.handleInputChange} name="birthday" type="birthday" placeholder="1/1/1900" />
+                        <Form.Control onChange={handleInputChange} name="birthday" type="birthday" value={birthday} />
                     </Form.Group>
                 </Form.Row>
 
                 <Form.Group controlId="formGridAddress" className="sizeFixNew">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control onChange={props.handleInputChange} name="address" placeholder="1234 Main St" />
+                    <Form.Control onChange={handleInputChange} name="address" placeholder={address} value={address}/>
                 </Form.Group>
 
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridCity" className="sizeFixNew">
                         <Form.Label>City</Form.Label>
-                        <Form.Control onChange={props.handleInputChange} name="city" />
+                        <Form.Control onChange={handleInputChange} name="city" value={city}/>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridState" className="sizeFixNew">
                         <Form.Label>State</Form.Label>
-                        <Form.Control onChange={props.handleInputChange} name="state" as="select" defaultValue="Choose...">
+                        <Form.Control onChange={handleInputChange} name="state" as="select" value={state}>
                             <option>Choose...</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -115,25 +115,25 @@ function EditContactComp(){
 
                     <Form.Group as={Col} controlId="formGridZip" className="sizeFixNew">
                         <Form.Label>Zip</Form.Label>
-                        <Form.Control onChange={props.handleInputChange} name="zipCode" />
+                        <Form.Control onChange={handleInputChange} name="zipCode" value = {zipCode} />
                     </Form.Group>
                     
                 </Form.Row>
                     <Form.Group as={Col} controlId="formGridZip" className="sizeFixNew">
                         <Form.Label>Comments</Form.Label>
-                        <Form.Control onChange={props.handleInputChange} name="comments" />
+                        <Form.Control onChange={handleInputChange} name="comments" value= {comments}/>
                     </Form.Group>
                     
-                <Button onClick={props.handleSubmit} variant="primary" type="submit">
+                <Button onClick={handleSubmit} variant="primary" type="submit">
 
-                    <Link className="add"to="AddressBook"> Add New </Link>
+                    <Link className="add"to="AddressBook"> Submit </Link>
                     
     </Button>
 
             </Form>
         </Container>
-        </div>
+      
     )
-}
+};
 
 export default EditContactComp;
