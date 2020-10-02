@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import BigCalendarComp from "../components/BigCalendarComp";
+import EventModal from "../components/EventModal";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import API from "../utils/API";
@@ -25,6 +26,20 @@ function BigCalendar() {
     const [showEventModal, setShowEventModal] = useState(false);
     const [eventState, setEventState] = useState([]);
 
+    //EventModal
+    const [eventModalState, setEventModalState] = useState(false)
+    const [event, setEvent] = useState({
+        id:"",
+        title: "",
+        startDate: "",
+        endDate: "",
+        startTime: "",
+        endTime: "",
+        notes: "",
+        start: "",
+        end: ""
+    });
+
     //Gets all events
     useEffect(() => {
         API.getEvent()
@@ -33,7 +48,7 @@ function BigCalendar() {
             }).catch(err => console.log(err));
     }, []);
 
-    function getEvents(){
+    function getEvents() {
         API.getEvent()
             .then(({ data }) => {
                 renderEvents(data);
@@ -86,10 +101,10 @@ function BigCalendar() {
         console.log('now close modal and get events', res)
         setShowEventModal(false)
         getEvents()
-        
+
         // .then(getEvents())
-           // .catch(err => console.log(err));
-            // console.log("hit route")
+        // .catch(err => console.log(err));
+        // console.log("hit route")
     };
     //Title input change function
     function handleInputChange(e) {
@@ -114,10 +129,17 @@ function BigCalendar() {
         console.log("add event clicked")
     };
 
+    function onSelectEvent(e) {
+        console.log(e)
+        setEvent(e)
+        setEventModalState(true)
+    }
+
+    /////////////
+
     return (
         <div>
             <button className='addEvent' onClick={handleClick} >Add Event</button>
-
             <BigCalendarComp
 
                 //DatePicker
@@ -130,7 +152,6 @@ function BigCalendar() {
                 //TimePicker
                 start={handleStartTime}
                 startValue={startTime}
-
                 end={handleEndTime}
                 endValue={endTime}
 
@@ -142,6 +163,9 @@ function BigCalendar() {
             />
 
             <Calendar
+                selectable={true}
+                onSelectEvent={onSelectEvent}
+                onSelectSlot={(slotInfo) => console.log(slotInfo)}
                 localizer={localizer}
                 defaultDate={new Date()}
                 defaultView="month"
@@ -151,6 +175,40 @@ function BigCalendar() {
                 startAccessor="start"
                 endAccessor="end"
             />
+            <EventModal
+                id={event.id}
+                eventModalState={eventModalState}
+                setEventModalState={setEventModalState}
+                handleInputChange={handleInputChange}
+                handleStartChange={handleStartChange}
+                handleEndChange={handleEndChange}
+                handleSubmit={handleSubmit}
+
+                //Saved Event
+                savedTitle={event.title}
+                savedStartDate={moment(event.startDate).format('MM/DD/YYYY')}
+                savedEndDate={moment(event.endDate).format('MM/DD/YYYY')}
+                savedStartTime={event.startTime}
+                savedEndTime={event.endTime}
+                savedNotes={event.notes}
+                savedStart={event.start}
+                savedEnd={event.end}
+
+                //Edit Event
+                //DatePicker
+                handleStartChange={handleStartChange}
+                startDate={startDate}
+                handleEndChange={handleEndChange}
+                endDate={endDate}
+
+                //TimePicker
+                start={handleStartTime}
+                startValue={startTime}
+                end={handleEndTime}
+                endValue={endTime}
+
+
+                />
         </div>
     )
 }
