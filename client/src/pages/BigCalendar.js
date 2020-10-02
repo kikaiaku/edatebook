@@ -13,7 +13,6 @@ const localizer = momentLocalizer(moment);
 function BigCalendar() {
 
     const userId = sessionStorage.getItem("id")
-
     //DatePicker
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
@@ -112,6 +111,24 @@ function BigCalendar() {
         setShowEventModal(false)
         getEvents(data => renderEvents(data))
     };
+    //Edit Event function
+    async function handleSubmitEdit(e) {
+        e.preventDefault();
+        console.log("handle submit clicked")
+        const res = await API.editEvent({
+            title: titleState,
+            startDate: startDate,
+            endDate: endDate,
+            startTime: startTime,
+            endTime: endTime,
+            notes: noteState,
+            userId: userId,
+            id: sessionStorage.getItem("eventId")  
+        })
+        console.log('now close modal and get events', res)
+        setShowEventModal(false)
+        getEvents(data => renderEvents(data))
+    };
     //Title input change function
     function handleInputChange(e) {
         let name = e.target.name
@@ -136,6 +153,7 @@ function BigCalendar() {
     };
 
     function onSelectEvent(e) {
+        sessionStorage.setItem("eventId",e.id)
         console.log(e)
         setEvent(e)
         setEventModalState(true)
@@ -220,7 +238,7 @@ function BigCalendar() {
                 handleInputChange={handleInputChange}
                 handleStartChange={handleStartChange}
                 handleEndChange={handleEndChange}
-                handleSubmit={handleSubmit}
+                handleSubmitEdit={handleSubmitEdit}
 
                 //Saved Event
                 savedTitle={event.title}

@@ -52,6 +52,11 @@ loginApp:function(userInfo){
       console.log("Address Delete")
       return axios.delete('/api/addressbook/'+userInfo.id, userInfo)
   },
+  deleteEvent: function(userInfo){
+    console.log(userInfo)
+    console.log("Event Delete")
+    return axios.delete('/api/event/'+userInfo.id, userInfo)
+},
   getAddress2: function(){
     console.log("check")
     axios.get('/api/addressbook3')
@@ -75,6 +80,12 @@ loginApp:function(userInfo){
       console.log(userInfo)
       console.log("check")
       axios.put("/api/EditContact"+userInfo.id, userInfo);
+    },
+    editEvent: function(userInfo) {
+      console.log(userInfo)
+      console.log("Id "+userInfo.id)
+      console.log("check")
+      axios.put("/api/EditEvent"+userInfo.id, userInfo);
     }
     
     
