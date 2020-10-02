@@ -55,37 +55,6 @@ function AddContact(){
             getAllAddress();
       };
 
-      // function handleSubmit2(d) {
-      //   d.preventDefault();
-      //   console.log("handle submit clicked!!!!!")
-      //   console.log(d)
-        
-      //     // API.addAddress({
-      //     //   firstName: firstName,
-      //     //   middleInitial: middleInitial,
-      //     //   lastName: lastName,
-      //     //   email: email,
-      //     //   phone: phone,
-      //     //   birthday: birthday,
-      //     //   address: address,
-      //     //   city: city,
-      //     //   state: state,
-      //     //   zipCode: zipCode,
-      //     //   comments: comments,
-      //     //   userId: userId        
-      //     // })
-      //       .catch(err => console.log(err));
-      //       // getAllAddress();
-      // };
-
-    //   function renderAddressList(){
-    //     API.getAddress()
-    //     .then(data => {
-    //       setGetAddress(data)
-    //       console.log(data)
-    //     })
-    //     .catch(err => console.log(err));
-    //   }
 
       function handleInputChange(e) {
         let name = e.target.name
@@ -100,6 +69,7 @@ function AddContact(){
                 setCity(value)
             break;
             case "firstName": 
+            console.log(value)
             setFirstName(value)
             break;
             case "lastName": 
@@ -137,9 +107,6 @@ function AddContact(){
     return(
         <div className="newBody" >
         <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/>
-        {/* editaddressform */}
-        {/* <AddressList
-            addressData = {getAddress}  /> */}
         </div>
     )
 }

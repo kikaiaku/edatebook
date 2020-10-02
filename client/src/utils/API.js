@@ -38,6 +38,11 @@ loginApp:function(userInfo){
         return axios.get('/api/addressbook')
     },
 
+    getSingleAddress: function(userInfo){
+      console.log(userInfo)
+      return axios.get('/api/EditContact'+userInfo.id)
+  },
+
     getEvent: function(){
       return axios.get('/api/Calendar')
     },
@@ -64,36 +69,17 @@ loginApp:function(userInfo){
 
 
     });
-    }
-    
-    // getGroup: function(){
-    //   return axios.get('/api/Group')
-    // },
-    // getContacts: function(){
-    //   return axios.get('/api/CreateGroup')
-    // }
-    
+    },
 
-    //       response.data.pipe(fs.createWriteStream('Test5.xlsx"'))
-        // });
-    // axios({
-    //   method: 'get',
-    //   url: 'http://bit.ly/2mTM3nY',
-    //   responseType: 'stream'
-    // })
-    //   .then(function (response) {
-    //     response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
-    //   });
+    editAddress: function(userInfo) {
+      console.log(userInfo)
+      console.log("check")
+      axios.put("/api/EditContact"+userInfo.id, userInfo);
+    }
     
     
 }
 
-    // //Updates address with new info entered by user
-    // updateAddress: function(){
-    //     return axios.put('/api/addaddress')
-    // }
-// newContact: function (){
-//   return axios.get()
-// }
+
 
 export default API
