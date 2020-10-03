@@ -5,7 +5,8 @@ import { Container, Row, Col, InputGroup, FormControl, Button } from 'react-boot
 
 function AddAddressGroup() {
 
-  const [getAddress, setGetAddress] = useState([{}])
+  const [addressState, setAddressState] = useState([{}]);
+  const [checkedState, setCheckedState] = useState(false);
 
   // const userId = sessionStorage.getItem("id")
 
@@ -13,38 +14,48 @@ function AddAddressGroup() {
     getAllAddress();
   }, []);
 
-  function getAllAddress(c) {
+  function getAllAddress() {
     API.getAddress()
       .then(({ data }) => {
-        setGetAddress(data)
+        setAddressState(data)
         console.log(data)
       })
   }
 
+  function handleCheck(e) {
+    console.log(e.target.dataset.index)
+
+  }
+
   return (
     <div>
-      <InputGroup className="mb-3">
-        <FormControl
-          placeholder="Group Name"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
-        <InputGroup.Append>
-          <Button variant="outline-secondary">Button</Button>
-        </InputGroup.Append>
-      </InputGroup>
-      <Container>
-        <Row>
+      <AddressGroupList
+        addressData={addressState}
+        checkedState={handleCheck}
+      />
+// =======
+//       <InputGroup className="mb-3">
+//         <FormControl
+//           placeholder="Group Name"
+//           aria-label="Recipient's username"
+//           aria-describedby="basic-addon2"
+//         />
+//         <InputGroup.Append>
+//           <Button variant="outline-secondary">Button</Button>
+//         </InputGroup.Append>
+//       </InputGroup>
+//       <Container>
+//         <Row>
 
-          <Col>checkbox</Col>
-          <Col>Name</Col>
-          <Col>Address</Col>
-        </Row>
+//           <Col>checkbox</Col>
+//           <Col>Name</Col>
+//           <Col>Address</Col>
+//         </Row>
 
 
-        <AddressGroupList addressData={getAddress} />
+//         <AddressGroupList addressData={getAddress} />
 
-      </Container>
+//       </Container>
     </div>
   )
 }
