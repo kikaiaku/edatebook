@@ -5,7 +5,8 @@ import { Container, Form, Row, Col, InputGroup, FormControl, Button } from 'reac
 
 function AddAddressGroup() {
 
-  const [getAddress, setGetAddress] = useState([{}])
+  const [addressState, setAddressState] = useState([{}]);
+  const [checkedState, setCheckedState] = useState(false);
 
   const userId = sessionStorage.getItem("id")
   // const [idDelete,setIdDelete] = useState()
@@ -14,40 +15,25 @@ function AddAddressGroup() {
     getAllAddress();
   }, []);
 
-  function getAllAddress(c) {
+  function getAllAddress() {
     API.getAddress()
       .then(({ data }) => {
-        setGetAddress(data)
+        setAddressState(data)
         console.log(data)
       })
   }
 
+  function handleCheck(e) {
+    console.log(e.target.dataset.index)
+
+  }
+
   return (
     <div>
-      {/* <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/> */}
-      {/* box to enter group name and next to it a button to create group */}
-      <InputGroup className="mb-3">
-    <FormControl
-      placeholder="Group Name"
-      aria-label="Recipient's username"
-      aria-describedby="basic-addon2"
-    />
-    <InputGroup.Append>
-      <Button variant="outline-secondary">Button</Button>
-    </InputGroup.Append>
-  </InputGroup>
-      <Container>
-        <Row>
-        
-    <Col>checkbox</Col>
-    <Col>Name</Col>
-    <Col>Address</Col>
-  </Row>
-        
-      
-      <AddressGroupList addressData={getAddress} />
-
-      </Container>
+      <AddressGroupList
+        addressData={addressState}
+        checkedState={handleCheck}
+      />
     </div>
   )
 }

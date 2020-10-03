@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Container, Form, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
+import { propTypes } from 'react-bootstrap/esm/Image';
 import { Link } from 'react-router-dom';
 
 import API from '../../utils/API';
@@ -8,31 +9,52 @@ import API from '../../utils/API';
 // import NewAddressForm from '../NewAddressForm';
 // import AddressBook from '../../pages/AddressBook';
 
-function AddressGroupList({addressData}) {
+function AddressGroupList(props) {
 
   return (
     <div>
-{
-                addressData.map((address) => (
- 
+      <Container>
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="Group Name"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+          <InputGroup.Append>
+            <Button variant="outline-secondary">Save Group</Button>
+          </InputGroup.Append>
+        </InputGroup>
+      </Container>
+      <Container>
         <Row>
-        
-    <Col> <InputGroup className="mb-3">
-    <InputGroup.Prepend>
-      <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-    </InputGroup.Prepend>
-                  
-  </InputGroup>Add to Group</Col>
-    <Col>{address.firstName} {address.middleInitial} {address.lastName}</Col>
-    <Col>{address.address}, {address.city}, {address.state}, {address.zipCode}</Col>
-  </Row>
-        
-                )
-              
-                )}        
+          <Col>Add To Group</Col>
+          <Col>Name</Col>
+          <Col>Address</Col>
+        </Row>
+      </Container>
 
-                
-    //add edit button and delete button
+      {
+        props.addressData.map((address, index) => (
+          <Container>
+            <Row>
+              <Col>
+                <InputGroup className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Checkbox
+                      data-index={index}
+                      aria-label="Checkbox for following text input"
+                      onChange={props.checkedState}
+                    />
+                  </InputGroup.Prepend>
+                </InputGroup>
+              </Col>
+
+              <Col>{address.firstName} {address.middleInitial} {address.lastName}</Col>
+
+              <Col>{address.address}, {address.city}, {address.state}, {address.zipCode}</Col>
+            </Row>
+          </Container>
+        ))}
     </div>
   )
 }
@@ -40,3 +62,5 @@ function AddressGroupList({addressData}) {
 
 
 export default AddressGroupList;
+
+//add edit button and delete button
