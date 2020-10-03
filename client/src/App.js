@@ -13,6 +13,7 @@ import BigCalendar from './pages/BigCalendar';
 import AddContact from './pages/AddContact';
 import AddAddressGroup from './pages/AddAddressGroup';
 import EditContact from './pages/EditContact';
+import Groups from './pages/Groups';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
        <Route path='/AddContact' exact component={AddContact} />
        <Route path='/AddAddressGroup' exact component={AddAddressGroup} />
        <Route path='/EditContact' exact component={EditContact} />
+       <Route path='/Groups' exact component={Groups} />
 
     </div>
 

@@ -14,6 +14,7 @@ function NavTabs() {
           <Link className="addnc" to="AddContact">Add New Contact</Link>
           <Link className="addnc" to="AddAddressGroup">Add New Group</Link>
           <Link className="cal" to="Calendar">Calendar</Link>
+          <Link className="groups" to="Groups">Groups</Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar >
