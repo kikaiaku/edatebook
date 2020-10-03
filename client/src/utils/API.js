@@ -123,13 +123,17 @@ addGroup: function (userInfo) {
 
 getGroupCount: function () {
   return axios.get('/api/getGroupcount')
+},
+
+getGroups: function () {
+  return axios.get('/api/getGroup')
+},
+
+deleteGroup: function (userInfo) {
+  console.log(userInfo)
+  console.log("Group Delete")
+  return axios.delete('/api/groupName/' + userInfo.id,userInfo)
 }
-
-// getGroups: function () {
-//   return axios.get('/api/getGroup')
-// },
-
-
 
 }
 

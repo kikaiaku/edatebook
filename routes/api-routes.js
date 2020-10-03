@@ -341,19 +341,32 @@ module.exports = function (app) {
     }
   });
 
-  // app.get("/api/getGroup", function (req, res) {
-  //   if (req.user) {
+  app.get("/api/getGroup", function (req, res) {
+    if (req.user) {
 
-  //     db.GroupName.findAll({ where: { userId: req.user.id } })
-  //       .then((result) => {
-  //         // console.log(result);
-  //         res.json(result);
-  //       })
-  //       .catch(err => {
-  //         res.status(401).json(err);
-  //       });
-  //   }
-  // });
+      db.GroupName.findAll({ where: { userId: req.user.id } })
+        .then((result) => {
+          // console.log(result);
+          res.json(result);
+        })
+        .catch(err => {
+          res.status(401).json(err);
+        });
+    }
+  });
 
+  app.delete("/api/groupName/:id", function (req, res) {
+    console.log("group Deleted in DB")
+    console.log(req.params.id)
+
+    db.GroupName.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
 
 }

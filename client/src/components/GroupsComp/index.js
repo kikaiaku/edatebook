@@ -1,20 +1,21 @@
 import React from 'react'
 import { Container, Row, Col, InputGroup, FormControl, Button, Card, ListGroup } from 'react-bootstrap';
 import { propTypes } from 'react-bootstrap/esm/Image';
+import API from '../../utils/API';
 
 
-function GroupsComp() {
+function GroupsComp({ groupData }) {
     return (
         <div>
+            {
+                groupData.map((group) => (
         <Card style={{ width: '18rem' }}>
-        <Card.Header>Group Name</Card.Header>
-            <ListGroup variant="flush">
-                <ListGroup.Item>first name</ListGroup.Item>
-                <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-            </ListGroup>
-            <Button>Delete</Button>
+        <Card.Header>{group.groupName}</Card.Header>
+            
+        <Button className="DeleteB" value={group.id} onClick={() => API.deleteGroup({ id: group.id })} variant="primary" type="submit">Delete</Button>
         </Card>
+                )
+                )}
         </div>
     )
 }
