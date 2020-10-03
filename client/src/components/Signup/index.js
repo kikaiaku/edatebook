@@ -1,19 +1,11 @@
 import React from 'react';
 import { Col, Form, Row, Container, Button } from 'react-bootstrap';
 import "./style.css";
-// class SignUp extends React.Component{
-//     render(){
-//       return(
-//           <div className="mh-fullscreen bg-img center-vh p-20"
-//       )
-//     }
-//   }
+
 function Signup(props) {
     return (
         <div >
 
-        
-        
         <Container>
             <Form>
                 <Row>
@@ -112,7 +104,6 @@ function Signup(props) {
                     <Form.Control className="AddressSpace" onChange={props.handleInputChange} name="lastName" placeholder="Last name" />
                     <Form.Control className="AddressSpace" onChange={props.handleInputChange} name="middleInitial" placeholder="Middle Initial" />
                 </Row><Row>
-                    {/* <Datepicker onChange= {props.handleInputChange} name = "birthday" /> */}
                     <Form.Group controlId="formGroupBirthday" className="sizeFix">
                         <Form.Label>Birthday</Form.Label>
                         <Form.Control onChange={props.handleInputChange} name="birthday" type="birthday" placeholder="1/1/1900" />

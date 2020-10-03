@@ -1,10 +1,10 @@
 import React from 'react';
-
 import { Link } from 'react-router-dom';
 
 import {
     Button, Card, ListGroup, ListGroupItem, Form, FormControl, Container
 } from 'react-bootstrap';
+
 
 import API from '../../utils/API';
 import "./style.css"
@@ -30,7 +30,7 @@ function AddressList({ addressData }, deleteAddress) {
                     <Container>
                         <Card className="AddressB">
                             <Card.Body>
-                                <Card.Title>{address.firstName}
+                                <Card.Title className="nameTitle" >{address.firstName}
                                     {address.middleInitial}
                                     {address.lastName}</Card.Title>
                                 <ListGroup className="list-group-flush">

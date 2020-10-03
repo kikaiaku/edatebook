@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Col, Row, Label, Button } from 'react-bootstrap';
+import { Container, Form, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import "./style.css"
 
@@ -10,18 +10,18 @@ function NewAddressForm(props) {
     return (
         <Container className="newBody">
             <Form>
-                    <Form.Row>
-                        <Col>
-                            <Form.Control onChange={props.handleInputChange} name="firstName" placeholder="First name" />
-                        </Col>
-                        <Col>
-                            <Form.Control onChange={props.handleInputChange} name="middleInitial" placeholder="M.I." />
-                        </Col>
-                        <Col>
-                            <Form.Control onChange={props.handleInputChange} name="lastName" placeholder="Last name" />
-                        </Col>
-                    </Form.Row>
-                
+                <Form.Row>
+                    <Col>
+                        <Form.Control onChange={props.handleInputChange} name="firstName" placeholder="First name" />
+                    </Col>
+                    <Col>
+                        <Form.Control onChange={props.handleInputChange} name="middleInitial" placeholder="M.I." />
+                    </Col>
+                    <Col>
+                        <Form.Control onChange={props.handleInputChange} name="lastName" placeholder="Last name" />
+                    </Col>
+                </Form.Row>
+
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridEmail" className="sizeFixNew">
                         <Form.Label>Email</Form.Label>
@@ -114,18 +114,18 @@ function NewAddressForm(props) {
                         <Form.Label>Zip</Form.Label>
                         <Form.Control onChange={props.handleInputChange} name="zipCode" />
                     </Form.Group>
-                    
+
                 </Form.Row>
-                    <Form.Group as={Col} controlId="formGridZip" className="sizeFixNew">
-                        <Form.Label>Comments</Form.Label>
-                        <Form.Control onChange={props.handleInputChange} name="comments" />
-                    </Form.Group>
-                    
+                <Form.Group as={Col} controlId="formGridZip" className="sizeFixNew">
+                    <Form.Label>Comments</Form.Label>
+                    <Form.Control onChange={props.handleInputChange} name="comments" />
+                </Form.Group>
+
                 <Button onClick={props.handleSubmit} variant="primary" type="submit">
 
-                    <Link className="add"to="AddressBook"> Add New </Link>
-                    
-    </Button>
+                    <Link className="add" to="AddressBook"> Add New </Link>
+
+                </Button>
 
             </Form>
         </Container>

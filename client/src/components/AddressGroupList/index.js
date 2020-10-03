@@ -1,10 +1,12 @@
 import React from 'react';
+
 import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Container, Form, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
 import { propTypes } from 'react-bootstrap/esm/Image';
 import { Link } from 'react-router-dom';
 
-import API from '../../utils/API';
+
+// import API from '../../utils/API';
 
 // import NewAddressForm from '../NewAddressForm';
 // import AddressBook from '../../pages/AddressBook';
@@ -55,6 +57,7 @@ function AddressGroupList(props) {
             </Row>
           </Container>
         ))}
+
     </div>
   )
 }

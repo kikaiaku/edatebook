@@ -8,7 +8,6 @@ function AddressBook() {
   const [getAddress, setGetAddress] = useState([{}])
 
   const userId = sessionStorage.getItem("id")
-  // const [idDelete,setIdDelete] = useState()
 
   useEffect(() => {
     getAllAddress();
@@ -18,7 +17,6 @@ function AddressBook() {
     API.getAddress()
       .then(({ data }) => {
         setGetAddress(data)
-        console.log(data)
       })
   }
 
@@ -29,6 +27,12 @@ function AddressBook() {
       <AddressList addressData={getAddress} />
     </div>
   )
+
+//         <div>
+//         <Button onClick={() => API.exportAddressBook()}>Export Address Book</Button>
+//         <AddressList addressData = {getAddress}  />
+//         </div>
+    )
 }
 
 export default AddressBook;

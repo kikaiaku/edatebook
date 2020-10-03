@@ -1,12 +1,10 @@
 import React from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
-import BigCalendar from 'react-big-calendar';
+// import BigCalendar from 'react-big-calendar';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import TimePicker from 'react-time-picker';
-// import 'react-calendar/dist/Calendar.css';
-// import './style.css';
-// import moment from 'moment';
+
 
 function DayModal(props) {
 
@@ -27,10 +25,8 @@ function DayModal(props) {
                         <Form.Label>Start: {props.dayStartDate}</Form.Label>
                         <br></br>
                         <DatePicker selected={props.startDate}
-                            onChange={props.handleStartChange} 
-                            // dateFormat={props.dateFormat}
-                            />
-                        {/* <p>{props.startDate}</p> */}
+                            onChange={props.handleStartChange}
+                        />
                         <TimePicker
                             onChange={props.start}
                             value={props.startValue}
@@ -41,8 +37,7 @@ function DayModal(props) {
                         <br></br>
                         <DatePicker selected={props.endDate}
                             onChange={props.handleEndChange}
-                             />
-                        {/* <h4>{props.dayEndDate}</h4> */}
+                        />
 
                         <TimePicker
                             onChange={props.end}
