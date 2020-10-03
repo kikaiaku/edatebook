@@ -6,16 +6,23 @@ import GroupsComp from '../components/GroupsComp';
 
 function Groups(){
 const [groupState, setGroupState] = useState()
+const [getGroupList, setGetGroupList] = useState([{}])
+useEffect(() => {
+    getGroups();
+  }, []);
 
-// useEffect(()=>{
-//     API.getGroups({data})
-//     console.log(data)
-//     .then(setGroupState(data))
-// })
+  function getGroups(c) {
+    API.getGroups()
+      .then(({ data }) => {
+        console.log(data)
+        console.log("Check")
+        setGetGroupList(data)
+      })
+  }
 
     return(
         <div>
-            <GroupsComp 
+            <GroupsComp groupData={getGroupList}
             // groupName={groupState.groupName}
             />
         </div>
