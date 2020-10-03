@@ -188,11 +188,16 @@ module.exports = function (app) {
 
   // DELETE ROUTES
 
-  // Route for deleting Event
-  app.delete("/api/overview/deleteevent/:id", function (req, res) {
 
-    // We just have to specify which todo we want to destroy with "where"
-    db.Event.destroy({
+
+
+  // Route for deleting Address
+  app.delete("/api/addressbook/:id", function (req, res) {
+    console.log("Address Deleted in DB")
+    console.log(req.body)
+    console.log(req.params)
+
+    db.Address.destroy({
       where: {
         id: req.params.id
       }
@@ -202,14 +207,12 @@ module.exports = function (app) {
       });
   });
 
-  // Route for deleting Address
-  app.delete("/api/addressbook/:id", function (req, res) {
-    console.log("Address Deleted in DB")
-    console.log(req.body)
-    console.log(req.params)
 
-    // We just have to specify which todo we want to destroy with "where"
-    db.Address.destroy({
+    // Route for deleting Event
+  app.delete("/api/event/:id", function (req, res) {
+    console.log("Event Deleted in DB")
+
+    db.Event.destroy({
       where: {
         id: req.params.id
       }
@@ -274,6 +277,30 @@ module.exports = function (app) {
       });
     } 
   });
+
+  app.put("/api/EditEvent:id", function (req, res) {
+    // create takes an argument of an object describing the Bill we want to
+    // insert into our table. 
+    console.log("Add event!!!!!!!")
+
+    db.Event.update({
+      start: req.body.start,
+      end: req.body.end,
+      title: req.body.title,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      startTime: req.body.startTime,
+      endTime: req.body.endTime,
+      notes: req.body.notes,
+      // category: "test",
+      // classification: "private",
+      userId: req.body.userId
+    },{where: {id: req.params.id}})
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+
 
 
 }

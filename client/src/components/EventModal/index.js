@@ -4,6 +4,7 @@ import BigCalendar from 'react-big-calendar';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import TimePicker from 'react-time-picker';
+import API from '../../utils/API';
 // import 'react-calendar/dist/Calendar.css';
 // import './style.css';
 // import moment from 'moment';
@@ -60,17 +61,17 @@ function BigCalendarComp(props) {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="primary"
-                // onClick={handleDelete}
-                >Delete</Button>
+                <Button variant="primary" onClick={() => API.deleteEvent({id: props.id})}>Delete</Button>
                 <Button variant="secondary" onClick={() => props.setEventModalState(false)}>Close</Button>
                 <Button
-                    onClick={props.handleSubmit}
+                    onClick={props.handleSubmitEdit}
                     variant="primary">Save changes</Button>
             </Modal.Footer>
         </Modal>
     )
 
 }
+
+// () => API.deleteAddress({id: props.endValue}
 
 export default BigCalendarComp;
