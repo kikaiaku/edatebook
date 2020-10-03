@@ -18,6 +18,8 @@ function AddressBook() {
   function getAllAddress(c) {
     API.getAddress()
       .then(({ data }) => {
+        console.log(data)
+        console.log("Check")
         setGetAddress(data)
         setMatched(data)
       })

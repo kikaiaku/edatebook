@@ -10,13 +10,7 @@ import API from '../../utils/API';
 import "./style.css"
 
 
-// import NewAddressForm from '../NewAddressForm';
-// import AddressBook from '../../pages/AddressBook';
-
-function AddressList({ addressData }, deleteAddress) {
-    console.log("Check")
-    console.log(addressData)
-    console.log("Check")
+function AddressList({ addressData }) {
     return (
         <div>
 
@@ -25,7 +19,7 @@ function AddressList({ addressData }, deleteAddress) {
                     <Container>
                         <Card className="AddressB">
                             <Card.Body>
-                                <Card.Title className="nameTitle" >{address.firstName}
+                                <Card.Title  >{address.firstName}
                                     {address.middleInitial}
                                     {address.lastName}</Card.Title>
                                 <ListGroup className="list-group-flush">

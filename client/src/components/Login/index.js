@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Container, Form, Row, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import "./style.css"
 import API from "../../utils/API"
+
 
 function Login(props) {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+    const [redirect, setRedirect ] = useState(false)
 
     function handleInputChange(e) {
         let name = e.target.name
@@ -23,6 +25,7 @@ function Login(props) {
     }
 
     function handleSubmit() {
+        console.log("Handle submit check")
         let data = {
             email: email, password: password
         }
@@ -30,11 +33,14 @@ function Login(props) {
             console.log(response)
             console.log("login response")
             sessionStorage.setItem("id", response.data.id)
-
-        })
+            setRedirect(true)
+         })
+         
     }
 
     return (
+        <div>
+        {redirect? <Redirect to="/AddressBook"/> :null};
         <div className="divLogin">
             <h1>Welcome to eDatebook</h1>
             <p className="para1">
@@ -60,11 +66,9 @@ function Login(props) {
                             <Form.Group controlId="formBasicCheckbox">
                                 {/* <Form.Check type="checkbox" label="Check me out" /> */}
                             </Form.Group>
-                            <Link to="/AddressBook">
                                 <Button className="button" onClick={handleSubmit}>
                                     Login
                             </Button>
-                            </Link>
                             <Link to="/signup">
                                 <Button className="button">
                                     Sign Up
@@ -76,6 +80,7 @@ function Login(props) {
                     <Col className='4 of 9'></Col>
                 </Row>
             </Container>
+        </div>
         </div>
     )
 
