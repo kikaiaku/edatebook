@@ -21,9 +21,12 @@ function AddressGroupList(props) {
             placeholder="Group Name"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
+            onChange={props.onChange}
           />
           <InputGroup.Append>
-            <Button variant="outline-secondary">Save Group</Button>
+            <Button variant="outline-secondary"
+            // onClick={props.onClick}
+            >Save Group</Button>
           </InputGroup.Append>
         </InputGroup>
       </Container>

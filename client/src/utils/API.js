@@ -58,6 +58,10 @@ const API = {
         });
     },
 
+    // getGroups: function() {
+    //   axios.get
+    // }
+
 
     // END ADDRESS BOOK FUNCTIONS
 
