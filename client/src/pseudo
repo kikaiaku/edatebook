@@ -1,14 +1,33 @@
-//onclick delete, send id of event to backend
-    props.event.id
-
-//onclick edit [save changes]
-    put request to update event by id
-
-[*]state render upon add event
-
-[*]onclick slot populate add event modal
-
 //style [all pages, calendar, light/dark mode, animations]
+
+[] light/dark mode
+    slider on click:
+        //assign class for dark
+        //remove dark class for light
+
+    //set up css 
+        dark class: black background, white lettering and borders
+
+
+[] modal style
+    //useRootClose (rb) to click anywhere on screen to close
+
+//get id of addresses that are checked
+//on submit push array of addresses to saved group
+
+const [objState, setObjState] = useState([{
+    name: "",
+    address: "",
+    index: ""
+}])
+
+const arr = [];
+
+function objArr(){
+    
+}
+
+onChange={arr.push(obj)}
 
 
 
