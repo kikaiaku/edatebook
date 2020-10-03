@@ -19,12 +19,7 @@ function AddressList({ addressData }, deleteAddress) {
     console.log("Check")
     return (
         <div>
-            <Container>
-                <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2,searchbar" />
-                    <Button variant="outline-success">Search</Button>
-                </Form>
-            </Container>
+
             {
                 addressData.map((address) => (
                     <Container>
