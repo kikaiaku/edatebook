@@ -23,20 +23,6 @@ function AddressBook() {
       })
   }
 
-  // function handleInput(searchName){
-  //   console.log(searchName.target.value)
-  //   let nameSearch =searchName.target.value.toLowerCase()
-  //   setSearchName(nameSearch)
-  //   let x =matched.filter(address=>{
-  //     let firstName=address.firstName.toLowerCase()
-  //     if((firstName.indexOf(nameSearch))!==-1){
-  //       return address
-  //     }
-  //   })
-  //   console.log("check arr")
-  //   console.log(x)
-  //   setMatched(x)
-  // };
 
   function handleInput(searchName){
     console.log(searchName.target.value)
@@ -53,7 +39,7 @@ function AddressBook() {
       if((firstName.indexOf(searchName))!==-1){
         return address
       }
-      if((lastName.indexOf(searchName))!==-1){
+      else if((lastName.indexOf(searchName))!==-1){
         return address
       }
     })
