@@ -7,20 +7,22 @@ function AddAddressGroup() {
 
   const [addressState, setAddressState] = useState([{}]);
   const [groupList, setGroupList] = useState([])
-
-  // const userId = sessionStorage.getItem("id")
+  const [groupName, setGroupName] = useState()
+  const userId = sessionStorage.getItem("id")
 
   useEffect(() => {
     getAllAddress();
   }, []);
 
   function getAllAddress() {
-    API.getAddress()
+    API.getAddress2()
       .then(({ data }) => {
         setAddressState(data)
         console.log(data)
       })
   }
+
+
 
   //Save group function
   function handleCheck(e){
@@ -52,11 +54,32 @@ function AddAddressGroup() {
 function handleInputChange(e){
   let groupName= e.target.value
   console.log(groupName);
+  setGroupName(groupName)
 }
 
-// function saveGroup(){
-//   API.
-// }
+function handleSubmit(e) {
+  e.preventDefault();
+  console.log("check")
+  API.createGroupName({
+    groupName: groupName,
+    userId: userId
+  })
+
+
+  const updateGroup = groupList.map(o => Object.assign({}, o, {GroupNameId: 1}))
+//   let g2= groupList
+//   g2.forEach(o => o.categoryid = 1);
+//     Object.assign(groupList,[{categoryId: 1}])
+// // let test2 = groupList.add({categoryId: 1})
+// //   groupList.push({categoryId: 1})
+//   console.log(groupList)
+//   console.log("g2")
+//   console.log(g2)
+//   console.log("newP")
+  console.log(updateGroup)
+  API.addGroup(updateGroup)
+    .catch(err => console.log(err));
+};
 
   return (
     <div>
@@ -65,6 +88,7 @@ function handleInputChange(e){
         checkedState={handleCheck}
         // onClick={saveGroup}
         onChange={handleInputChange}
+        handleSubmit={handleSubmit}
       />
     </div>
   )

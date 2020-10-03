@@ -288,5 +288,42 @@ module.exports = function (app) {
   });
 
 
+  app.post("/api/CreateGroupName", (req, res) => {
+    console.log(req.body)
+    console.log("Post Request")
+    db.GroupName.create({
+      groupName: req.body.groupName,
+      userId: req.body.userId
+    })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+
+  app.post("/api/CreateGroup", (req, res) => {
+    console.log(req.body)
+    console.log("Post Request")
+    db.Group.bulkCreate(req.body)
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+
+  app.get("/api/getContacts", function (req, res) {
+    if (req.user) {
+      console.log("Add address 2")
+      db.Address.findAll({ where: { userId: req.user.id },attributes: ['firstName','lastName', 'middleInitial','address','city','state','zipCode','phone','email','birthday','comments','userId'] })
+        .then((result) => {
+          // console.log(result);
+          res.json(result);
+        })
+        .catch(err => {
+          res.status(401).json(err);
+        });
+    }
+  });
+
+
+
 
 }

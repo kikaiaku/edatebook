@@ -25,6 +25,11 @@ const API = {
       return axios.get('/api/addressbook')
     },
 
+       // Function to retrieve all contacts for the Address Book
+       getAddress2: function () {
+        return axios.get('/api/getContacts')
+      },
+
     // Retrieves a single contact to use for the edit function
     getSingleAddress: function (userInfo) {
       return axios.get('/api/EditContact' + userInfo.id)
@@ -97,9 +102,25 @@ const API = {
     console.log("Id " + userInfo.id)
     console.log("check")
     axios.put("/api/EditEvent" + userInfo.id, userInfo);
-  }
+  },
 
 // END CALENDAR FUNCTIONS
+
+
+createGroupName: function (userInfo) {
+  console.log(userInfo)
+  return axios.post("/api/CreateGroupName", userInfo);
+},
+
+
+addGroup: function (userInfo) {
+  console.log(userInfo)
+  // const groupArray = userInfo.map('firstName','lastName', 'middleInitial','address','city','state','zipCode','phone','email','birthday','comments','userId',1)
+  
+  return axios.post("/api/CreateGroup", userInfo);
+}
+// context.developerState.filteredUsers.map(({ login, name, picture, phone, email, dob }) => {
+
 }
 
 
