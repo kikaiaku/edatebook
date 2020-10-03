@@ -8,7 +8,6 @@ function AddressBook() {
   const [getAddress, setGetAddress] = useState([{}])
 
   const userId = sessionStorage.getItem("id")
-  // const [idDelete,setIdDelete] = useState()
 
   useEffect(() => {
     getAllAddress();
@@ -18,15 +17,13 @@ function AddressBook() {
     API.getAddress()
       .then(({ data }) => {
         setGetAddress(data)
-        console.log(data)
       })
   }
 
 
     return(
         <div>
-        {/* <NewAddressForm handleInputChange = {handleInputChange} handleSubmit = {handleSubmit}/> */}
-        <Button onClick={() => API.getAddress2()}>test</Button>
+        <Button onClick={() => API.exportAddressBook()}>Export Address Book</Button>
         <AddressList addressData = {getAddress}  />
         </div>
     )

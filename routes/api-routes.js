@@ -8,21 +8,21 @@ const path = require("path")
 const json2xls = require("json2xls")
 
 module.exports = function (app) {
+
+
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the overview page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
-  
-    console.log("hello ricky bobby")
     // Sending back a password, even a hashed password, isn't a good idea
-    if(req.user){
-    res.json({
-      email: req.user.email,
-      id: req.user.id
-    });
-  }else{
-    req.json("invalid")
-  }
+    if (req.user) {
+      res.json({
+        email: req.user.email,
+        id: req.user.id
+      });
+    } else {
+      req.json("invalid")
+    }
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -40,7 +40,7 @@ module.exports = function (app) {
       address: req.body.address,
       city: req.body.city,
       state: req.body.state,
-      zipCode: req.body.zipCode, 
+      zipCode: req.body.zipCode,
       birthday: req.body.birthday,
       phone: req.body.phone
     })
@@ -72,29 +72,29 @@ module.exports = function (app) {
 
   // POST ROUTES
 
-    // POST route for saving a new event
-    app.post("/api/calendar", function (req, res) {
-      // create takes an argument of an object describing the Bill we want to
-      // insert into our table. 
-      console.log("Add event!!!!!!!")
+  // POST route for saving a new event
+  app.post("/api/calendar", function (req, res) {
+    // create takes an argument of an object describing the Bill we want to
+    // insert into our table. 
+    console.log("Add event!!!!!!!")
 
-      db.Event.create({
-        start: req.body.start,
-        end: req.body.end,
-        title: req.body.title,
-        startDate: req.body.startDate,
-        endDate: req.body.endDate,
-        startTime: req.body.startTime,
-        endTime: req.body.endTime,
-        notes: req.body.notes,
-        // category: "test",
-        // classification: "private",
-        userId: req.body.userId
-      })
-        .catch(err => {
-          res.status(401).json(err);
-        });
-    });
+    db.Event.create({
+      start: req.body.start,
+      end: req.body.end,
+      title: req.body.title,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      startTime: req.body.startTime,
+      endTime: req.body.endTime,
+      notes: req.body.notes,
+      // category: "test",
+      // classification: "private",
+      userId: req.body.userId
+    })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
 
 
   // POST route for saving a new address
@@ -113,7 +113,7 @@ module.exports = function (app) {
       comments: req.body.comments,
       city: req.body.city,
       state: req.body.state,
-      zipCode: req.body.zipCode,  
+      zipCode: req.body.zipCode,
       userId: req.body.userId
     })
       .catch(err => {
@@ -135,7 +135,7 @@ module.exports = function (app) {
       comments: req.body.comments,
       city: req.body.city,
       state: req.body.state,
-      zipCode: req.body.zipCode,  
+      zipCode: req.body.zipCode,
       userId: req.body.userId
     })
       .catch(err => {
@@ -143,31 +143,31 @@ module.exports = function (app) {
       });
   });
   app.get("/api/addressbook", function (req, res) {
-    if(req.user) {
-    console.log("Add address 2")
-    db.Address.findAll({where: {userId: req.user.id}})
-      .then((result) => {
-        // console.log(result);
-        res.json(result);
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      });
-    } 
+    if (req.user) {
+      console.log("Add address 2")
+      db.Address.findAll({ where: { userId: req.user.id } })
+        .then((result) => {
+          // console.log(result);
+          res.json(result);
+        })
+        .catch(err => {
+          res.status(401).json(err);
+        });
+    }
   });
 
   app.get("/api/EditContact:id", function (req, res) {
-    if(req.user) {
-    console.log(req.params.id)
-    db.Address.findAll({where: {id: req.params.id}})
-      .then((result) => {
-        // console.log(result);
-        res.json(result);
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      });
-    } 
+    if (req.user) {
+      console.log(req.params.id)
+      db.Address.findAll({ where: { id: req.params.id } })
+        .then((result) => {
+          // console.log(result);
+          res.json(result);
+        })
+        .catch(err => {
+          res.status(401).json(err);
+        });
+    }
   });
 
   //EVENTS GET ROUTE
@@ -175,7 +175,7 @@ module.exports = function (app) {
     // create takes an argument of an object describing the Bill we want to
     // insert into our table. 
     console.log("Get events!!!!!!")
-    db.Event.findAll({where: {userId: req.user.id}})
+    db.Event.findAll({ where: { userId: req.user.id } })
 
       .then((result) => {
         // console.log(result);
@@ -188,15 +188,9 @@ module.exports = function (app) {
 
   // DELETE ROUTES
 
-
-
-
   // Route for deleting Address
   app.delete("/api/addressbook/:id", function (req, res) {
     console.log("Address Deleted in DB")
-    console.log(req.body)
-    console.log(req.params)
-
     db.Address.destroy({
       where: {
         id: req.params.id
@@ -208,7 +202,7 @@ module.exports = function (app) {
   });
 
 
-    // Route for deleting Event
+  // Route for deleting Event
   app.delete("/api/event/:id", function (req, res) {
     console.log("Event Deleted in DB")
 
@@ -224,64 +218,58 @@ module.exports = function (app) {
 
 
   app.get("/api/addressbook3", function (req, res) {
-    if(req.user) {
-    console.log("Add address 2")
-    db.Address.findAll({where: {userId: req.user.id}, attributes: ['firstName','middleInitial','lastName','address','city','state','zipCode']})
-      .then((result) => {
-        // console.log(result);
-        res.json(result);
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      });
-    } 
+    if (req.user) {
+      db.Address.findAll({ where: { userId: req.user.id }, attributes: ['firstName', 'middleInitial', 'lastName', 'address', 'city', 'state', 'zipCode'] })
+        .then((result) => {
+          res.json(result);
+        })
+        .catch(err => {
+          res.status(401).json(err);
+        });
+    }
   });
 
   app.get("/api/createGroup", function (req, res) {
-    if(req.user) {
-   
-    db.Address.findAll({where: {userId: req.user.id}})
-      .then((result) => {
-        // console.log(result);
-        res.json(result);
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      });
-    } 
+    if (req.user) {
+
+      db.Address.findAll({ where: { userId: req.user.id } })
+        .then((result) => {
+          // console.log(result);
+          res.json(result);
+        })
+        .catch(err => {
+          res.status(401).json(err);
+        });
+    }
   });
 
   app.put("/api/EditContact:id", function (req, res) {
-    if(req.user) {
-    console.log(req.params.id)
-    db.Address.update({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      middleInitial: req.body.middleInitial,
-      address: req.body.address,
-      phone: req.body.phone,
-      email: req.body.email,
-      birthday: req.body.birthday,
-      comments: req.body.comments,
-      city: req.body.city,
-      state: req.body.state,
-      zipCode: req.body.zipCode,  
-      userId: req.body.userId
-    },{where: {id: req.params.id}})
-      .then((result) => {
-        console.log("Contact Updated");
-     
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      });
-    } 
+    if (req.user) {
+      db.Address.update({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        middleInitial: req.body.middleInitial,
+        address: req.body.address,
+        phone: req.body.phone,
+        email: req.body.email,
+        birthday: req.body.birthday,
+        comments: req.body.comments,
+        city: req.body.city,
+        state: req.body.state,
+        zipCode: req.body.zipCode,
+        userId: req.body.userId
+      }, { where: { id: req.params.id } })
+        .then((result) => {
+          console.log("Contact Updated");
+
+        })
+        .catch(err => {
+          res.status(401).json(err);
+        });
+    }
   });
 
   app.put("/api/EditEvent:id", function (req, res) {
-    // create takes an argument of an object describing the Bill we want to
-    // insert into our table. 
-    console.log("Add event!!!!!!!")
 
     db.Event.update({
       start: req.body.start,
@@ -292,10 +280,8 @@ module.exports = function (app) {
       startTime: req.body.startTime,
       endTime: req.body.endTime,
       notes: req.body.notes,
-      // category: "test",
-      // classification: "private",
       userId: req.body.userId
-    },{where: {id: req.params.id}})
+    }, { where: { id: req.params.id } })
       .catch(err => {
         res.status(401).json(err);
       });

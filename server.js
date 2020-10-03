@@ -27,7 +27,6 @@ app.use(passport.session());
 app.use(express.static("public"))
 app.use(json2xls.middleware);
 // Requiring our routes
-require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
 

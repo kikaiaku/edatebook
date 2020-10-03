@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
-import BigCalendar from 'react-big-calendar';
+// import BigCalendar from 'react-big-calendar';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import TimePicker from 'react-time-picker';

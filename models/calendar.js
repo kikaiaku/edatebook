@@ -12,6 +12,3 @@ module.exports = function(sequelize, DataTypes) {
     return Events;
   };
 
-  // , {
-  //   underscored: true,
-  // }

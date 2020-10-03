@@ -2,93 +2,100 @@ import axios from "axios";
 import FileDownload from "js-file-download";
 
 const API = {
-  // Saves a book to the database
-  signUp: function(userInfo) {
-    console.log(userInfo)
+  // Function used to Sign up a user
+  signUp: function (userInfo) {
     return axios.post("/api/signup", userInfo);
   },
-loginApp:function(userInfo){
-  console.log(userInfo)
-  console.log("this is the user info on the login app")
-  return axios.post("/api/login",userInfo)
-  
-},
-  addAddress: function(userInfo) {
+
+  // Function used when a user log in
+  loginApp: function (userInfo) {
+    return axios.post("/api/login", userInfo)
+  },
+
+// START ADDRESS BOOK FUNCTIONS
+
+  // function to add contact to the address book
+  addAddress: function (userInfo) {
     console.log(userInfo)
     return axios.post("/api/AddContact", userInfo);
   },
-  addAddressGroup: function(userInfo) {
+
+    // Function to retrieve all contacts for the Address Book
+    getAddress: function () {
+      return axios.get('/api/addressbook')
+    },
+
+    // Retrieves a single contact to use for the edit function
+    getSingleAddress: function (userInfo) {
+      return axios.get('/api/EditContact' + userInfo.id)
+    },
+
+    // Function to edit a contact in the Address Book
+    editAddress: function (userInfo) {
+      console.log(userInfo)
+      console.log("check")
+      axios.put("/api/EditContact" + userInfo.id, userInfo);
+    },
+
+    // Function to delete a contact from the Address book
+    deleteAddress: function (userInfo) {
+      console.log("Address Delete")
+      return axios.delete('/api/addressbook/' + userInfo.id, userInfo)
+    },
+
+    // Function to export your address book to a csv file
+    exportAddressBook: function () {
+      axios.get('/api/addressbook3')
+        .then(function (response) {
+          console.log(response)
+          function combineData(item) {
+            var addressLine = Object.values(item).join(',')
+            addressLine = '\n \t' + addressLine
+            return addressLine
+          }
+          const addressArray = response.data.map(combineData)
+          FileDownload(addressArray, 'AddressList.csv');
+        });
+    },
+
+
+    // END ADDRESS BOOK FUNCTIONS
+
+  // function to add a new group
+  addAddressGroup: function (userInfo) {
     console.log(userInfo)
     return axios.post("/api/AddAddressGroup", userInfo);
   },
-  
-    // //Adds a new event
-    addEvent: function(userInfo){
-      console.log(userInfo)
-      console.log("at the add event function")
 
-        axios.post('/api/calendar', userInfo)
-    },
-    // //Updates an event with new info entered by user
-    // updateEvent: function(){
-    //     return axios.put('/api/updateevent')
-    // },
-    // //Gets all address entries
-    getAddress: function(){
-        return axios.get('/api/addressbook')
-    },
 
-    getSingleAddress: function(userInfo){
-      console.log(userInfo)
-      return axios.get('/api/EditContact'+userInfo.id)
+  // START CALENDAR FUNCTIONS
+
+  // Function to add an event to the calendar
+  addEvent: function (userInfo) {
+    axios.post('/api/calendar', userInfo)
   },
 
-    getEvent: function(){
-      return axios.get('/api/Calendar')
-    },
-
-    deleteAddress: function(userInfo){
-      console.log(userInfo)
-      console.log("Address Delete")
-      return axios.delete('/api/addressbook/'+userInfo.id, userInfo)
+  // Function to retrieve all events for the calendar
+  getEvent: function () {
+    return axios.get('/api/Calendar')
   },
-  deleteEvent: function(userInfo){
+
+// Function to delete an event from the Calendar
+  deleteEvent: function (userInfo) {
     console.log(userInfo)
     console.log("Event Delete")
-    return axios.delete('/api/event/'+userInfo.id, userInfo)
-},
-  getAddress2: function(){
+    return axios.delete('/api/event/' + userInfo.id, userInfo)
+  },
+
+// Function to edit an event in the Calendar
+  editEvent: function (userInfo) {
+    console.log(userInfo)
+    console.log("Id " + userInfo.id)
     console.log("check")
-    axios.get('/api/addressbook3')
-    .then(function (response) {console.log(response)
-      function combineData(item){
-        var addressLine = Object.values(item).join(',')
-        addressLine =  '\n \t' + addressLine 
-        return addressLine
-      }
-      const addressArray = response.data.map(combineData)
-    
+    axios.put("/api/EditEvent" + userInfo.id, userInfo);
+  }
 
-      // let blob = new Blob([response.data], {type: 'csv'})
-      FileDownload(addressArray,'AddressList.csv');
-
-
-    });
-    },
-
-    editAddress: function(userInfo) {
-      console.log(userInfo)
-      console.log("check")
-      axios.put("/api/EditContact"+userInfo.id, userInfo);
-    },
-    editEvent: function(userInfo) {
-      console.log(userInfo)
-      console.log("Id "+userInfo.id)
-      console.log("check")
-      axios.put("/api/EditEvent"+userInfo.id, userInfo);
-    }
-    
-    
+// END CALENDAR FUNCTIONS
 }
 
 

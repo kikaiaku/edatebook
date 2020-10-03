@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
-import BigCalendar from 'react-big-calendar';
+// import BigCalendar from 'react-big-calendar';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import TimePicker from 'react-time-picker';
@@ -27,10 +27,10 @@ function AddEvent(props) {
                         <Form.Label>Start</Form.Label>
                         <br></br>
                         <DatePicker selected={props.startDate}
-                            onChange={props.handleStartChange} 
-                            // dateFormat={props.dateFormat}
-                            />
-                            
+                            onChange={props.handleStartChange}
+                        // dateFormat={props.dateFormat}
+                        />
+
                         <TimePicker
                             onChange={props.start}
                             value={props.startValue}
@@ -40,7 +40,7 @@ function AddEvent(props) {
                         <br></br>
                         <DatePicker selected={props.endDate}
                             onChange={props.handleEndChange}
-                             />
+                        />
 
 
                         <TimePicker
@@ -56,7 +56,7 @@ function AddEvent(props) {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={()=> props.setShowEventModal(false)}>Close</Button>
+                <Button variant="secondary" onClick={() => props.setShowEventModal(false)}>Close</Button>
                 <Button
                     onClick={props.handleSubmit}
                     variant="primary">Save changes</Button>
