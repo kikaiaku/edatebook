@@ -33,29 +33,6 @@ function AddAddressGroup() {
         addressData={addressState}
         checkedState={handleCheck}
       />
-// =======
-//       <InputGroup className="mb-3">
-//         <FormControl
-//           placeholder="Group Name"
-//           aria-label="Recipient's username"
-//           aria-describedby="basic-addon2"
-//         />
-//         <InputGroup.Append>
-//           <Button variant="outline-secondary">Button</Button>
-//         </InputGroup.Append>
-//       </InputGroup>
-//       <Container>
-//         <Row>
-
-//           <Col>checkbox</Col>
-//           <Col>Name</Col>
-//           <Col>Address</Col>
-//         </Row>
-
-
-//         <AddressGroupList addressData={getAddress} />
-
-//       </Container>
     </div>
   )
 }
