@@ -118,8 +118,18 @@ addGroup: function (userInfo) {
   // const groupArray = userInfo.map('firstName','lastName', 'middleInitial','address','city','state','zipCode','phone','email','birthday','comments','userId',1)
   
   return axios.post("/api/CreateGroup", userInfo);
-}
+},
 // context.developerState.filteredUsers.map(({ login, name, picture, phone, email, dob }) => {
+
+getGroupCount: function () {
+  return axios.get('/api/getGroupcount')
+}
+
+// getGroups: function () {
+//   return axios.get('/api/getGroup')
+// },
+
+
 
 }
 

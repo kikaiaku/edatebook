@@ -9,6 +9,7 @@ function AddAddressGroup() {
   const [groupList, setGroupList] = useState([])
   const [groupName, setGroupName] = useState()
   const userId = sessionStorage.getItem("id")
+  
 
   useEffect(() => {
     getAllAddress();
@@ -65,19 +66,16 @@ function handleSubmit(e) {
     userId: userId
   })
 
+  API.getGroupCount() 
+  .then(({ data }) => {
+    var groupIdValue = data[0].id 
+    console.log("groupid: "+groupIdValue)
+  
+      const updateGroup = groupList.map(o => Object.assign({}, o, {GroupNameId: groupIdValue}))
+      console.log(updateGroup)
+      API.addGroup(updateGroup)
+  })
 
-  const updateGroup = groupList.map(o => Object.assign({}, o, {GroupNameId: 1}))
-//   let g2= groupList
-//   g2.forEach(o => o.categoryid = 1);
-//     Object.assign(groupList,[{categoryId: 1}])
-// // let test2 = groupList.add({categoryId: 1})
-// //   groupList.push({categoryId: 1})
-//   console.log(groupList)
-//   console.log("g2")
-//   console.log(g2)
-//   console.log("newP")
-  console.log(updateGroup)
-  API.addGroup(updateGroup)
     .catch(err => console.log(err));
 };
 

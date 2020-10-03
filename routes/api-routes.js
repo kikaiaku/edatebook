@@ -324,6 +324,36 @@ module.exports = function (app) {
   });
 
 
+  app.get("/api/getGroupcount", function (req, res) {
+    if (req.user) {
+     
+      db.GroupName.findAll({
+        limit: 1,
+        order: [ [ 'updatedAt', 'DESC' ]]
+      })
+        .then((result) => {
+          // console.log(result);
+          res.json(result);
+        })
+        .catch(err => {
+          res.status(401).json(err);
+        });
+    }
+  });
+
+  // app.get("/api/getGroup", function (req, res) {
+  //   if (req.user) {
+
+  //     db.GroupName.findAll({ where: { userId: req.user.id } })
+  //       .then((result) => {
+  //         // console.log(result);
+  //         res.json(result);
+  //       })
+  //       .catch(err => {
+  //         res.status(401).json(err);
+  //       });
+  //   }
+  // });
 
 
 }
