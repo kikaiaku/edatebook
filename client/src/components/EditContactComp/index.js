@@ -3,31 +3,31 @@ import { Container, Form, Col, Row, Label, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
-function EditContactComp({ handleInputChange, handleSubmit, address, firstName,middleInitial,lastName,email,phone,birthday,city,state,zipCode,comments}){
+function EditContactComp({ handleInputChange, handleSubmit, address, firstName, middleInitial, lastName, email, phone, birthday, city, state, zipCode, comments }) {
 
     return (
-     
+
         <Container className="newBody">
             <Form>
-                    <Form.Row>
-                        <Col>
-                            <Form.Control onChange={handleInputChange} name="firstName" placeholder={firstName} value= {firstName} >
-                    
-                            </Form.Control>
-                        </Col>
-                        <Col>
-                            <Form.Control onChange={handleInputChange} name="middleInitial" value={middleInitial} />
-                        </Col>
-                        <Col>
-                            <Form.Control onChange={handleInputChange} name="lastName" value={lastName} />
-                        </Col>
-                    </Form.Row>
-                
+                <Form.Row>
+                    <Col>
+                        <Form.Control onChange={handleInputChange} name="firstName" placeholder={firstName} value={firstName} >
+
+                        </Form.Control>
+                    </Col>
+                    <Col>
+                        <Form.Control onChange={handleInputChange} name="middleInitial" value={middleInitial} />
+                    </Col>
+                    <Col>
+                        <Form.Control onChange={handleInputChange} name="lastName" value={lastName} />
+                    </Col>
+                </Form.Row>
+
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridEmail" className="sizeFixNew">
                         <Form.Label>Email</Form.Label>
                         <Form.Control onChange={handleInputChange} name="email" type="email" value={email}>
-                        
+
                         </Form.Control>
                     </Form.Group>
 
@@ -46,13 +46,13 @@ function EditContactComp({ handleInputChange, handleSubmit, address, firstName,m
 
                 <Form.Group controlId="formGridAddress" className="sizeFixNew">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control onChange={handleInputChange} name="address" placeholder={address} value={address}/>
+                    <Form.Control onChange={handleInputChange} name="address" placeholder={address} value={address} />
                 </Form.Group>
 
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridCity" className="sizeFixNew">
                         <Form.Label>City</Form.Label>
-                        <Form.Control onChange={handleInputChange} name="city" value={city}/>
+                        <Form.Control onChange={handleInputChange} name="city" value={city} />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridState" className="sizeFixNew">
@@ -115,24 +115,24 @@ function EditContactComp({ handleInputChange, handleSubmit, address, firstName,m
 
                     <Form.Group as={Col} controlId="formGridZip" className="sizeFixNew">
                         <Form.Label>Zip</Form.Label>
-                        <Form.Control onChange={handleInputChange} name="zipCode" value = {zipCode} />
+                        <Form.Control onChange={handleInputChange} name="zipCode" value={zipCode} />
                     </Form.Group>
-                    
+
                 </Form.Row>
-                    <Form.Group as={Col} controlId="formGridZip" className="sizeFixNew">
-                        <Form.Label>Comments</Form.Label>
-                        <Form.Control onChange={handleInputChange} name="comments" value= {comments}/>
-                    </Form.Group>
-                    
+                <Form.Group as={Col} controlId="formGridZip" className="sizeFixNew">
+                    <Form.Label>Comments</Form.Label>
+                    <Form.Control onChange={handleInputChange} name="comments" value={comments} />
+                </Form.Group>
+
                 <Button onClick={handleSubmit} variant="primary" type="submit">
 
-                    <Link className="add"to="AddressBook"> Submit </Link>
-                    
-    </Button>
+                    <Link className="add" to="AddressBook"> Submit </Link>
+
+                </Button>
 
             </Form>
         </Container>
-      
+
     )
 };
 

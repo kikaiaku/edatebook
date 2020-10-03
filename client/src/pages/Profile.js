@@ -2,11 +2,11 @@ import React from 'react';
 import Signup from '../components/Signup';
 
 
-function Profile(){
-    return(
+function Profile() {
+    return (
         <div>
             <Signup />
-          
+
         </div>
     )
 };
