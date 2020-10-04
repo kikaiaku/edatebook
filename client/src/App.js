@@ -14,6 +14,7 @@ import AddContact from './pages/AddContact';
 import AddAddressGroup from './pages/AddAddressGroup';
 import EditContact from './pages/EditContact';
 import Groups from './pages/Groups';
+import AddressBookGroup from './pages/AddressBookGroup';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
        <Route path='/AddAddressGroup' exact component={AddAddressGroup} />
        <Route path='/EditContact' exact component={EditContact} />
        <Route path='/Groups' exact component={Groups} />
+       <Route path='/AddressBookGroup' exact component={AddressBookGroup} />
 
     </div>
 
