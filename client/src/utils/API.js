@@ -133,7 +133,33 @@ deleteGroup: function (userInfo) {
   console.log(userInfo)
   console.log("Group Delete")
   return axios.delete('/api/groupName/' + userInfo.id,userInfo)
+},
+
+getGroupAddress: function (userInfo) {
+  console.log(userInfo)
+  return axios.get('/api/addressbookgroup/'+ userInfo.GroupNameId)
+},
+
+// Function to export your address book to a csv file
+exportGroup: function (userInfo) {
+  axios.get('/api/exportgroup/'+ userInfo.GroupNameId)
+    .then(function (response) {
+      console.log(response)
+      function combineData(item) {
+        var addressLine = Object.values(item).join(',')
+        addressLine = '\n \t' + addressLine
+        return addressLine
+      }
+      const groupArray = response.data.map(combineData)
+      FileDownload(groupArray, 'AddressList.csv');
+    });
+},
+
+deleteAddressGroup: function (userInfo) {
+  console.log("Address Delete")
+  return axios.delete('/api/addressbookgroupdelete/' + userInfo.id, userInfo)
 }
+
 
 }
 

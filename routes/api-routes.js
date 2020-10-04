@@ -369,4 +369,43 @@ module.exports = function (app) {
       });
   });
 
+  app.get("/api/addressbookgroup/:id", function (req, res) {
+    if (req.user) {
+      console.log(req.params.id)
+      db.Group.findAll({ where: { GroupNameId: req.params.id } })
+        .then((result) => {
+          // console.log(result);
+          res.json(result);
+        })
+        .catch(err => {
+          res.status(401).json(err);
+        });
+    }
+  });
+  app.get("/api/exportgroup/:id", function (req, res) {
+    if (req.user) {
+      console.log(req.params.id)
+      db.Group.findAll({ where: { GroupNameId: req.params.id }, attributes: ['firstName', 'middleInitial', 'lastName', 'address', 'city', 'state', 'zipCode'] })
+        .then((result) => {
+          res.json(result);
+        })
+        .catch(err => {
+          res.status(401).json(err);
+        });
+    }
+  });
+
+
+  app.delete("/api/addressbookgroupdelete/:id", function (req, res) {
+    console.log("Address Deleted in DB")
+    db.Group.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+
 }

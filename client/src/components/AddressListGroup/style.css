@@ -1,0 +1,21 @@
+/* .AddressB{
+   background-color: black; 
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRwPOGZu7r3pDmp7fFxNVmV-oF-SfsbfWVFVg&usqp=CAU);
+} */
+
+.EditB{
+padding-right: 20px;
+margin: 10px;
+}
+
+.DeleteB{
+padding-left: 20px;
+}
+
+.searchbar{
+    
+}
+
+.nameTitle{
+    color: azure;
+}
