@@ -13,7 +13,6 @@ import "./style.css"
 function AddressList({ addressData }) {
     return (
         <div>
-
             {
                 addressData.map((address) => (
                     <Container>
@@ -42,6 +41,7 @@ function AddressList({ addressData }) {
 
                             </Card.Body>
                         </Card>
+                        <br></br>
                     </Container>
                 ))
             }

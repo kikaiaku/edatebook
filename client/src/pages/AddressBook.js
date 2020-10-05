@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AddressList from '../components/AddressList';
 import API from '../utils/API';
-import { Button, Card, ListGroup, ListGroupItem, Form, FormControl } from 'react-bootstrap';
+import { Button, Container, Card, ListGroup, ListGroupItem, Form, FormControl } from 'react-bootstrap';
 
 
 function AddressBook() {
@@ -53,16 +53,46 @@ function AddressBook() {
 
   return (
     <div>
-      <Button onClick={() => API.exportAddressBook()}>Export Address Book</Button>
+      <Container>
+      <Button className="btn-outline-success" onClick={() => API.exportAddressBook()}>Export Address Book</Button>
       <Form inline>
         <FormControl type="text" placeholder="Search Name" className="mr-sm-2,searchbar" onChange={handleInput} />
-        <Button variant="outline-success" onClick={handleSubmit}>Search</Button>
+        
+        <Button id="search" variant="outline-success" onClick={handleSubmit}>Search</Button>
         <Button variant="outline-success" onClick={getAllAddress}>Clear Filter</Button>
       </Form>
+      </Container>
       <AddressList addressData={matched} />
+      <br></br>
+      <style type="text/css">
+        {`
+        .btn-outline-success{
+          padding-right: 20px;
+          margin-bottom: 10px;
+          margin-top: 10px;
+          margin-right: 10px;
+          background-color: #287ffa;
+          color: white;
+          border-color: #6d6d6d;
+          border-width: 1px;
+        }
+        .btn-outline-success:hover{
+          background-color: #f7f700;
+          color: black;
+          border-color: #b1b1b1;
+          box-shadow: 4px 4px 40px 12px  white;
+        }
+        #search{
+          
+          margin-left: 10px;
+        }
+        `}
+      </style>
+
     </div>
 
   )
 }
 
 export default AddressBook;
+// 

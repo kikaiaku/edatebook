@@ -1,15 +1,23 @@
 .AddressSpace{
     margin-top: 20px;
 }
-.Signup{
+/* .Signup{
     background-image: url(https://www.jehdesigns.com/wp-content/gallery/wallpaper/Clock001.jpg);
-    
-  background-position: center;
+     */
+  /* background-position: center; */
 
-}
+/* } */
 .sizeFix{
-    color:#ff0000;
-    font-size: 40px;
+    color:#4955ffe1;
+    font-size: 25px;
     font-weight: bold;
-    text-shadow: 2px 2px 5px black;
+    text-shadow: 1px 1px 3px #000000b2;
 }
+
+/* .myStyle{
+    background-color: gray;
+}
+
+body{
+    background-color: rgb(194, 255, 255);
+} */

@@ -21,11 +21,13 @@ useEffect(() => {
   }
 
     return(
-        <div>
+      
+        <div id="myDIV">
             <GroupsComp groupData={getGroupList}
             // groupName={groupState.groupName}
             />
         </div>
+        
     )
 }
 

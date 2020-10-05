@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import Signup from './components/Signup';	
-import { BrowserRouter as Router, Route } from 'react-router-dom';	
-import './App.css';	
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import './App.css';
 // import { Navbar, Nav, NavDropdown, Container, Row, Col } from 'react-bootstrap';
 import Header from './components/Header';
 import NavTabs from './components/NavTabs';
@@ -15,29 +15,51 @@ import AddAddressGroup from './pages/AddAddressGroup';
 import EditContact from './pages/EditContact';
 import Groups from './pages/Groups';
 import AddressBookGroup from './pages/AddressBookGroup';
+import SwitchComp from './components/SwitchComp';
+
 
 function App() {
+  const [switchState, setSwitchState] = useState(false)
+  // const [darkState, setDarkState] = useState(false)
+
+  function handleChange() {
+    var element = document.getElementById("myDIV");
+    if (switchState === false) {
+      setSwitchState(true)
+      element.classList.toggle("myStyle");
+      // setDarkState(true)
+    }
+    else {
+      setSwitchState(false)
+      element.classList.toggle("myStyle");
+    }
+  };
+
   return (
     <Router>
-      <div>
+      <div id="myDIV">
         <Header />
-        <NavTabs />
+        <NavTabs
+          onChange={handleChange}
+          checked={switchState}
+         />
+         
         <Route path='/' exact component={Home} />
         <Route path='/signup' exact component={SignUp} />
         <Route path='/Profile' exact component={Profile} />
         <Route path='/Calendar' exact component={BigCalendar} />
         <Route path='/AddressBook' exact component={AddressBook} />
-       <Route path='/AddContact' exact component={AddContact} />
-       <Route path='/AddAddressGroup' exact component={AddAddressGroup} />
-       <Route path='/EditContact' exact component={EditContact} />
-       <Route path='/Groups' exact component={Groups} />
-       <Route path='/AddressBookGroup' exact component={AddressBookGroup} />
+        <Route path='/AddContact' exact component={AddContact} />
+        <Route path='/AddAddressGroup' exact component={AddAddressGroup} />
+        <Route path='/EditContact' exact component={EditContact} />
+        <Route path='/Groups' exact component={Groups} />
+        <Route path='/AddressBookGroup' exact component={AddressBookGroup} />
 
-    </div>
+        </div>
 
     </Router>
 
   )
-}
+};
 
 export default App;

@@ -39,9 +39,9 @@ function Login(props) {
     }
 
     return (
-        <div>
+        <div id="myDIV">
         {redirect? <Redirect to="/AddressBook"/> :null};
-        <div className="divLogin">
+        <div id="myDIV">
             <h1>Welcome to eDatebook</h1>
             <p className="para1">
                 Where we make keeping up with birthdays and addresses easy.

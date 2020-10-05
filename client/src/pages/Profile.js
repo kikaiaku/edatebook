@@ -4,7 +4,7 @@ import Signup from '../components/Signup';
 
 function Profile() {
     return (
-        <div>
+        <div id="myDIV">
             <Signup />
 
         </div>

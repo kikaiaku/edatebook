@@ -169,6 +169,7 @@ function BigCalendar() {
     ///////////
 
     return (
+        <div >
         <div>
             <button className='addEvent' onClick={handleClick} >Add Event</button>
             
@@ -264,6 +265,7 @@ function BigCalendar() {
                 endValue={endTime}
             />
 
+        </div>
         </div>
     )
 }

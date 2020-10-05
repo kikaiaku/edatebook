@@ -1,55 +1,67 @@
+/* Navbar */
 .universal-nav{
     
-    background-color: rgb(143, 143, 194);
+    background-color: #424242;
     padding: 10px ;
 }
-.pro{
-    color: black;
-    padding-right:20px;
 
-}
+/* Nav Links */
 
-.pro:hover{
-    color: white;
+.pacify{
+    padding:20px;
+    padding-left: 20px;
+    color: #daecff !important;
 }
 
 .add{
-    padding-right:20px;
-    color: black;
-    
+    padding:20px;
+    color: #6fb5ff;
 }
 .add:hover{
-    color: white;
+    background-color: #287ffa;
+    box-shadow: 4px 4px 40px 12px  rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
-
-
 
 .cal{
-    padding-right:20px;
-    color: black;
-
-}
-
+    padding:20px; 
+    color: #6fb5ff;
+ }
 .cal:hover{
+    background-color: #287ffa;
+    box-shadow: 4px 4px 40px 12px  white;
+    color: white;
+}
+
+.addncon{
+    padding:20px; 
+    color: #6fb5ff;
+ }
+.addncon:hover{
+    background-color: #287ffa;
+    box-shadow: 4px 4px 40px 12px  rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+}
+
+.addngrp{
+    padding: 20px; 
+    color: #6fb5ff;
+     }
+.addngrp:hover{
+    background-color: #287ffa;
+    box-shadow: 4px 4px 40px 12px  white;
+    color: white;
+}
+
+.groups{
+    padding: 20px; 
+    color: #6fb5ff;
+     }
+
+.groups:hover{
+    background-color: #287ffa;
+    box-shadow: 4px 4px 40px 12px  white;
     color: white;
 }
 
 
-.addn{
-    padding-right:20px;
-    color: black;
-
-}
-
-.add:hover{
-    color: white;
-}
-
-.addnc{
-    padding-right: 20px;
-    color: rgb(0, 255, 242);
-}
-
-.addnc:hover{
-    color: white;
-}
