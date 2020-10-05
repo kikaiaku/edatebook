@@ -3,14 +3,50 @@
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRwPOGZu7r3pDmp7fFxNVmV-oF-SfsbfWVFVg&usqp=CAU);
 } */
 
+/* body{
+    background-color: black;
+} */
+
+/* .myStyle{
+    background-color: black;
+    color: black;
+} */
+
 .EditB{
 padding-right: 20px;
 margin: 10px;
-}
+    background-color: #287ffa;
+    color: white;
+    border-color: #6d6d6d;
+    border-width: 1px;  }
+  .EditB:hover{
+    background-color: #f7f700;
+    color: black;
+    border-color: #b1b1b1;
+    border-width: 0px;
+    box-shadow: 4px 4px 40px 12px  white;
+  }
 
-.DeleteB{
-padding-left: 20px;
-}
+  .DeleteB{
+    padding-right: 20px;
+    margin: 10px;
+    text-align: center;
+        background-color: #287ffa;
+        color: white;
+        border-color: #6d6d6d;
+        border-width: 1px;
+      }
+    
+      .DeleteB:hover{
+        background-color: #f7f700;
+    color: black;
+    border-color: #b1b1b1;
+    border-width: 0px;
+    box-shadow: 4px 4px 40px 12px  white;
+      }
+
+
+
 
 .searchbar{
     
@@ -18,4 +54,10 @@ padding-left: 20px;
 
 .nameTitle{
     color: azure;
+}
+.AddressB{
+    background-color: rgb(196, 196, 196);
+    box-sizing: border-box;
+    border: 1px  blue;
+    box-shadow: 5px 10px 8px #888888;
 }

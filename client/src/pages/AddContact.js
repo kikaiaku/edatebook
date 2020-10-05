@@ -97,7 +97,7 @@ function AddContact() {
   }
 
   return (
-    <div className="newBody" >
+    <div id="myDIV" className="newBody" >
       <NewAddressForm handleInputChange={handleInputChange} handleSubmit={handleSubmit} />
     </div>
   )
