@@ -18,11 +18,8 @@ function AddressList({ addressData }) {
                     <Container>
                         <Card className="AddressB">
                             <Card.Body>
-                                <Card.Title  >{address.firstName}
-                                    {address.middleInitial}
-                                    {address.lastName}</Card.Title>
+                                <Card.Title  >{address.firstName} {address.middleInitial} {address.lastName}</Card.Title>
                                 <ListGroup className="list-group-flush">
-
 
                                     <ListGroupItem>Email: {address.email}</ListGroupItem>
                                     <ListGroupItem>Phone: {address.phone}</ListGroupItem>
