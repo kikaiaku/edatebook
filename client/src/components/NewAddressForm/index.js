@@ -10,14 +10,17 @@ function NewAddressForm(props) {
     return (
         <Container className="newBody">
             <Form>
-                <Form.Row>
+                <Form.Row className="sizeFixNew">
                     <Col>
+                    <Form.Label>First Name</Form.Label>
                         <Form.Control onChange={props.handleInputChange} name="firstName" placeholder="First name" />
                     </Col>
                     <Col>
+                    <Form.Label>M.I.</Form.Label>
                         <Form.Control onChange={props.handleInputChange} name="middleInitial" placeholder="M.I." />
                     </Col>
                     <Col>
+                    <Form.Label>Last Name</Form.Label>
                         <Form.Control onChange={props.handleInputChange} name="lastName" placeholder="Last name" />
                     </Col>
                 </Form.Row>
@@ -121,7 +124,7 @@ function NewAddressForm(props) {
                     <Form.Control onChange={props.handleInputChange} name="comments" />
                 </Form.Group>
 
-                <Button onClick={props.handleSubmit} variant="primary" type="submit">
+                <Button className="addNew" onClick={props.handleSubmit} variant="primary" type="submit">
 
                     <Link className="add" to="AddressBook"> Add New </Link>
 

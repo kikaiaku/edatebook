@@ -15,12 +15,12 @@
 
 .add{
     padding:20px;
-    color: #6fb5ff;
+    color: #6fb5ff !important;
 }
 .add:hover{
     background-color: #287ffa;
     box-shadow: 4px 4px 40px 12px  rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255) !important;
 }
 
 .cal{

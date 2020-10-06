@@ -103,8 +103,10 @@ function EditContact() {
   }
 
   return (
+    <div  id="myDIV">
     <div className="newBody" >
       <EditContactComp handleInputChange={handleInputChange} handleSubmit={handleSubmit} address={address} firstName={firstName} middleInitial={middleInitial} lastName={lastName} email={email} phone={phone} birthday={birthday} city={city} state={state} zipCode={zipCode} comments={comments} />
+    </div>
     </div>
   )
 }

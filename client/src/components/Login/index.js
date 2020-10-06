@@ -39,12 +39,12 @@ function Login(props) {
     }
 
     return (
-        <div id="myDIV">
+        <div>
         {redirect? <Redirect to="/AddressBook"/> :null};
-        <div id="myDIV">
-            <h1>Welcome to eDatebook</h1>
-            <p className="para1">
-                Where we make keeping up with birthdays and addresses easy.
+        <div>
+            <h1 className="welcome">Welcome to eDatebook</h1>
+            <p className="slogan">
+                Social. Organize. Easy.
             </p>
             <Container>
                 <Row>
@@ -54,8 +54,7 @@ function Login(props) {
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label className="para2">Email address</Form.Label>
                                 <Form.Control type="email" name="email" onChange={handleInputChange} placeholder="Enter email" />
-                                <Form.Text className="text-muted textColor">
-                                    We'll never share your email with anyone else.
+                                <Form.Text id='myDIV'className="text-muted textColor">
                             </Form.Text>
                             </Form.Group>
 

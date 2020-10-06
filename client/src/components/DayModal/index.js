@@ -4,11 +4,13 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import TimePicker from 'react-time-picker';
+import './style.css'
 
 
 function DayModal(props) {
 
     return (
+        <div className="dayModal">
         <Modal show={props.showDayModal} backdrop="static" onHide={() => props.setShowDayModal(false)}>
             <Modal.Header closeButton>
                 <Modal.Title>Add Event</Modal.Title>
@@ -58,8 +60,8 @@ function DayModal(props) {
                     variant="primary">Save changes</Button>
             </Modal.Footer>
         </Modal>
+        </div>
     )
-
-}
+};
 
 export default DayModal;

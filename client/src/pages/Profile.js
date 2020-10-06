@@ -1,14 +1,14 @@
-import React from 'react';
-import Signup from '../components/Signup';
+// import React from 'react';
+// import Signup from '../components/Signup';
 
 
-function Profile() {
-    return (
-        <div id="myDIV">
-            <Signup />
+// function Profile() {
+//     return (
+//         <div id="myDIV">
+//             <Signup />
 
-        </div>
-    )
-};
+//         </div>
+//     )
+// };
 
-export default Profile;
+// export default Profile;

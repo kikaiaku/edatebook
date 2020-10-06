@@ -8,7 +8,7 @@ function Home() {
 
     return (
 
-            <div id="myDIV">
+            <div>
             <Login />
             </div>
         

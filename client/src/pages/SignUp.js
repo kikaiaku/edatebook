@@ -80,9 +80,11 @@ function SignUp() {
 
   }
   return (
+    <div  id="myDIV">
     <div className="Signup">
       <Signup handleInputChange={handleInputChange} handleSubmit={handleSubmit} />
 
+    </div>
     </div>
   )
 }

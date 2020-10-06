@@ -1,0 +1,34 @@
+#save{
+
+    background-color: #287ffa;
+    color: white;
+    border-color: #6d6d6d;
+    border-width: 1px;
+}
+#save:hover{
+
+    background-color: #f7f700;
+    color: black;
+    border-color: #b1b1b1;
+    box-shadow: 4px 4px 40px 12px  white;
+    }
+
+
+    /* #save{
+      background-color: #f7f700;
+      color: black;
+      border-color: #b1b1b1;
+      box-shadow: 4px 4px 40px 12px  white;
+    } */
+
+
+
+#col-names{
+    color: white;
+  font-size: larger !important;
+  background-color: rgba(6, 39, 100, 0.719) !important;
+}
+#contact-list{
+    color: whitesmoke;
+    background-color: rgba(28, 71, 151, 0.76) !important;
+}

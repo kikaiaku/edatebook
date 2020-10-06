@@ -52,7 +52,7 @@ function AddressBook() {
 
 
   return (
-    <div>
+    <div id='myDIV'>
       <Container>
       <Button className="btn-outline-success" onClick={() => API.exportAddressBook()}>Export Address Book</Button>
       <Form inline>

@@ -1,9 +1,9 @@
 import React from 'react';
-
 import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Container, Form, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
 import { propTypes } from 'react-bootstrap/esm/Image';
 import { Link } from 'react-router-dom';
+import './style.css';
 
 
 // import API from '../../utils/API';
@@ -24,13 +24,13 @@ function AddressGroupList(props) {
             onChange={props.onChange}
           />
           <InputGroup.Append>
-            <Button variant="outline-secondary"
+            <Button id="save" variant="outline-secondary"
             onClick={props.handleSubmit}
             >Save Group</Button>
           </InputGroup.Append>
         </InputGroup>
       </Container>
-      <Container>
+      <Container id="col-names">
         <Row>
           <Col>Add To Group</Col>
           <Col>Name</Col>
@@ -42,7 +42,7 @@ function AddressGroupList(props) {
         props.addressData.map((address, index) => (
           <Container>
             <Row>
-              <Col>
+              <Col id="contact-list">
                 <InputGroup className="mb-3">
                   <InputGroup.Prepend>
                     <InputGroup.Checkbox
@@ -54,9 +54,9 @@ function AddressGroupList(props) {
                 </InputGroup>
               </Col>
 
-              <Col>{address.firstName} {address.middleInitial} {address.lastName}</Col>
+              <Col id="contact-list">{address.firstName} {address.middleInitial} {address.lastName}</Col>
 
-              <Col>{address.address}, {address.city}, {address.state}, {address.zipCode}</Col>
+              <Col id="contact-list">{address.address}, {address.city}, {address.state}, {address.zipCode}</Col>
             </Row>
           </Container>
         ))}

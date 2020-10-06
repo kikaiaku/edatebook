@@ -3,9 +3,12 @@
     background-position: center;
 } */
 .sizeFixNew{
-   
-    color:#ff0000;
-    font-size: 40px;
+    color:#ff5252;
+    font-size: 25px;
     font-weight: bold;
-    text-shadow: 2px 2px 5px black; 
+    text-shadow: 1px 1px 3px black; 
+}
+
+.add{
+    color: white;
 }

@@ -4,11 +4,110 @@
 }
 
 body{
-  background-color: lightgrey;
+  background-image:url('./assets/white-tech.jpg');
+  width: 100%;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+/* .rbc-events-container  */
+.rbc-day-slot{
+  background-color: rgba(128, 128, 128, 0.582);
+}
+.rbc-events-container{
+  color: white;
+  background-color: rgba(180, 180, 180, 0.411);
+}
+.rbc-label{
+  color: white;
+  background-color: rgba(180, 180, 180, 0.411);
+} 
+
+/* Calendar */
+.rbc-date-cell{
+  background-color: rgba(178, 181, 189, 0.555) !important;
+  font-size: larger;
+  color: whitesmoke;
+}
+.rbc-toolbar button{
+  color: whitesmoke !important;
+  background-color: black;
+}
+.rbc-toolbar{
+  color: white;
+  background-color: rgba(128, 128, 128, 0.363);
+}
+.rbc-toolbar-label{
+  color: whitesmoke;
+  font-size: 40px;
+  
+}
+.rbc-agenda-table{
+  color: whitesmoke;
+  background-color: rgba(72, 96, 141, 0.76) !important;
+}
+.rbc-header{
+  color: white;
+  font-size: 16px !important;
+  background-color: rgba(111, 155, 236, 0.726) !important;
 }
 
-.myStyle{
-  background-color: gray;
+
+
+/* Calendar Backgrounds */
+.milFalc{
+  background-image:url('./assets/mil_fal_cal.jpg');
+  width: 100%;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+.iron-man{
+  background-image:url('./assets/iron_man1.jpg');
+  width: 100%;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+.wonder-woman{
+  background-image:url('./assets/wonder_woman.jpg');
+  width: 100%;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+.flowers{
+  background-image:url('./assets/flowers_peach.jpg');
+  width: 100%;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+.sunset{
+  background-image:url('./assets/sunset.jpg');
+  width: 100%;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+.tech-wave{
+  background-image:url('./assets/tech_wave.jpg');
+  width: 100%;
+  background-size: auto;
+  background-repeat: no-repeat;
+  
+}
+.blue-tech{
+  background-image:url('./assets/blue_tech.jpg');
+  width: 100%;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+.rbc-day-bg:hover{
+  background-color:rgb(80, 197, 206);
+  opacity: 12;
+}
+
+.iron-man{
+  background-image:url('./assets/iron-man.jpg');
+  width: 100%;
+  background-size: auto;
+  background-repeat: no-repeat;
 }
 
 
