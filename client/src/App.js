@@ -24,14 +24,16 @@ function App() {
 
   function handleChange() {
     var element = document.getElementById("myDIV");
+    // var textElement = document.getElementsByClassName("rbc-calendar");
     if (switchState === false) {
       setSwitchState(true)
       element.classList.toggle("myStyle");
-      // setDarkState(true)
+      // textElement.id.toggle("whiteTEXT");
     }
     else {
       setSwitchState(false)
       element.classList.toggle("myStyle");
+      // textElement.id.toggle("blackTEXT");
     }
   };
 

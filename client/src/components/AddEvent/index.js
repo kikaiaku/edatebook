@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import TimePicker from 'react-time-picker';
 // import 'react-calendar/dist/Calendar.css';
-// import './style.css';
+import './style.css';
 // import moment from 'moment';
 
 function AddEvent(props) {

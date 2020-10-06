@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import API from "../utils/API";
 import DayModal from "../components/DayModal";
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 const localizer = momentLocalizer(moment);
 
@@ -16,6 +17,8 @@ function BigCalendar() {
     //DatePicker
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
+
+    const [calClassState, setCalClassState] = useState("");
 
     //TimePicker
     const [startTime, setStartTime] = useState();
@@ -51,6 +54,8 @@ function BigCalendar() {
 
     //Gets all events
     useEffect(() => {
+        const bkg = localStorage.getItem("calendarClass") || "";
+        setCalClassState(bkg);
         API.getEvent()
             .then(({ data }) => {
                 renderEvents(data);
@@ -98,6 +103,7 @@ function BigCalendar() {
     async function handleSubmit(e) {
         e.preventDefault();
         console.log("handle submit clicked")
+        setShowEventModal(false)
         const res = await API.addEvent({
             title: titleState,
             startDate: startDate,
@@ -110,6 +116,7 @@ function BigCalendar() {
         console.log('now close modal and get events', res)
         setShowEventModal(false)
         getEvents(data => renderEvents(data))
+        
     };
     //Edit Event function
     async function handleSubmitEdit(e) {
@@ -123,7 +130,7 @@ function BigCalendar() {
             endTime: endTime,
             notes: noteState,
             userId: userId,
-            id: sessionStorage.getItem("eventId")  
+            id: sessionStorage.getItem("eventId")
         })
         console.log('now close modal and get events', res)
         setShowEventModal(false)
@@ -153,7 +160,7 @@ function BigCalendar() {
     };
 
     function onSelectEvent(e) {
-        sessionStorage.setItem("eventId",e.id)
+        sessionStorage.setItem("eventId", e.id)
         console.log(e)
         setEvent(e)
         setEventModalState(true)
@@ -168,14 +175,57 @@ function BigCalendar() {
     };
     ///////////
 
+    function renderBkgd(e){
+        const bkg = e.target.getAttribute("data-cls");
+        localStorage.setItem("calendarClass", bkg)
+        setCalClassState(bkg)
+    }
+
     return (
-        <div >
-        <div>
-            <button className='addEvent' onClick={handleClick} >Add Event</button>
-            
-            <DayModal
-            dayStartDate={moment(dayStartDate).format('MM/DD/YYYY')}
-            dayEndDate={moment(dayEndDate).format('MM/DD/YYYY')}
+        <div id='myDIV'>
+            <div className={calClassState} >
+                <button className='addEvent' onClick={handleClick} >Add Event</button>
+                <DropdownButton id="dropdown-basic-button" title="Choose Style">
+
+                    <Dropdown.Item
+                        as="button"
+                        onClick={renderBkgd} id="myDIV"
+                    >None</Dropdown.Item>
+                    <Dropdown.Item
+                        as="button"
+                        onClick={renderBkgd} data-cls="milFalc"
+                    >Millenium Falcon</Dropdown.Item>
+                    <Dropdown.Item
+                        as="button"
+                        onClick={renderBkgd} data-cls="iron-man"
+                    >Iron Man</Dropdown.Item>
+                    <Dropdown.Item
+                        as="button"
+                        onClick={renderBkgd} data-cls="wonder-woman"
+                    >Wonder Woman</Dropdown.Item>
+                    <Dropdown.Item
+                        as="button"
+                        onClick={renderBkgd} data-cls="flowers"
+                    >Peach Flowers</Dropdown.Item>
+                    <Dropdown.Item
+                        as="button"
+                        onClick={renderBkgd} data-cls="sunset"
+                    >Sunset</Dropdown.Item>
+                    <Dropdown.Item
+                        as="button"
+                        onClick={renderBkgd} data-cls="tech-wave"
+                    >Tech Wave</Dropdown.Item>
+                    <Dropdown.Item
+                        as="button"
+                        onClick={renderBkgd} data-cls="blue-tech"
+                    >Blue Tech</Dropdown.Item>
+                    
+
+                </DropdownButton>  
+
+                <DayModal
+                    dayStartDate={moment(dayStartDate).format('MM/DD/YYYY')}
+                    dayEndDate={moment(dayEndDate).format('MM/DD/YYYY')}
                     //DatePicker
                     handleStartChange={handleStartChange}
                     handleEndChange={handleEndChange}
@@ -196,76 +246,75 @@ function BigCalendar() {
                     //Form submit to add event
                     handleSubmit={handleSubmit}
                 />
-            
-            <AddEvent
-                //DatePicker
-                handleStartChange={handleStartChange}
-                startDate={startDate}
-                handleEndChange={handleEndChange}
-                endDate={endDate}
-                showEventModal={showEventModal}
-                setShowEventModal={setShowEventModal}
-                //TimePicker
-                start={handleStartTime}
-                startValue={startTime}
-                end={handleEndTime}
-                endValue={endTime}
 
-                //Title-Notes input handling
-                handleInputChange={handleInputChange}
+                <AddEvent
+                    //DatePicker
+                    handleStartChange={handleStartChange}
+                    startDate={startDate}
+                    handleEndChange={handleEndChange}
+                    endDate={endDate}
+                    showEventModal={showEventModal}
+                    setShowEventModal={setShowEventModal}
+                    //TimePicker
+                    start={handleStartTime}
+                    startValue={startTime}
+                    end={handleEndTime}
+                    endValue={endTime}
 
-                //Form submit to add event
-                handleSubmit={handleSubmit}
-            />
+                    //Title-Notes input handling
+                    handleInputChange={handleInputChange}
 
-            <Calendar
-                selectable={true}
-                onSelectEvent={onSelectEvent}
-                onSelectSlot={onSelectSlot}
-                // (slotInfo) => console.log(slotInfo)}
-                localizer={localizer}
-                defaultDate={new Date()}
-                defaultView="month"
-                events={eventState}
-                style={{ height: "100vh" }}
+                    //Form submit to add event
+                    handleSubmit={handleSubmit}
+                />
 
-                startAccessor="start"
-                endAccessor="end"
-            />
-            <EventModal
-                id={event.id}
-                eventModalState={eventModalState}
-                setEventModalState={setEventModalState}
-                handleInputChange={handleInputChange}
-                handleStartChange={handleStartChange}
-                handleEndChange={handleEndChange}
-                handleSubmitEdit={handleSubmitEdit}
+                <Calendar
+                    selectable={true}
+                    onSelectEvent={onSelectEvent}
+                    onSelectSlot={onSelectSlot}
+                    // (slotInfo) => console.log(slotInfo)}
+                    localizer={localizer}
+                    defaultDate={new Date()}
+                    defaultView="month"
+                    events={eventState}
+                    style={{ height: "100vh" }}
+                    startAccessor="start"
+                    endAccessor="end"
+                />
+                <EventModal
+                    id={event.id}
+                    eventModalState={eventModalState}
+                    setEventModalState={setEventModalState}
+                    handleInputChange={handleInputChange}
+                    handleStartChange={handleStartChange}
+                    handleEndChange={handleEndChange}
+                    handleSubmitEdit={handleSubmitEdit}
 
-                //Saved Event
-                savedTitle={event.title}
-                savedStartDate={moment(event.startDate).format('MM/DD/YYYY')}
-                savedEndDate={moment(event.endDate).format('MM/DD/YYYY')}
-                savedStartTime={event.startTime}
-                savedEndTime={event.endTime}
-                savedNotes={event.notes}
-                savedStart={event.start}
-                savedEnd={event.end}
+                    //Saved Event
+                    savedTitle={event.title}
+                    savedStartDate={moment(event.startDate).format('MM/DD/YYYY')}
+                    savedEndDate={moment(event.endDate).format('MM/DD/YYYY')}
+                    savedStartTime={event.startTime}
+                    savedEndTime={event.endTime}
+                    savedNotes={event.notes}
+                    savedStart={event.start}
+                    savedEnd={event.end}
 
-                //Edit Event
-                //DatePicker
-                handleStartChange={handleStartChange}
-                startDate={startDate}
-                handleEndChange={handleEndChange}
-                endDate={endDate}
+                    //Edit Event
+                    //DatePicker
+                    handleStartChange={handleStartChange}
+                    startDate={startDate}
+                    handleEndChange={handleEndChange}
+                    endDate={endDate}
 
-                //TimePicker
-                start={handleStartTime}
-                startValue={startTime}
-                end={handleEndTime}
-                endValue={endTime}
-            />
+                    //TimePicker
+                    start={handleStartTime}
+                    startValue={startTime}
+                    end={handleEndTime}
+                    endValue={endTime}
+                />
 
-        </div>
+            </div>
         </div>
     )
 }

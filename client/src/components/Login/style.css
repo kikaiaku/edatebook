@@ -1,10 +1,22 @@
-/* .divLogin{
+/* #myDIV{
     background-image: url(https://i.imgur.com/PJThkOt.jpg);
-    background-position-y: -550px;
-    background-position-x: -230px; 
+    width: 100%;
     background-size: auto;
     background-repeat: no-repeat;
 }  */
+
+.myStyle{
+    background-image:url('../../assets/dark-techno.jpg');
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+.home{
+    color: blue;
+}
 
 .space{
     padding-top: 50px;
@@ -13,24 +25,39 @@
     Margin-right: 20px;
     Margin-top: 30px;
 }
-.textColor{
-    color: linear-gradent 
+/* .textColor{
+    color: white; 
+} */
+
+.welcome{
+    text-align: center;
+    color:#216dd6;
+    box-shadow: 0px 0px 20px 1px  rgb(255, 255, 255);
+    text-shadow:1px 1px 2px black;
 }
-h1{
+.slogan{
+    text-align: center;
+    color: #287ffa;
+    font-size: 27px;
+    text-shadow:1px 1px 2px black;
+    /* box-shadow: 0px 0px 20px 0px  rgb(255, 255, 255); */
+    
+}
+/* h1{
     text-align: center;
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
-}
-.para1{
+} */
+/* .para1{
     text-align: center;
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
-    font-size: 30px;
-}
+    font-size: 30px; */
+/* } */
 .para2{
-    color: black;
+    color: rgb(102, 102, 102);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
     font-size: 30px;

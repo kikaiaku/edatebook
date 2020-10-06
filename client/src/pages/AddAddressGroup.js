@@ -80,7 +80,7 @@ function handleSubmit(e) {
 };
 
   return (
-    <div>
+    <div id='myDIV'>
       <AddressGroupList
         addressData={addressState}
         checkedState={handleCheck}
