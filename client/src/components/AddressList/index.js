@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {
     Button, Card, ListGroup, ListGroupItem, Form, FormControl, Container
 } from 'react-bootstrap';
-
+import moment from 'moment';
 
 import API from '../../utils/API';
 import "./style.css"
@@ -21,12 +21,10 @@ function AddressList({ addressData }) {
                                 <Card.Title  >{address.firstName}
                                     {address.middleInitial}
                                     {address.lastName}</Card.Title>
-                                <ListGroup className="list-group-flush">
-
-
+                                    <ListGroup className="list-group-flush">
                                     <ListGroupItem>Email: {address.email}</ListGroupItem>
                                     <ListGroupItem>Phone: {address.phone}</ListGroupItem>
-                                    <ListGroupItem>Birthday: {address.birthday}</ListGroupItem>
+                                    <ListGroupItem>Birthday: {moment(address.birthday).format('MM/DD/YYYY')}</ListGroupItem>
                                     <ListGroupItem></ListGroupItem>
                                     <ListGroupItem>Street: {address.address}, {address.city}, {address.state}, {address.zipCode}</ListGroupItem>
                                     <ListGroupItem>{address.comments}</ListGroupItem>

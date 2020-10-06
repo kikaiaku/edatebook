@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AddressGroupList from '../components/AddressGroupList';
 import API from '../utils/API';
+import {Redirect} from 'react-router-dom';
 import { Container, Row, Col, InputGroup, FormControl, Button } from 'react-bootstrap';
 
 function AddAddressGroup() {
@@ -9,7 +10,7 @@ function AddAddressGroup() {
   const [groupList, setGroupList] = useState([])
   const [groupName, setGroupName] = useState()
   const userId = sessionStorage.getItem("id")
-  
+  const [redirectState, setRedirectState] = useState(false)
 
   useEffect(() => {
     getAllAddress();
@@ -74,6 +75,7 @@ function handleSubmit(e) {
       const updateGroup = groupList.map(o => Object.assign({}, o, {GroupNameId: groupIdValue}))
       console.log(updateGroup)
       API.addGroup(updateGroup)
+      setRedirectState(true)
   })
 
     .catch(err => console.log(err));
@@ -81,6 +83,7 @@ function handleSubmit(e) {
 
   return (
     <div id='myDIV'>
+       {redirectState? <Redirect to="/Groups"/> :null};
       <AddressGroupList
         addressData={addressState}
         checkedState={handleCheck}
