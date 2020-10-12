@@ -66,8 +66,13 @@ function handleSubmit(e) {
     groupName: groupName,
     userId: userId
   })
-
+// .then(({ getGroupCount})=>{
+  createGroup()
+// })
+}
+function createGroup(){
   API.getGroupCount() 
+  
   .then(({ data }) => {
     var groupIdValue = data[0].id 
     console.log("groupid: "+groupIdValue)
