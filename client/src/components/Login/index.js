@@ -40,7 +40,7 @@ function Login(props) {
 
     return (
         <div>
-        {redirect? <Redirect to="/AddressBook"/> :null};
+        {redirect? <Redirect to="/Calendar"/> :null};
         <div>
             <h1 className="welcome">Welcome to eDatebook</h1>
             <p className="slogan">

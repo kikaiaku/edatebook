@@ -24,9 +24,13 @@ function AddressGroupList(props) {
             onChange={props.onChange}
           />
           <InputGroup.Append>
-            <Button id="save" variant="outline-secondary"
-            onClick={props.handleSubmit}
-            >Save Group</Button>
+
+            <Link to="/Groups">
+              <Button id="save" variant="outline-secondary"
+                onClick={props.handleSubmit}
+              >Save Group</Button>
+            </Link>
+
           </InputGroup.Append>
         </InputGroup>
       </Container>
