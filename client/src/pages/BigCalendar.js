@@ -8,6 +8,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import API from "../utils/API";
 import DayModal from "../components/DayModal";
 import { Dropdown, DropdownButton } from 'react-bootstrap';
+import Draggable from 'react-draggable';
 
 const localizer = momentLocalizer(moment);
 
@@ -222,10 +223,11 @@ function BigCalendar() {
                     
 
                 </DropdownButton>  
-
+            
                 <DayModal
                     dayStartDate={moment(dayStartDate).format('MM/DD/YYYY')}
                     dayEndDate={moment(dayEndDate).format('MM/DD/YYYY')}
+                    draggable={true}
                     //DatePicker
                     handleStartChange={handleStartChange}
                     handleEndChange={handleEndChange}
@@ -246,7 +248,8 @@ function BigCalendar() {
                     //Form submit to add event
                     handleSubmit={handleSubmit}
                 />
-
+                
+               
                 <AddEvent
                     //DatePicker
                     handleStartChange={handleStartChange}
