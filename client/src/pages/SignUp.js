@@ -4,6 +4,8 @@ import Signup from '../components/Signup';
 // import NavTabs from '../components/NavTabs';
 import API from '../utils/API';
 // import { use } from 'passport';
+import { Link, Redirect } from 'react-router-dom';
+
 
 function SignUp() {
 
@@ -18,6 +20,7 @@ function SignUp() {
   const [zipCode, setZipCode] = useState()
   const [birthday, setBirthday] = useState()
   const [phone, setPhone] = useState()
+  const [redirect, setRedirect ] = useState(false)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -36,7 +39,8 @@ function SignUp() {
       birthday: birthday,
       phone: phone
     })
-      .catch(err => console.log(err));
+    setRedirect(true)
+    // .catch(err => console.log(err));
 
   };
   function handleInputChange(e) {
@@ -80,7 +84,10 @@ function SignUp() {
 
   }
   return (
+    
     <div  id="myDIV">
+              {redirect? <Redirect to="/"/> :null};
+
     <div className="Signup">
       <Signup handleInputChange={handleInputChange} handleSubmit={handleSubmit} />
 

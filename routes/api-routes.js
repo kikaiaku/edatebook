@@ -44,6 +44,8 @@ module.exports = function (app) {
       birthday: req.body.birthday,
       phone: req.body.phone
     })
+      // res.redirect("/");
+
       .catch(err => {
         res.status(401).json(err);
       });

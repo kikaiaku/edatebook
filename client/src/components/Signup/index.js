@@ -109,7 +109,8 @@ function Signup(props) {
                         <Form.Control onChange={props.handleInputChange} name="birthday" type="birthday" placeholder="1/1/1900" />
                     </Form.Group>
                 </Row>
-                <Button onClick={props.handleSubmit}>Submit</Button>
+                
+                <Button  onClick={props.handleSubmit}>Submit</Button>
 
             </Form>
         </Container>

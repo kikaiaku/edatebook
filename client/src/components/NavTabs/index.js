@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import './style.css';
 import Switch from "react-switch";
 
@@ -19,6 +19,8 @@ function NavTabs(props) {
           <Link className="addncon" to="AddContact">Add New Contact</Link>
           <Link className="addngrp" to="AddAddressGroup">Add New Group</Link>
           <Link className="groups" to="Groups">Groups</Link>
+          <Link className="groups" to="" refresh="true">Logout</Link>
+
         </Nav>
       </Navbar.Collapse>
       <Switch 
