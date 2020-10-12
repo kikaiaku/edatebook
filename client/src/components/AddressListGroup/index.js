@@ -19,11 +19,8 @@ function AddressList({ addressData }) {
                     <Container>
                         <Card className="AddressB">
                             <Card.Body>
-                                <Card.Title  >{address.firstName}
-                                    {address.middleInitial}
-                                    {address.lastName}</Card.Title>
+                                <Card.Title  >{address.firstName} {address.middleInitial} {address.lastName}</Card.Title>
                                 <ListGroup className="list-group-flush">
-
 
                                     <ListGroupItem>Email: {address.email}</ListGroupItem>
                                     <ListGroupItem>Phone: {address.phone}</ListGroupItem>
@@ -33,10 +30,6 @@ function AddressList({ addressData }) {
                                     <ListGroupItem>{address.comments}</ListGroupItem>
 
                                 </ListGroup>
-
-                                {/* <Link to="/EditContact">
-                                    <Button className="EditB" value={address.id} onClick={() => sessionStorage.setItem("addressId", address.id)} variant="primary" type="submit">Edit</Button>
-                                </Link> */}
 
                                 <Button className="DeleteB" value={address.id} onClick={() => API.deleteAddressGroup({ id: address.id })} variant="primary" type="submit">Delete</Button>
 
