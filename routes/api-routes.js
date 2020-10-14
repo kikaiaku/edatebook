@@ -147,7 +147,7 @@ module.exports = function (app) {
   app.get("/api/addressbook", function (req, res) {
     if (req.user) {
       console.log("Add address 2")
-      db.Address.findAll({ where: { userId: req.user.id } })
+      db.Address.findAll({ where: { userId: req.user.id } ,order: [['lastName', 'ASC']]})
         .then((result) => {
           // console.log(result);
           res.json(result);
@@ -221,7 +221,7 @@ module.exports = function (app) {
 
   app.get("/api/addressbook3", function (req, res) {
     if (req.user) {
-      db.Address.findAll({ where: { userId: req.user.id }, attributes: ['firstName', 'middleInitial', 'lastName', 'address', 'city', 'state', 'zipCode'] })
+      db.Address.findAll({ where: { userId: req.user.id }, attributes: ['firstName', 'middleInitial', 'lastName', 'address', 'city', 'state', 'zipCode'] , order: [['lastName', 'ASC']] })
         .then((result) => {
           res.json(result);
         })
@@ -234,7 +234,7 @@ module.exports = function (app) {
   app.get("/api/createGroup", function (req, res) {
     if (req.user) {
 
-      db.Address.findAll({ where: { userId: req.user.id } })
+      db.Address.findAll({ where: { userId: req.user.id } ,order: [['lastName', 'ASC']]})
         .then((result) => {
           // console.log(result);
           res.json(result);
@@ -314,7 +314,7 @@ module.exports = function (app) {
   app.get("/api/getContacts", function (req, res) {
     if (req.user) {
       console.log("Add address 2")
-      db.Address.findAll({ where: { userId: req.user.id },attributes: ['firstName','lastName', 'middleInitial','address','city','state','zipCode','phone','email','birthday','comments','userId'] })
+      db.Address.findAll({ where: { userId: req.user.id },attributes: ['firstName','lastName', 'middleInitial','address','city','state','zipCode','phone','email','birthday','comments','userId'],order: [['lastName', 'ASC']] })
         .then((result) => {
           // console.log(result);
           res.json(result);
@@ -346,7 +346,7 @@ module.exports = function (app) {
   app.get("/api/getGroup", function (req, res) {
     if (req.user) {
 
-      db.GroupName.findAll({ where: { userId: req.user.id } })
+      db.GroupName.findAll({ where: { userId: req.user.id },order: [['groupName', 'ASC']] })
         .then((result) => {
           // console.log(result);
           res.json(result);
@@ -360,6 +360,12 @@ module.exports = function (app) {
   app.delete("/api/groupName/:id", function (req, res) {
     console.log("group Deleted in DB")
     console.log(req.params.id)
+
+    db.Group.destroy({
+      where: {
+        GroupNameId: req.params.id
+      }
+    })
 
     db.GroupName.destroy({
       where: {
@@ -387,7 +393,7 @@ module.exports = function (app) {
   app.get("/api/exportgroup/:id", function (req, res) {
     if (req.user) {
       console.log(req.params.id)
-      db.Group.findAll({ where: { GroupNameId: req.params.id }, attributes: ['firstName', 'middleInitial', 'lastName', 'address', 'city', 'state', 'zipCode'] })
+      db.Group.findAll({ where: { GroupNameId: req.params.id }, attributes: ['firstName', 'middleInitial', 'lastName', 'address', 'city', 'state', 'zipCode'], order: [['lastName', 'ASC']] })
         .then((result) => {
           res.json(result);
         })

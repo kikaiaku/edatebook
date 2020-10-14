@@ -74,7 +74,7 @@ function createGroup(){
   API.getGroupCount() 
   
   .then(({ data }) => {
-    var groupIdValue = data[0].id 
+    var groupIdValue = data[0].id +1-1
     console.log("groupid: "+groupIdValue)
   
       const updateGroup = groupList.map(o => Object.assign({}, o, {GroupNameId: groupIdValue}))
