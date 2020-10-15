@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import AddEvent from "../components/AddEvent";
-import EventModal from "../components/EventModal";
+import EditModal from "../components/EditModal";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import API from "../utils/API";
 import DayModal from "../components/DayModal";
-import { Dropdown, DropdownButton } from 'react-bootstrap';
+import { Dropdown, DropdownButton, ModalDialog } from 'react-bootstrap';
 import Draggable from 'react-draggable';
 
 const localizer = momentLocalizer(moment);
@@ -25,7 +25,7 @@ function BigCalendar() {
     const [startTime, setStartTime] = useState();
     const [endTime, setEndTime] = useState();
 
-    //Modal add event form
+    //Modal add event form (add event button) 
     const [titleState, setTitleState] = useState();
     const [noteState, setNoteState] = useState();
     const [showEventModal, setShowEventModal] = useState(false);
@@ -39,8 +39,8 @@ function BigCalendar() {
     //Event State for add event
     const [eventState, setEventState] = useState([]);
 
-    //EventModal
-    const [eventModalState, setEventModalState] = useState(false)
+    //EditModal
+    const [showEditModalState, setShowEditModalState] = useState(false)
     const [event, setEvent] = useState({
         id: "",
         title: "",
@@ -100,11 +100,21 @@ function BigCalendar() {
         console.log(dt)
         setEndDate(dt);
     };
+
+    function handleDayModalClose(){
+        setShowDayModal(false)
+    }
+    function handleEventModalClose(){
+        setShowEventModal(false)
+    }
+    function handleEditModalClose(){
+        setShowEditModalState(false)
+    }
     //Submit Add Event function
     async function handleSubmit(e) {
         e.preventDefault();
         console.log("handle submit clicked")
-        setShowEventModal(false)
+        // setShowEventModal(false)
         const res = await API.addEvent({
             title: titleState,
             startDate: startDate,
@@ -114,11 +124,13 @@ function BigCalendar() {
             notes: noteState,
             userId: userId
         })
-        console.log('now close modal and get events', res)
-        setShowEventModal(false)
         getEvents(data => renderEvents(data))
-        
+        console.log('now close modal and get events', res)
+        handleDayModalClose();
+        handleEventModalClose();
+        handleEditModalClose();
     };
+    
     //Edit Event function
     async function handleSubmitEdit(e) {
         e.preventDefault();
@@ -134,9 +146,26 @@ function BigCalendar() {
             id: sessionStorage.getItem("eventId")
         })
         console.log('now close modal and get events', res)
-        setShowEventModal(false)
-        getEvents(data => renderEvents(data))
+        getEvents(data => renderEvents(data));
     };
+    //Delete Event function
+     function handleDelete(e){
+        e.preventDefault();
+        console.log("handle delete clicked")
+        const res = API.deleteEvent({
+            title: titleState,
+            startDate: startDate,
+            endDate: endDate,
+            startTime: startTime,
+            endTime: endTime,
+            notes: noteState,
+            userId: userId,
+            id: sessionStorage.getItem("eventId")
+        })
+        getEvents(data => renderEvents(data));
+        console.log('now close modal and get events', res)
+    };
+
     //Title input change function
     function handleInputChange(e) {
         let name = e.target.name
@@ -164,7 +193,7 @@ function BigCalendar() {
         sessionStorage.setItem("eventId", e.id)
         console.log(e)
         setEvent(e)
-        setEventModalState(true)
+        setShowEditModalState(true)
     };
 
     //Day slot add event handler
@@ -176,7 +205,7 @@ function BigCalendar() {
     };
     ///////////
 
-    function renderBkgd(e){
+    function renderBkgd(e) {
         const bkg = e.target.getAttribute("data-cls");
         localStorage.setItem("calendarClass", bkg)
         setCalClassState(bkg)
@@ -220,11 +249,26 @@ function BigCalendar() {
                         as="button"
                         onClick={renderBkgd} data-cls="blue-tech"
                     >Blue Tech</Dropdown.Item>
-                    
 
-                </DropdownButton>  
+
+                </DropdownButton>
+
+                <Calendar
+                    selectable={true}
+                    onSelectEvent={onSelectEvent}
+                    onSelectSlot={onSelectSlot}
+                    // (slotInfo) => console.log(slotInfo)}
+                    localizer={localizer}
+                    defaultDate={new Date()}
+                    defaultView="month"
+                    events={eventState}
+                    style={{ height: "100vh" }}
+                    startAccessor="start"
+                    endAccessor="end"
+                />
             
                 <DayModal
+                    // handle='.modal-header'
                     dayStartDate={moment(dayStartDate).format('MM/DD/YYYY')}
                     dayEndDate={moment(dayEndDate).format('MM/DD/YYYY')}
                     draggable={true}
@@ -247,9 +291,9 @@ function BigCalendar() {
 
                     //Form submit to add event
                     handleSubmit={handleSubmit}
+                    onHide={handleDayModalClose}
                 />
-                
-               
+
                 <AddEvent
                     //DatePicker
                     handleStartChange={handleStartChange}
@@ -269,29 +313,21 @@ function BigCalendar() {
 
                     //Form submit to add event
                     handleSubmit={handleSubmit}
+                    onHide={handleEventModalClose}
                 />
 
-                <Calendar
-                    selectable={true}
-                    onSelectEvent={onSelectEvent}
-                    onSelectSlot={onSelectSlot}
-                    // (slotInfo) => console.log(slotInfo)}
-                    localizer={localizer}
-                    defaultDate={new Date()}
-                    defaultView="month"
-                    events={eventState}
-                    style={{ height: "100vh" }}
-                    startAccessor="start"
-                    endAccessor="end"
-                />
-                <EventModal
+                <EditModal
                     id={event.id}
-                    eventModalState={eventModalState}
-                    setEventModalState={setEventModalState}
+                    onHide={handleEditModalClose}
+                    showEditModalState={showEditModalState}
+                    setShowEditModalState={setShowEditModalState}
                     handleInputChange={handleInputChange}
                     handleStartChange={handleStartChange}
                     handleEndChange={handleEndChange}
                     handleSubmitEdit={handleSubmitEdit}
+
+                    //Delete Event
+                    handleDelete={handleDelete}
 
                     //Saved Event
                     savedTitle={event.title}
@@ -316,9 +352,9 @@ function BigCalendar() {
                     end={handleEndTime}
                     endValue={endTime}
                 />
-
             </div>
         </div>
+
     )
 }
 

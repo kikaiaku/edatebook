@@ -1,12 +1,11 @@
-[]On click save changes to add event, {handleClose}
+[*]On click save changes to add event- close modal
 
-[]Try to fix light/dark mode on ANG/Groups pages [don't push it dude]
+//Delete
+[]Delete renders via state
+[]Delete on click close modal
 
-[]Fix calendar style sizing and replace low res styles with new ones
+//Edit
+[*]Edit event renders via state (have to click save 2x)
+[]Edit submit close modal
 
-[]
-
-
-//sunset
-//hawaiian flower
-//wonder woman
+[]Try to fix light/dark mode bkgd covers 100% of page
