@@ -9,10 +9,10 @@ import API from '../../utils/API';
 // import './style.css';
 // import moment from 'moment';
 
-function BigCalendarComp(props) {
+function EditModal(props) {
 
     return (
-        <Modal show={props.eventModalState} backdrop="static" onHide={() => props.setEventModalState(false)}>
+        <Modal show={props.showEditModalState} backdrop="static" onHide={() => props.setShowEditModalState(false)}>
             <Modal.Header closeButton>
                 <Modal.Title>{props.savedTitle}</Modal.Title>
             </Modal.Header>
@@ -61,8 +61,8 @@ function BigCalendarComp(props) {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="primary" onClick={() => API.deleteEvent({id: props.id})}>Delete</Button>
-                <Button variant="secondary" onClick={() => props.setEventModalState(false)}>Close</Button>
+                <Button variant="primary" onClick={props.handleDelete}>Delete</Button>
+                <Button variant="secondary" onClick={() => props.setShowEditModalState(false)}>Close</Button>
                 <Button
                     onClick={props.handleSubmitEdit}
                     variant="primary">Save changes</Button>
@@ -74,4 +74,4 @@ function BigCalendarComp(props) {
 
 // () => API.deleteAddress({id: props.endValue}
 
-export default BigCalendarComp;
+export default EditModal;

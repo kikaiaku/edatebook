@@ -6,7 +6,7 @@ import './App.css';
 import Header from './components/Header';
 import NavTabs from './components/NavTabs';
 import Home from './pages/Home';
-import Profile from './pages/Profile';
+// import Profile from './pages/Profile';
 import AddressBook from './pages/AddressBook';
 import SignUp from './pages/SignUp';
 import BigCalendar from './pages/BigCalendar';
@@ -48,7 +48,7 @@ function App() {
          
         <Route path='/' exact component={Home} />
         <Route path='/signup' exact component={SignUp} />
-        <Route path='/Profile' exact component={Profile} />
+        {/* <Route path='/Profile' exact component={Profile} /> */}
         <Route path='/Calendar' exact component={BigCalendar} />
         <Route path='/AddressBook' exact component={AddressBook} />
         <Route path='/AddContact' exact component={AddContact} />
