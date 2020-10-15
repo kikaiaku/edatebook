@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import API from "../utils/API";
 import DayModal from "../components/DayModal";
-import { Dropdown, DropdownButton } from 'react-bootstrap';
+import { Dropdown, DropdownButton, ModalDialog } from 'react-bootstrap';
 import Draggable from 'react-draggable';
 
 const localizer = momentLocalizer(moment);
@@ -117,7 +117,7 @@ function BigCalendar() {
         console.log('now close modal and get events', res)
         setShowEventModal(false)
         getEvents(data => renderEvents(data))
-        
+
     };
     //Edit Event function
     async function handleSubmitEdit(e) {
@@ -176,11 +176,18 @@ function BigCalendar() {
     };
     ///////////
 
-    function renderBkgd(e){
+    function renderBkgd(e) {
         const bkg = e.target.getAttribute("data-cls");
         localStorage.setItem("calendarClass", bkg)
         setCalClassState(bkg)
     }
+
+    //Draggable Modal
+    // function DraggableModal(){
+    //     return(
+    //         <Draggable handle='.modal-header'/>
+    //     )
+    // }
 
     return (
         <div id='myDIV'>
@@ -220,11 +227,29 @@ function BigCalendar() {
                         as="button"
                         onClick={renderBkgd} data-cls="blue-tech"
                     >Blue Tech</Dropdown.Item>
-                    
 
-                </DropdownButton>  
+
+                </DropdownButton>
+
+            //Calendar
+                <Calendar
+                    selectable={true}
+                    onSelectEvent={onSelectEvent}
+                    onSelectSlot={onSelectSlot}
+                    // (slotInfo) => console.log(slotInfo)}
+                    localizer={localizer}
+                    defaultDate={new Date()}
+                    defaultView="month"
+                    events={eventState}
+                    style={{ height: "100vh" }}
+                    startAccessor="start"
+                    endAccessor="end"
+                />
+
+            //Events
             
                 <DayModal
+                    // handle='.modal-header'
                     dayStartDate={moment(dayStartDate).format('MM/DD/YYYY')}
                     dayEndDate={moment(dayEndDate).format('MM/DD/YYYY')}
                     draggable={true}
@@ -248,8 +273,7 @@ function BigCalendar() {
                     //Form submit to add event
                     handleSubmit={handleSubmit}
                 />
-                
-               
+
                 <AddEvent
                     //DatePicker
                     handleStartChange={handleStartChange}
@@ -271,19 +295,6 @@ function BigCalendar() {
                     handleSubmit={handleSubmit}
                 />
 
-                <Calendar
-                    selectable={true}
-                    onSelectEvent={onSelectEvent}
-                    onSelectSlot={onSelectSlot}
-                    // (slotInfo) => console.log(slotInfo)}
-                    localizer={localizer}
-                    defaultDate={new Date()}
-                    defaultView="month"
-                    events={eventState}
-                    style={{ height: "100vh" }}
-                    startAccessor="start"
-                    endAccessor="end"
-                />
                 <EventModal
                     id={event.id}
                     eventModalState={eventModalState}
@@ -316,9 +327,9 @@ function BigCalendar() {
                     end={handleEndTime}
                     endValue={endTime}
                 />
-
             </div>
         </div>
+
     )
 }
 

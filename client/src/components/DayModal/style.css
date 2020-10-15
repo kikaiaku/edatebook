@@ -1,3 +1,11 @@
 .modal-header{
     background-color: lightskyblue;
+    height: 100%;
+}
+.dayModal{
+    color: black;
+}
+.modal-dialog{
+    color: black;
+    width: 100%;
 }
