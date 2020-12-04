@@ -78,7 +78,7 @@ function BigCalendar() {
             appointments[i].end = new Date(appointments[i].endDate);
         }
         setEventState(appointments)
-    }
+    };
 
     //TimePicker functions
     function handleStartTime(tm) {
@@ -115,7 +115,7 @@ function BigCalendar() {
         e.preventDefault();
         console.log("handle submit clicked")
         // setShowEventModal(false)
-        const res = await API.addEvent({
+        await API.addEvent({
             title: titleState,
             startDate: startDate,
             endDate: endDate,
@@ -124,18 +124,19 @@ function BigCalendar() {
             notes: noteState,
             userId: userId
         })
-        getEvents(data => renderEvents(data))
-        console.log('now close modal and get events', res)
-        handleDayModalClose();
+        getEvents();
+        console.log('Submit clicked')
         handleEventModalClose();
-        handleEditModalClose();
+        handleDayModalClose();
+        getEvents();   
     };
+    // data => renderEvents(data))
     
     //Edit Event function
     async function handleSubmitEdit(e) {
         e.preventDefault();
         console.log("handle submit clicked")
-        const res = await API.editEvent({
+        await API.editEvent({
             title: titleState,
             startDate: startDate,
             endDate: endDate,
@@ -144,15 +145,18 @@ function BigCalendar() {
             notes: noteState,
             userId: userId,
             id: sessionStorage.getItem("eventId")
-        })
-        console.log('now close modal and get events', res)
-        getEvents(data => renderEvents(data));
+        });
+        getEvents();
+        console.log('Save Changes clicked')
+        handleEditModalClose();
+        getEvents();
+            // data => renderEvents(data));
     };
     //Delete Event function
-     function handleDelete(e){
+    function handleDelete(e){
         e.preventDefault();
         console.log("handle delete clicked")
-        const res = API.deleteEvent({
+        API.deleteEvent({
             title: titleState,
             startDate: startDate,
             endDate: endDate,
@@ -161,9 +165,14 @@ function BigCalendar() {
             notes: noteState,
             userId: userId,
             id: sessionStorage.getItem("eventId")
-        })
-        getEvents(data => renderEvents(data));
-        console.log('now close modal and get events', res)
+        });
+        getEvents();
+        console.log('Delete clicked')
+        handleEditModalClose();
+        handleEventModalClose();
+        handleDayModalClose();
+        getEvents();
+            // data => renderEvents(data));
     };
 
     //Title input change function
