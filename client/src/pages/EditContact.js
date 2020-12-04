@@ -55,7 +55,6 @@ function EditContact() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
     API.editAddress({
       firstName: firstName,
       middleInitial: middleInitial,
