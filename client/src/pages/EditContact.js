@@ -19,10 +19,22 @@ function EditContact() {
   const userId = sessionStorage.getItem("id")
   const addressId = sessionStorage.getItem("addressId")
 
+  const [getAddress, setGetAddress] = useState([{}])
+
   useEffect(() => {
     getSingleAddress();
   }, []);
 
+  //New // - gets all addresses
+  function getAllAddress(c) {
+    API.getAddress()
+      .then(({ data }) => {
+        console.log("Updated contact: " + data)
+        setGetAddress(data)
+      })
+  }
+
+  //Get selected address to edit
   function getSingleAddress(c) {
     API.getSingleAddress({ id: addressId })
       .then(({ data }) => {
@@ -59,7 +71,9 @@ function EditContact() {
       userId: userId,
       id: addressId
     })
-
+    //New - gets all addresses
+    getAllAddress();
+    console.log("Got all addresses")
   };
 
   function handleInputChange(e) {

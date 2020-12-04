@@ -12,7 +12,7 @@ import API from '../../utils/API';
 function EditModal(props) {
 
     return (
-        <Modal show={props.showEditModalState} backdrop="static" onHide={() => props.setShowEditModalState(false)}>
+        <Modal show={props.showEditModalState} backdrop="static" onHide={props.onHide}>
             <Modal.Header closeButton>
                 <Modal.Title>{props.savedTitle}</Modal.Title>
             </Modal.Header>
@@ -62,7 +62,7 @@ function EditModal(props) {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="primary" onClick={props.handleDelete}>Delete</Button>
-                <Button variant="secondary" onClick={() => props.setShowEditModalState(false)}>Close</Button>
+                <Button variant="secondary" onClick={props.onHide}>Close</Button>
                 <Button
                     onClick={props.handleSubmitEdit}
                     variant="primary">Save changes</Button>
@@ -71,6 +71,8 @@ function EditModal(props) {
     )
 
 }
+
+//() => props.setShowEditModalState(false)
 
 // () => API.deleteAddress({id: props.endValue}
 
