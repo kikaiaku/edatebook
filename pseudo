@@ -1,11 +1,17 @@
-[*]On click save changes to add event- close modal
+/////////////FIX GROUPS///////////////
+Logout
 
-//Delete
-[]Delete renders via state
-[]Delete on click close modal
+Need render via state:
+Create Group
+Delete Group
+Make delete group api call in page: groups.js // instead of component: groupscomp
 
-//Edit
-[*]Edit event renders via state (have to click save 2x)
-[]Edit submit close modal
+//
+Why is Link not working in addressgrouplist? Have to use redirect?
+//
+After saving a group, the page needs to be refreshed before group will populate and sometimes doesn't populate until you create an additional group.
+It's like it's one step behind.
+//
 
-[]Try to fix light/dark mode bkgd covers 100% of page
+
+

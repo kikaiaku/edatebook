@@ -20,12 +20,12 @@ const API = {
     return axios.post("/api/AddContact", userInfo);
   },
 
-    // Function to retrieve all contacts for the Address Book
+    // Function to retrieve all contacts/contact info for the Address Book
     getAddress: function () {
       return axios.get('/api/addressbook')
     },
 
-       // Function to retrieve all contacts for the Address Book
+       // Function to retrieve all contacts for the Contact Groups
        getAddress2: function () {
         return axios.get('/api/getContacts')
       },
@@ -121,8 +121,8 @@ addGroup: function (userInfo) {
 },
 // context.developerState.filteredUsers.map(({ login, name, picture, phone, email, dob }) => {
 
-getGroupCount: function () {
-  return axios.get('/api/getGroupcount')
+getGroupNames: function () {
+  return axios.get('/api/getGroupNames')
 },
 
 getGroups: function () {

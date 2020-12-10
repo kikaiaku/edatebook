@@ -5,12 +5,6 @@ import { propTypes } from 'react-bootstrap/esm/Image';
 import { Link } from 'react-router-dom';
 import './style.css';
 
-
-// import API from '../../utils/API';
-
-// import NewAddressForm from '../NewAddressForm';
-// import AddressBook from '../../pages/AddressBook';
-
 function AddressGroupList(props) {
 
   return (
