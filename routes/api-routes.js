@@ -326,7 +326,7 @@ module.exports = function (app) {
   });
 
 
-  app.get("/api/getGroupcount", function (req, res) {
+  app.get("/api/getGroupNames", function (req, res) {
     if (req.user) {
      
       db.GroupName.findAll({
