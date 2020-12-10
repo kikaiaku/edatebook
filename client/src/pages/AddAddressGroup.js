@@ -66,7 +66,7 @@ function handleSubmit(e) {
 function createGroup(){
   API.getGroupNames() 
   .then(({ data }) => {
-    var groupIdValue = data[0].id +1-1
+    var groupIdValue = data[0].id -1
     console.log("groupid: "+ groupIdValue)
   
       const updateGroup = groupList.map(o => Object.assign({}, o, {GroupNameId: groupIdValue}))
