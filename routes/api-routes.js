@@ -100,7 +100,7 @@ module.exports = function (app) {
 
 
   // POST route for saving a new address
-  app.post("/api/AddContact", function (req, res) {
+  app.post("/api/add/contact", function (req, res) {
     // create takes an argument of an object describing the Bill we want to
     // insert into our table. 
     console.log(req.body)
@@ -122,7 +122,7 @@ module.exports = function (app) {
         res.status(401).json(err);
       });
   });
-  app.post("/api/AddGroup", function (req, res) {
+  app.post("/api/add/group", function (req, res) {
     // create takes an argument of an object describing the Bill we want to
     // insert into our table. 
     console.log(req.body)
@@ -158,7 +158,7 @@ module.exports = function (app) {
     }
   });
 
-  app.get("/api/EditContact:id", function (req, res) {
+  app.get("/api/edit/contact:id", function (req, res) {
     if (req.user) {
       console.log(req.params.id)
       db.Address.findAll({ where: { id: req.params.id } })
@@ -173,7 +173,7 @@ module.exports = function (app) {
   });
 
   //EVENTS GET ROUTE
-  app.get("/api/Calendar", function (req, res) {
+  app.get("/api/calendar", function (req, res) {
     // create takes an argument of an object describing the Bill we want to
     // insert into our table. 
     console.log("Get events!!!!!!")
@@ -231,7 +231,7 @@ module.exports = function (app) {
     }
   });
 
-  app.get("/api/createGroup", function (req, res) {
+  app.get("/api/create/group", function (req, res) {
     if (req.user) {
 
       db.Address.findAll({ where: { userId: req.user.id } ,order: [['lastName', 'ASC']]})
@@ -245,7 +245,7 @@ module.exports = function (app) {
     }
   });
 
-  app.put("/api/EditContact:id", function (req, res) {
+  app.put("/api/edit/contact:id", function (req, res) {
     if (req.user) {
       db.Address.update({
         firstName: req.body.firstName,
@@ -271,7 +271,7 @@ module.exports = function (app) {
     }
   });
 
-  app.put("/api/EditEvent:id", function (req, res) {
+  app.put("/api/edit/event:id", function (req, res) {
 
     db.Event.update({
       start: req.body.start,
@@ -290,7 +290,7 @@ module.exports = function (app) {
   });
 
 
-  app.post("/api/CreateGroupName", (req, res) => {
+  app.post("/api/create/groupname", (req, res) => {
     console.log(req.body)
     console.log("Post Request")
     db.GroupName.create({
@@ -302,7 +302,7 @@ module.exports = function (app) {
       });
   });
 
-  app.post("/api/CreateGroup", (req, res) => {
+  app.post("/api/create/group", (req, res) => {
     console.log(req.body)
     console.log("Post Request")
     db.Group.bulkCreate(req.body)
@@ -311,7 +311,7 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/api/getContacts", function (req, res) {
+  app.get("/api/get/contacts", function (req, res) {
     if (req.user) {
       console.log("Add address 2")
       db.Address.findAll({ where: { userId: req.user.id },attributes: ['firstName','lastName', 'middleInitial','address','city','state','zipCode','phone','email','birthday','comments','userId'],order: [['lastName', 'ASC']] })
@@ -326,7 +326,7 @@ module.exports = function (app) {
   });
 
 
-  app.get("/api/getGroupNames", function (req, res) {
+  app.get("/api/get/groupnames", function (req, res) {
     if (req.user) {
      
       db.GroupName.findAll({
@@ -343,7 +343,7 @@ module.exports = function (app) {
     }
   });
 
-  app.get("/api/getGroup", function (req, res) {
+  app.get("/api/get/group", function (req, res) {
     if (req.user) {
 
       db.GroupName.findAll({ where: { userId: req.user.id },order: [['groupName', 'ASC']] })
@@ -357,7 +357,7 @@ module.exports = function (app) {
     }
   });
 
-  app.delete("/api/groupName/:id", function (req, res) {
+  app.delete("/api/groupname/:id", function (req, res) {
     console.log("group Deleted in DB")
     console.log(req.params.id)
 
@@ -404,7 +404,7 @@ module.exports = function (app) {
   });
 
 
-  app.delete("/api/addressbookgroupdelete/:id", function (req, res) {
+  app.delete("/api/delete/addressbookgroup/:id", function (req, res) {
     console.log("Address Deleted in DB")
     db.Group.destroy({
       where: {

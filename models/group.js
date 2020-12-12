@@ -17,8 +17,9 @@ module.exports = function(sequelize, DataTypes) {
     Groups.associate = function(models) {
       // We're saying that a Expense should belong to an Category
       // An expense can't be created without an Category due to the foreign key constraint
-      Groups.belongsTo(models.GroupName, {
+      Groups.belongsTo(models.GroupName, {as: "Group", 
         foreignKey: {
+          groupNameId: groupName.id,
           allowNull: false
         }
       });

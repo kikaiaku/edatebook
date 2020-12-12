@@ -17,7 +17,7 @@ const API = {
   // function to add contact to the address book
   addAddress: function (userInfo) {
     console.log(userInfo)
-    return axios.post("/api/AddContact", userInfo);
+    return axios.post("/api/add/contact", userInfo);
   },
 
     // Function to retrieve all contacts/contact info for the Address Book
@@ -27,19 +27,19 @@ const API = {
 
        // Function to retrieve all contacts for the Contact Groups
        getAddress2: function () {
-        return axios.get('/api/getContacts')
+        return axios.get('/api/get/contacts')
       },
 
     // Retrieves a single contact to use for the edit function
     getSingleAddress: function (userInfo) {
-      return axios.get('/api/EditContact' + userInfo.id)
+      return axios.get('/api/edit/contact' + userInfo.id)
     },
 
     // Function to edit a contact in the Address Book
     editAddress: function (userInfo) {
       console.log(userInfo)
       console.log("check")
-      axios.put("/api/EditContact" + userInfo.id, userInfo);
+      axios.put("/api/edit/contact" + userInfo.id, userInfo);
     },
 
     // Function to delete a contact from the Address book
@@ -73,7 +73,7 @@ const API = {
   // function to add a new group
   addAddressGroup: function (userInfo) {
     console.log(userInfo)
-    return axios.post("/api/AddAddressGroup", userInfo);
+    return axios.post("/api/add/addressgroup", userInfo);
   },
 
 
@@ -86,7 +86,7 @@ const API = {
 
   // Function to retrieve all events for the calendar
   getEvent: function () {
-    return axios.get('/api/Calendar')
+    return axios.get('/api/calendar')
   },
 
 // Function to delete an event from the Calendar
@@ -101,7 +101,7 @@ const API = {
     console.log(userInfo)
     console.log("Id " + userInfo.id)
     console.log("check")
-    axios.put("/api/EditEvent" + userInfo.id, userInfo);
+    axios.put("/api/edit/event" + userInfo.id, userInfo);
   },
 
 // END CALENDAR FUNCTIONS
@@ -109,7 +109,7 @@ const API = {
 
 createGroupName: function (userInfo) {
   console.log(userInfo)
-  return axios.post("/api/CreateGroupName", userInfo);
+  return axios.post("/api/create/groupname", userInfo);
 },
 
 
@@ -117,22 +117,22 @@ addGroup: function (userInfo) {
   console.log(userInfo)
   // const groupArray = userInfo.map('firstName','lastName', 'middleInitial','address','city','state','zipCode','phone','email','birthday','comments','userId',1)
   
-  return axios.post("/api/CreateGroup", userInfo);
+  return axios.post("/api/creategroup", userInfo);
 },
 // context.developerState.filteredUsers.map(({ login, name, picture, phone, email, dob }) => {
 
 getGroupNames: function () {
-  return axios.get('/api/getGroupNames')
+  return axios.get('/api/get/groupnames')
 },
 
 getGroups: function () {
-  return axios.get('/api/getGroup')
+  return axios.get('/api/get/group')
 },
 
 deleteGroup: function (userInfo) {
   console.log(userInfo)
   console.log("Group Delete")
-  return axios.delete('/api/groupName/' + userInfo.id,userInfo)
+  return axios.delete('/api/groupname/' + userInfo.id,userInfo)
 },
 
 getGroupAddress: function (userInfo) {
@@ -157,7 +157,7 @@ exportGroup: function (userInfo) {
 
 deleteAddressGroup: function (userInfo) {
   console.log("Address Delete")
-  return axios.delete('/api/addressbookgroupdelete/' + userInfo.id, userInfo)
+  return axios.delete('/api/delete/addressbookgroup/' + userInfo.id, userInfo)
 }
 
 

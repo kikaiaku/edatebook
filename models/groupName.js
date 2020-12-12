@@ -7,7 +7,8 @@ module.exports = function(sequelize, DataTypes) {
     GroupNames.associate = function(models) {
         // Associating Catergories with Expense
         //
-        GroupNames.hasMany(models.Group, {
+        GroupNames.hasMany(models.Group, {as: "Members",
+        foreignKey: "groupNameId",
           onDelete: "cascade"
         });
       };

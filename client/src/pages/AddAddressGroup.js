@@ -20,13 +20,13 @@ function AddAddressGroup() {
     API.getAddress2()
       .then(({ data }) => {
         setAddressState(data)
-        console.log(data)
+        // console.log(data)
       });
   };
 
-  function getAllGroupNames(){
+  // function getAllGroupNames(){
 
-  }
+  // }
 
   //Save group function
   function handleCheck(e){
@@ -41,7 +41,7 @@ function AddAddressGroup() {
     else if (!e.target.checked) {
         let group = groupList.filter(item => {
             if (!e.target.dataset.index) {
-                return item
+                return item;
             }
         });
         setGroupList(group)
@@ -66,16 +66,20 @@ function handleSubmit(e) {
 function createGroup(){
   API.getGroupNames() 
   .then(({ data }) => {
-    var groupIdValue = data[0].id -1
-    console.log("groupid: "+ groupIdValue)
+    // var groupIdValue = (data[0].id +1-1)
+    // console.log("line 70 groupid: "+ groupIdValue)
   
-      const updateGroup = groupList.map(o => Object.assign({}, o, {GroupNameId: groupIdValue}))
+      const updateGroup = groupList.map(members => {
+        // Object.assign({}, o, {GroupNameId: groupIdValue}))
       
-      API.addGroup(updateGroup)
-      console.log("update group: "+ updateGroup)
-      setRedirectState(true)
+      API.addGroup(members)
+      setGroupList(members)
+      console.log("New group: "+ members)
   })
     .catch(err => console.log(err));
+    setRedirectState(true);
+    
+});
 };
 
 
